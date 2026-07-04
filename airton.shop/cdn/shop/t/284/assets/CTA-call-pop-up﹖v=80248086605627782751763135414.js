@@ -1,0 +1,2 @@
+document.addEventListener("DOMContentLoaded",function(){let buttonsCTA=document.querySelectorAll(".sales_hubspot_tel_resp");buttonsCTA.length>0&&buttonsCTA.forEach(button=>{window.innerWidth<=768?(button.classList.remove("hs-cta-trigger-button","hs-cta-trigger-button-207497911502"),button.href="tel:+33805034304"):button.href=""})});
+//# sourceMappingURL=/cdn/shop/t/284/assets/CTA-call-pop-up.js.map?v=80248086605627782751763135414

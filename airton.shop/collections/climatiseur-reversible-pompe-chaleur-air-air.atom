@@ -1,0 +1,540 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xml:lang="fr" xmlns="http://www.w3.org/2005/Atom" xmlns:opensearch="http://a9.com/-/spec/opensearch/1.1/" xmlns:s="http://jadedpixel.com/-/spec/shopify">
+  <id>https://airton.shop/collections/all.atom</id>
+  <link rel="alternate" type="text/html" href="https://airton.shop/collections/all"/>
+  <link rel="self" type="application/atom+xml" href="https://airton.shop/collections/climatiseur-reversible-pompe-chaleur-air-air.atom"/>
+  <title>Airton.fr</title>
+  <updated>2026-07-03T14:11:05+02:00</updated>
+  <author>
+    <name>Airton.fr</name>
+  </author>
+  <entry>
+    <id>https://airton.shop/products/7845923127339</id>
+    <published>2026-07-03T14:11:05+02:00</published>
+    <updated>2026-07-03T14:11:05+02:00</updated>
+    <link rel="alternate" type="text/html" href="https://airton.shop/products/climatiseur-reversible-airstorm-pompe-a-chaleur-air-air-pac"/>
+    <title>Climatiseur réversible AIRSTORM - Pompe à chaleur Air Air (PAC) - 3400W - Wifi Intégré</title>
+    <s:type>Climatiseurs réversibles</s:type>
+    <s:vendor>Airton</s:vendor>
+    <summary type="html">
+      <![CDATA[<table border="0">
+  <tr>
+    <td width="200"><img width="200" src="https://cdn.shopify.com/s/files/1/2600/0244/files/airstorm_png.png?v=1774867379"></td>
+    <td valign="bottom">
+      <p>
+
+        <strong>Fournisseur : </strong>Airton<br>
+        <strong>Type : </strong>Climatiseurs réversibles<br>
+        <strong>Prix : </strong>
+            549.90
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2"></td>
+  </tr>
+</table>
+]]>
+    </summary>
+    <s:tag># -&gt; COMMERCIAUX</s:tag>
+    <s:variant>
+      <id>https://airton.shop/products/7845923127339</id>
+      <title>Default Title</title>
+      <s:price currency="EUR">549.90</s:price>
+      <s:sku>409702</s:sku>
+      <s:grams>42500</s:grams>
+    </s:variant>
+  </entry>
+  <entry>
+    <id>https://airton.shop/products/7308237111339</id>
+    <published>2025-08-29T11:03:35+02:00</published>
+    <updated>2025-08-29T11:03:35+02:00</updated>
+    <link rel="alternate" type="text/html" href="https://airton.shop/products/monobloc-star-12hp-2-4-kw"/>
+    <title>Climatiseur réversible monobloc 2,4 kW</title>
+    <s:type>Climatiseurs réversibles</s:type>
+    <s:vendor>Airton.fr</s:vendor>
+    <summary type="html">
+      <![CDATA[<table border="0">
+  <tr>
+    <td width="200"><img width="200" src="https://cdn.shopify.com/s/files/1/2600/0244/files/monobloc_produit.png?v=1735918167"></td>
+    <td valign="bottom">
+      <p>
+
+        <strong>Fournisseur : </strong>Airton.fr<br>
+        <strong>Type : </strong>Climatiseurs réversibles<br>
+        <strong>Prix : </strong>
+            1199.90
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2"><h2>
+<img>Climatiseur monobloc 4 en 1 sans unité extérieure : la solution simple et performante</h2>
+<p data-end="508" data-start="357">Le climatiseur réversible monobloc Airton est une solution 4-en-1 conçue pour offrir un confort thermique optimal toute l’année, sans unité extérieure.</p>
+<p data-end="701" data-start="510">Idéal en appartement ou dans les logements où l’installation d’un groupe extérieur est impossible, il permet de <strong data-end="673" data-start="622">rafraîchir, chauffer, déshumidifier et ventiler</strong> facilement votre intérieur.</p>
+<h2 data-end="766" data-start="708" data-section-id="ehbjvi">Une installation simplifiée, accessible à tous</h2>
+<p data-end="851" data-start="768">Contrairement à une climatisation classique, ce climatiseur monobloc ne nécessite :</p>
+<ul data-end="953" data-start="853">
+<li data-end="888" data-start="853" data-section-id="vtnabd">aucun raccordement frigorifique</li>
+<li data-end="925" data-start="889" data-section-id="ey89rt">aucune mise en service technique</li>
+<li data-end="953" data-start="926" data-section-id="191qgsy">aucune unité extérieure</li>
+</ul>
+<p data-end="1066" data-start="955">Son installation repose uniquement sur la création de deux sorties d’air et un branchement électrique standard.</p>
+<p data-end="1130" data-start="1068">Une solution idéale pour une installation simple et rapide.</p>
+<h2 data-end="1183" data-start="1137" data-section-id="j4phow">Une puissance adaptée jusqu’à 30m²</h2>
+<p data-end="1268" data-start="1185">Avec une puissance de 2400W, ce climatiseur monobloc est parfaitement adapté pour :</p>
+<ul data-end="1333" data-start="1270">
+<li data-end="1282" data-start="1270" data-section-id="bn8rgs">un salon</li>
+<li data-end="1298" data-start="1283" data-section-id="12lnalg">une chambre</li>
+<li data-end="1312" data-start="1299" data-section-id="1r0k0o7">un bureau</li>
+<li data-end="1333" data-start="1313" data-section-id="dhbl0d">un espace ouvert</li>
+</ul>
+<p data-end="1382" data-start="1335">Il assure un confort homogène, été comme hiver.</p>
+<h2 data-end="1461" data-start="1389" data-section-id="o61b2w">Technologie DC Inverter : performance et économies d’énergie</h2>
+<p data-end="1591" data-start="1463">Grâce à la technologie DC Inverter, votre climatiseur ajuste automatiquement sa puissance pour maintenir une température stable.</p>
+<p data-end="1603" data-start="1593">Résultat :</p>
+<ul data-end="1699" data-start="1605">
+<li data-end="1643" data-start="1605" data-section-id="19rkkmo">consommation énergétique optimisée</li>
+<li data-end="1678" data-start="1644" data-section-id="1raezl8">fonctionnement plus silencieux</li>
+<li data-end="1699" data-start="1679" data-section-id="1p7hyvv">confort constant</li>
+</ul>
+<h2 data-end="1765" data-start="1706" data-section-id="1u05ct2">Un climatiseur connecté pour plus de simplicité</h2>
+<p data-end="1807" data-start="1767">Le module Wi-Fi est directement intégré.</p>
+<p data-end="1822" data-start="1809">Vous pouvez :</p>
+<ul data-end="1951" data-start="1824">
+<li data-end="1863" data-start="1824" data-section-id="f875yl">contrôler la température à distance</li>
+<li data-end="1896" data-start="1864" data-section-id="bpqxta">programmer le fonctionnement</li>
+<li data-end="1951" data-start="1897" data-section-id="12r4ggn">piloter votre appareil via l’application SmartLife</li>
+</ul>
+<h2 data-end="2012" data-start="1958" data-section-id="gc5aou">Un design compact qui s’intègre facilement</h2>
+<p data-end="2136" data-start="2014">Avec son design discret et compact, le climatiseur monobloc Airton s’installe facilement dans tous les types d’intérieurs.</p>
+<p data-end="2237" data-start="2138">Il se positionne comme un radiateur classique, tout en offrant un confort thermique bien supérieur.</p>
+<h2 data-end="2316" data-start="2244" data-section-id="3u2wwv">Une solution idéale pour les logements sans unité extérieure</h2>
+<p data-end="2365" data-start="2318">Ce climatiseur est particulièrement adapté si :</p>
+<ul data-end="2502" data-start="2367">
+<li data-end="2396" data-start="2367" data-section-id="1s4qxbv">vous vivez en appartement</li>
+<li data-end="2450" data-start="2397" data-section-id="fu5a6w">votre copropriété interdit les unités extérieures</li>
+<li data-end="2502" data-start="2451" data-section-id="5emv9j">vous souhaitez éviter une installation complexe</li>
+</ul>
+<p data-end="2569" data-start="2504">Une solution simple, efficace et immédiatement opérationnelle.</p></td>
+  </tr>
+</table>
+]]>
+    </summary>
+    <s:tag>active_products</s:tag>
+    <s:tag>catalogue</s:tag>
+    <s:tag>classeEnergetique</s:tag>
+    <s:tag>monobloc</s:tag>
+    <s:variant>
+      <id>https://airton.shop/products/7308237111339</id>
+      <title>Default Title</title>
+      <s:price currency="EUR">1199.90</s:price>
+      <s:sku>409946</s:sku>
+      <s:grams>36200</s:grams>
+    </s:variant>
+  </entry>
+  <entry>
+    <id>https://airton.shop/products/7157443919915</id>
+    <published>2025-03-25T17:19:36+01:00</published>
+    <updated>2025-03-25T17:19:36+01:00</updated>
+    <link rel="alternate" type="text/html" href="https://airton.shop/products/climatiseur-reversible-fixe-mural-a"/>
+    <title>Climatiseur réversible A+++ - Pompe à chaleur Air Air (PAC)</title>
+    <s:type>Climatiseurs réversibles</s:type>
+    <s:vendor>Airton</s:vendor>
+    <summary type="html">
+      <![CDATA[<table border="0">
+  <tr>
+    <td width="200"><img width="200" src="https://cdn.shopify.com/s/files/1/2600/0244/files/BundelAirtonA.webp?v=1766503908"></td>
+    <td valign="bottom">
+      <p>
+
+        <strong>Fournisseur : </strong>Airton<br>
+        <strong>Type : </strong>Climatiseurs réversibles<br>
+        <strong>Prix : </strong>
+            599.90 - 699.90
+            <a href="https://airton.shop/products/climatiseur-reversible-fixe-mural-a">(2 variants)</a>
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2"><p>La mise en service en 20minutes grâce au système <strong><a href="https://airton.shop/collections/readyclim-1">ReadyClim</a></strong></p>
+<h3>V<strong>otre climatiseur/ pompe à chaleur Airton</strong>
+</h3>
+<p>Utilisables toute l’année pour rafraîchir ou réchauffer le logement, les pompes à chaleur/climatiseurs Airton sont équipés de la Technologie DC INVERTER. Nous vous proposons des produits aux niveaux sonores bas, aux performances élevées, avec un confort optimal.<span> </span><span><strong>Nos climatiseurs sont garantis 2 ans.</strong></span></p>
+<p>[read-more]</p>
+<h2><strong>Technologie DC INVERTER</strong></h2>
+<p>Les variations de température ne sont pas ressenties, la température souhaitée est plus précise et la sensation de confort est accrue.</p>
+<p>La température choisie est atteinte plus rapidement grâce au contrôle de la capacité du compresseur qui s’adapte à votre besoin de climatisation.</p>
+<p>Alors qu’un compresseur conventionnel tourne à plein rendement ou est arrêté, le système DC INVERTER plus performant au démarrage régule tout seul la puissance du compresseur en fonction de la variation de la température de la pièce. En mode chauffage, consommez 4 fois moins d’électricité qu’un chauffage électrique.</p>
+<h2><strong>Qualité et Durabilité</strong></h2>
+<p>Tous les climatiseurs Airton sont équipés de compresseurs Toshiba, Sanyo, Panasonic, et Samsung. Les pièces internes, les filtres, et tous les éléments mécaniques sont conçus avec des matériaux nobles, durables, et certifiés. Tous nos climatiseurs font l'objet de tests avant d'être mis à la vente, et ce pour assurer que nos clients soient satisfaits, mais surtout équipés de machines sûres et robustes.</p>
+<h2><strong>Respect de l'environnement</strong></h2>
+<p>Dans le cadre du développement durable, les climatiseurs Airton sont optimisés en tous points. De la conception à la production, nous veillons à ce que les fluides frigorigènes ainsi que les matières premières soient mesurés pour ne pas avoir d'impact environnemental négatif. Cela permet notamment d'avoir un potentiel de réchauffement global (PRG) égal à 675 grâce au gaz R32, contre 2088 avec l'ancien gaz R410A. Aussi, en économisant les matières premières nous sommes parvenus à produire des climatiseurs plus petits, et surtout plus discrets.</p>
+<h2><strong>Gaz R32: Écologie, Rendements, Discrétion</strong></h2>
+<p>Airton utilise le gaz R32 pour :- Réduire de 68% les émissions de gaz à effet de serre en passant d'un PRG (Potentiel Réchauffement Global) de 2088 pour le R410A à 675 pour le R32.</p>
+<ul>
+<li>Réduire la quantité de fluide dans l’installation permettant de diminuer la taille des appareils, pour avoir une utilisation moindre de matière première et des appareils plus discrets.</li>
+<li>Améliorer les performances énergétiques jusqu'à 7% grâce à une meilleure gestion thermique. Apporter un niveau sonore encore plus faible grâce à une technologie élaborée.</li>
+</ul>
+<h2><strong>Climatiseur mono-split</strong></h2>
+<p>Système traditionnel, puissant et discret. Permet de réchauffer et rafraîchir une pièce toute l'année, plus ou moins grande en fonction de sa puissance (voir plus bas dans les caractéristiques techniques du climatiseur mono-split).</p>
+<p>Chaque climatiseur mono-split est associé à un groupe extérieur.</p>
+<h2><strong>Climatiseur multi-split</strong></h2>
+<p>Système dont les performances sont comparativement meilleures qu'un système de chauffage classique, et qui permet de réchauffer et de rafraîchir un logement complet, tout en effectuant des économies d'énergie.</p>
+<p>La régulation est très simple car chaque unité intérieure est indépendante.</p>
+<p>Plusieurs pièces de votre choix peuvent bénéficier d’un air frais, en été, et d’un air chaud, en hiver.</p>
+<p>Avoir une climatisation MULTI-SPLIT, c’est vous permettre d’avoir un grand confort en continu et homogène dans votre habitation toute l’année.</p>
+<h2><strong>ReadyClim</strong></h2>
+<p>Tous les climatiseurs Airton sont compatibles avec le système de raccordement ReadyClim. Quatre écrous, vous serrez, c'est connecté. En vingt minutes seulement, votre climatiseur fonctionne, et il est alimenté en gaz car pré-chargé. Pas de perte de temps, pas de perte de gaz, seulement vous et votre foyer maintenus à la température qu'il faut toute l'année.</p>
+<ul></ul></td>
+  </tr>
+</table>
+]]>
+    </summary>
+    <s:tag>climatiseurs réversibles</s:tag>
+    <s:tag>PARAPLUIE</s:tag>
+    <s:variant>
+      <id>https://airton.shop/products/7157443919915</id>
+      <title>2500W</title>
+      <s:price currency="EUR">599.90</s:price>
+      <s:sku>409942</s:sku>
+      <s:grams>42000</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://airton.shop/products/7157443919915</id>
+      <title>3400W</title>
+      <s:price currency="EUR">699.90</s:price>
+      <s:sku>409943</s:sku>
+      <s:grams>42000</s:grams>
+    </s:variant>
+  </entry>
+  <entry>
+    <id>https://airton.shop/products/7217633624107</id>
+    <published>2024-03-29T10:05:25+01:00</published>
+    <updated>2024-03-29T10:05:25+01:00</updated>
+    <link rel="alternate" type="text/html" href="https://airton.shop/products/climatiseur-reversible-quadrisplit-x4-pompe-a-chaleur-air-air-pac"/>
+    <title>Climatiseur réversible Quadrisplit (x4) - Pompe à chaleur Air Air (PAC)</title>
+    <s:type>Climatiseurs réversibles</s:type>
+    <s:vendor>Airton</s:vendor>
+    <summary type="html">
+      <![CDATA[<table border="0">
+  <tr>
+    <td width="200"><img width="200" src="https://cdn.shopify.com/s/files/1/2600/0244/files/BundelAirtonquadri_72b898f3-560c-472a-bece-e03d39d18cb2.webp?v=1766501767"></td>
+    <td valign="bottom">
+      <p>
+
+        <strong>Fournisseur : </strong>Airton<br>
+        <strong>Type : </strong>Climatiseurs réversibles<br>
+        <strong>Prix : </strong>
+            2099.90
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2"><p class="MsoNormal">Profitez d’un climatiseur fixe quadri-split réversible puissant et discret avec une double fonction : chauffage en hiver, climatisation en été. Ajustez facilement la température de 16°C à 31°C selon chaque saison.</p>
+<p class="MsoNormal">Grâce à son excellente efficacité énergétique (A++ en mode froid, A+ en mode chaud), il allie des performances stables et des économies d’énergie toute l'année.</p>
+<p class="MsoNormal">Compatible avec la solution ReadyClim prêt-à-poser, son installation est simplifiée et sa mise en service ne prend que quelques minutes.</p>
+<p class="MsoNormal">Avec son système de programmation à distance, via le module WIFI SmartLife et ses 5 modes de fonctionnement, il se pilote simplement et répond à tous vos besoins.</p>
+<p class="MsoNormal">Modèle de climatiseur réversible quadri-split composé de quatre unités intérieures et d’une unité extérieure. Ce système permet de chauffer et de rafraichir un logement complet jusqu’à 100m² de surface. Chaque unité intérieure est indépendante et offre un confort continu toute l’année dans quatre pièces distinctes de votre choix.</p></td>
+  </tr>
+</table>
+]]>
+    </summary>
+    <s:tag># -&gt; COMMERCIAUX</s:tag>
+    <s:tag>active_products</s:tag>
+    <s:tag>ANNIVERSAIRE</s:tag>
+    <s:tag>catalogue</s:tag>
+    <s:tag>climatiseurs réversibles</s:tag>
+    <s:tag>PROMO LIMITEE</s:tag>
+    <s:tag>quadrisplit</s:tag>
+    <s:tag>SOLDES-HIVER</s:tag>
+    <s:variant>
+      <id>https://airton.shop/products/7217633624107</id>
+      <title>Default Title</title>
+      <s:price currency="EUR">2099.90</s:price>
+      <s:sku>409941</s:sku>
+      <s:grams>92000</s:grams>
+    </s:variant>
+  </entry>
+  <entry>
+    <id>https://airton.shop/products/7179512315947</id>
+    <published>2023-12-18T08:37:31+01:00</published>
+    <updated>2023-12-18T08:37:31+01:00</updated>
+    <link rel="alternate" type="text/html" href="https://airton.shop/products/climatiseur-trisplit-reversible-2600w-2600w-3500w-30m-30m-40m"/>
+    <title>Climatiseur réversible Trisplit (x3) - Pompe à chaleur Air Air (PAC)</title>
+    <s:type>Climatiseurs réversibles</s:type>
+    <s:vendor>Airton</s:vendor>
+    <summary type="html">
+      <![CDATA[<table border="0">
+  <tr>
+    <td width="200"><img width="200" src="https://cdn.shopify.com/s/files/1/2600/0244/files/BundelAirtontri_eaf9c81b-c184-434e-945c-aa69d03caab7.webp?v=1766501752"></td>
+    <td valign="bottom">
+      <p>
+
+        <strong>Fournisseur : </strong>Airton<br>
+        <strong>Type : </strong>Climatiseurs réversibles<br>
+        <strong>Prix : </strong>
+            1599.90
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2"><p class="MsoNormal">Profitez d’un climatiseur fixe tri-split réversible puissant et discret avec une double fonction : chauffage en hiver, climatisation en été. Ajustez facilement la température de 16°C à 31°C selon chaque saison.</p>
+<p class="MsoNormal">Grâce à son excellente efficacité énergétique (A++ en mode froid, A+ en mode chaud), il allie des performances stables et des économies d’énergie toute l'année.</p>
+<p class="MsoNormal">Compatible avec la solution ReadyClim prêt-à-poser, son installation est simplifiée et sa mise en service ne prend que quelques minutes.</p>
+<p class="MsoNormal">Avec son système de programmation à distance, via le module WIFI SmartLife et ses 5 modes de fonctionnement, il se pilote simplement et répond à tous vos besoins.</p>
+<p class="MsoNormal">Modèle de climatiseur réversible tri-split composé de trois unités intérieures et d’une unité extérieure. Ce système permet de chauffer et de rafraichir un logement complet jusqu’à 100m² de surface. Chaque unité intérieure est indépendante et offre un confort continu toute l’année dans trois pièces distinctes de votre choix.</p></td>
+  </tr>
+</table>
+]]>
+    </summary>
+    <s:tag># -&gt; COMMERCIAUX</s:tag>
+    <s:tag>active_products</s:tag>
+    <s:tag>ANNIVERSAIRE</s:tag>
+    <s:tag>Catalogue</s:tag>
+    <s:tag>climatiseurs réversibles</s:tag>
+    <s:tag>PROMO LIMITEE</s:tag>
+    <s:tag>SOLDES-HIVER</s:tag>
+    <s:tag>trisplit</s:tag>
+    <s:variant>
+      <id>https://airton.shop/products/7179512315947</id>
+      <title>Default Title</title>
+      <s:price currency="EUR">1599.90</s:price>
+      <s:sku>409894</s:sku>
+      <s:grams>85000</s:grams>
+    </s:variant>
+  </entry>
+  <entry>
+    <id>https://airton.shop/products/7179507695659</id>
+    <published>2023-12-18T08:37:31+01:00</published>
+    <updated>2023-12-18T08:37:31+01:00</updated>
+    <link rel="alternate" type="text/html" href="https://airton.shop/products/pompe-a-chaleur-climatiseur-bisplit"/>
+    <title>Climatiseur réversible Bisplit (x2) - Pompe à chaleur Air Air (PAC)</title>
+    <s:type>Climatiseurs réversibles</s:type>
+    <s:vendor>Airton</s:vendor>
+    <summary type="html">
+      <![CDATA[<table border="0">
+  <tr>
+    <td width="200"><img width="200" src="https://cdn.shopify.com/s/files/1/2600/0244/files/BundelAirtonbi_4e775465-80f1-4fa7-8b61-3b8b4b3a7d51.webp?v=1766501749"></td>
+    <td valign="bottom">
+      <p>
+
+        <strong>Fournisseur : </strong>Airton<br>
+        <strong>Type : </strong>Climatiseurs réversibles<br>
+        <strong>Prix : </strong>
+            1099.90 - 1299.90
+            <a href="https://airton.shop/products/pompe-a-chaleur-climatiseur-bisplit">(2 variants)</a>
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2"><p class="MsoNormal">Profitez d’un climatiseur fixe bi-split réversible puissant et discret avec une double fonction : chauffage en hiver, climatisation en été. Ajustez facilement la température de 16°C à 31°C selon chaque saison.</p>
+<p class="MsoNormal">Grâce à son excellente efficacité énergétique (A++ en mode froid, A+ en mode chaud), il allie des performances stables et des économies d’énergie toute l'année.</p>
+<p class="MsoNormal">Compatible avec la solution ReadyClim prêt-à-poser, son installation est simplifiée et sa mise en service ne prend que quelques minutes.</p>
+<p class="MsoNormal">Avec son système de programmation à distance, via le module WIFI SmartLife et ses 5 modes de fonctionnement, il se pilote simplement et répond à tous vos besoins.</p>
+<p class="MsoNormal">Modèle de climatiseur réversible bi-split composé de deux unités intérieures et d’une unité extérieure. Ce système permet de chauffer et de rafraichir un logement complet jusqu’à 70m² de surface. Chaque unité intérieure est indépendante et offre un confort continu toute l’année dans deux pièces distinctes de votre choix.</p>
+<!--SPLIT-->
+<h3>Qualité et durabilité des climatiseurs fixes Airton</h3>
+<p><meta charset="utf-8"><span>Tous les climatiseurs Airton sont équipés de </span><strong>compresseurs</strong><span> Toshiba, Sanyo, Panasonic, et Samsung. Les pièces internes, les filtres, et tous les éléments mécaniques sont conçus avec des matériaux </span><strong>durables<span> </span></strong><span>et </span><strong>certifiés</strong><span>. Tous nos </span><strong>climatiseurs fixes</strong><span> font l'objet de tests avant d'être mis à la vente afin d'équiper nos clients avec des machines </span><strong>sécurisés</strong><span> et </span><strong>robustes</strong><span>.</span></p>
+<!--MORE-->
+<h3><span>Gaz réfrigérant R32</span></h3>
+<p>Airton utilise le <strong>gaz R32</strong> afin de :<br><br>• Réduire de 68% les <strong>émissions de gaz à effet de serre</strong> en passant d'un <strong>PRG</strong> (Potentiel Réchauffement Global) de 2088 pour le R410A à <strong>675 </strong>pour le <strong>R32</strong>.</p>
+<p>• Réduire la quantité de fluide dans l’installation permettant de diminuer la <strong>taille des appareils</strong>, augmenter leur <strong>discrétion</strong> et diminuer l'utilisation de matières premières.</p>
+<p>• Augmenter les <strong>performances énergétiques</strong> jusqu'à 7% grâce à une meilleure gestion thermique.</p>
+<p>• Apporter un <strong>niveau sonore</strong> encore plus <strong>faible</strong> via une<strong> technologie élaborée</strong>.</p>
+<h3>Ecofriendly</h3>
+<p>Dans le cadre du<span> </span><strong>développement durable</strong>, les climatiseurs Airton sont optimisés. De la conception à la production, nous veillons à ce que les<span> </span><strong>fluides frigorigènes</strong><span> </span>ainsi que les <strong>matières premières</strong> soient mesurés pour ne pas avoir d'<strong>impact environnemental négatif</strong>. Cela permet notamment d'avoir un<span> </span><strong>potentiel de réchauffement global</strong><span> </span>(PRG) égal à 675 grâce au<span> </span><strong>gaz R32</strong>, contre 2088 avec l'ancien<span> </span><strong>gaz R410A</strong>. Aussi, en économisant les matières premières nous sommes parvenus à produire des climatiseurs plus<span> </span><strong>petits<span> </span></strong>et plus<span> </span><strong>discrets.</strong></p></td>
+  </tr>
+</table>
+]]>
+    </summary>
+    <s:tag># -&gt; COMMERCIAUX</s:tag>
+    <s:tag>active_products</s:tag>
+    <s:tag>ANNIVERSAIRE</s:tag>
+    <s:tag>bisplit</s:tag>
+    <s:tag>Catalogue</s:tag>
+    <s:tag>climatiseurs réversibles</s:tag>
+    <s:tag>PROMO LIMITEE</s:tag>
+    <s:tag>SOLDES-HIVER</s:tag>
+    <s:variant>
+      <id>https://airton.shop/products/7179507695659</id>
+      <title>2600W + 2600W ( 30m² + 30m²)</title>
+      <s:price currency="EUR">1099.90</s:price>
+      <s:sku>409913</s:sku>
+      <s:grams>71500</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://airton.shop/products/7179507695659</id>
+      <title>2600W + 3400W ( 30m² + 45m²)</title>
+      <s:price currency="EUR">1299.90</s:price>
+      <s:sku>409733</s:sku>
+      <s:grams>71500</s:grams>
+    </s:variant>
+  </entry>
+  <entry>
+    <id>https://airton.shop/products/7179500716075</id>
+    <published>2023-12-18T08:37:30+01:00</published>
+    <updated>2023-12-18T08:37:30+01:00</updated>
+    <link rel="alternate" type="text/html" href="https://airton.shop/products/climatiseur-fixe-reversible"/>
+    <title>Climatiseur réversible - Pompe à chaleur Air Air (PAC)</title>
+    <s:type>Climatiseurs réversibles</s:type>
+    <s:vendor>Airton</s:vendor>
+    <summary type="html">
+      <![CDATA[<table border="0">
+  <tr>
+    <td width="200"><img width="200" src="https://cdn.shopify.com/s/files/1/2600/0244/files/BundelAirtonmono_1feb4e9e-8a74-43ad-b616-be76b1ca375e.webp?v=1766501728"></td>
+    <td valign="bottom">
+      <p>
+
+        <strong>Fournisseur : </strong>Airton<br>
+        <strong>Type : </strong>Climatiseurs réversibles<br>
+        <strong>Prix : </strong>
+            399.90 - 1199.90
+            <a href="https://airton.shop/products/climatiseur-fixe-reversible">(7 variants)</a>
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2"><p>Profitez d’un climatiseur fixe réversible puissant et discret avec une double fonction : chauffage en hiver, climatisation en été. Ajustez facilement la température de 16°C à 31°C selon chaque saison.</p>
+<p>Grâce à son excellente efficacité énergétique (A++ en mode froid, A+ en mode chaud), il allie des performances stables et des économies d’énergie toute l'année.</p>
+<p>Compatible avec la solution ReadyClim prêt-à-poser, son installation est simplifiée et sa mise en service ne prend que quelques minutes.</p>
+<p>Avec son système de programmation à distance, via le module WIFI SmartLife et ses 5 modes de fonctionnement, il se pilote simplement et répond à tous vos besoins.</p>
+<p>Modèle de climatiseur réversible monosplit composé d’une unité intérieure et d’une unité extérieure.</p>
+<!--SPLIT-->
+<h2>Qu’est-ce qu’une pompe à chaleur air-air ?</h2>
+<p>Une PAC air-air est composée d'une unité extérieure qui récupère les calories présentes dans l’air pour la libérer en chaleur dans votre logement par une ou plusieurs unités intérieures.</p>
+<h2>Comment fonctionne une PAC air-air ?</h2>
+<p>La pompe à chaleur air-air fonctionne sur le principe de <strong>l'aérothermie</strong> ou <strong>cycle thermodynamique</strong> :</p>
+<ol>
+<li>Les calories récupérées alimentent en énergie et vaporisent le fluide frigorigène.</li>
+<li>La température du fluide est augmentée grâce au compresseur formant ainsi de la vapeur.</li>
+<li>Le fluide réchauffé traverse les liaisons de l'unité extérieure vers l'unité intérieure qui est libéré sous forme de chaleur dans le logement.</li>
+</ol>
+<h2>Avantages et inconvénients</h2>
+<h3>Avantages</h3>
+<ul>
+<li>
+<strong>Économies d’énergie</strong> : Grâce à son fonctionnement, la pompe à chaleur air-air bénéficie d'une source d'énergie inépuisable, qui ne nécessite aucune ressource naturelle (gaz,fuel,bois,charbon ...) . Surtout, l'énergie crée permet de réduire le besoin en électricité et de bénéficier d'un coefficient de performance supérieure à 4. En d'autres termes, quand un radiateur électrique classique consomme 1KW pour produire 1kW de chaleur alors qu'une pompe à chaleur air-air consomme 1KW pour produire 4kW de chaleur. C'est donc une facture énergétique minamle divisée par 4 dès son installation.</li>
+<li>
+<strong>Confort 4 saisons</strong> : Grâce à son fonctionnement réversible, la pompe à chaleur permet également de profiter de la climatisation en été.</li>
+<li>
+<strong>Rentabilité</strong> : Avec son prix attractif, la pompe à chaleur est rentabilisée en quelques années seulement grâce aux économies réalisées sur la consommation électrique.</li>
+</ul>
+<div>
+<h3>Inconvénients</h3>
+<ul>
+<li>Pas de production d'eau chaude sanitaire, contrairement aux pompes à chaleur air-eau.</li>
+<li>Besoin d'un <strong>entretien</strong> régulier pour assurer un rendement optimal et une durée de vie prolongée.</li>
+</ul>
+</div>
+<h2>Combien coûte une pompe à chaleur air-air ?</h2>
+<p>Les prix varient selon la puissance, le nombre d’unités et les options.</p>
+<div style="overflow-x: auto;">
+<table style="width: 100%; border-collapse: collapse;">
+<thead>
+<tr>
+<th style="text-align: left; border-bottom: 1px solid #ddd; padding: .5rem;">Type d’installation</th>
+<th style="text-align: left; border-bottom: 1px solid #ddd; padding: .5rem;">Puissance </th>
+<th style="text-align: left; border-bottom: 1px solid #ddd; padding: .5rem;">Prix</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="padding: .5rem; border-bottom: 1px solid #f0f0f0;">Monosplit (1 unité intérieure)</td>
+<td style="padding: .5rem; border-bottom: 1px solid #f0f0f0;">2,1 à 6,2 kW</td>
+<td style="padding: .5rem; border-bottom: 1px solid #f0f0f0;">399,90 à 1199,90 €</td>
+</tr>
+<tr>
+<td style="padding: .5rem; border-bottom: 1px solid #f0f0f0;">Multisplit (2 à 4 unités intérieures)</td>
+<td style="padding: .5rem; border-bottom: 1px solid #f0f0f0;">5,2 à 11,3 kW</td>
+<td style="padding: .5rem; border-bottom: 1px solid #f0f0f0;">1 099,90 à 2 099,90 €</td>
+</tr>
+<tr></tr>
+</tbody>
+</table>
+</div>
+<p><em>Astuce Airton :</em> Grâce au système ReadyClim prêt-à-poser, l’installation est simplifiée et accessible à tous pour un coût global réduit.</p>
+<h2>Les aides financières disponibles en 2026</h2>
+<p>Grâce à leur coefficient de performance (COP) de 4, les pompes à chaleur Airton sont éligibles aux certificats d'économies d'énergie auprès des fournisseurs agréés. Pour obtenir plus d'informations : <a rel="noopener noreferrer" href="https://www.economie.gouv.fr/cedef/fiches-pratiques/quelles-aides-pour-linstallation-dune-pompe-chaleur" target="_blank">Voir les aides pour l’installation d’une pompe à chaleur</a>.</p>
+<h2>Installation et entretien : ce qu’il faut savoir</h2>
+<ul>
+<li>
+<strong>Installation</strong> : Grâce à son kit prêt-à-poser et au système ReadyClim, l’installation de votre pompe à chaleur Airton ne nécessite aucun compétence avancée et est accessible à tous.</li>
+<li>
+<strong>Entretien</strong> : Nous vous conseillons d'entretenir votre climatiseur régulièrement (dépoussièrage, vérification des filtres) et de faire un entretien complet au minium une fois par an.</li>
+</ul>
+<h2>Pompe à chaleur air-air réversible : une solution 2 en 1</h2>
+<p>En hiver, la PAC air-air récupère les calories de l’air extérieur pour chauffer l’intérieur. En été, elle inverse le cycle et rafraîchit les pièces. Un seul équipement pour deux usages et un confort inchangé toute l'année.</p>
+<h2>Est-ce rentable ? Études de cas et témoignages</h2>
+<p>La rentabilité d'une pompe à chaleur, comme pour un climatiseur, dépend notamment de l’isolation, du climat et de l’usage. Grâce à son COP4, les pompes à chaleur Airton permettent de diviser jusqu'à 4 fois la facture électrique.</p>
+<h3>Qualité et durabilité des climatiseurs fixes Airton</h3>
+<p><meta charset="utf-8"><span>Tous les climatiseurs Airton sont équipés de </span><strong>compresseurs</strong><span> Toshiba, Sanyo, Panasonic, et Samsung. Les pièces internes, les filtres, et tous les éléments mécaniques sont conçus avec des matériaux </span><strong>durables<span> </span></strong><span>et </span><strong>certifiés</strong><span>. Tous nos </span><strong>climatiseurs fixes</strong><span> font l'objet de tests avant d'être mis à la vente afin d'équiper nos clients avec des machines </span><strong>sécurisés</strong><span> et </span><strong>robustes</strong><span>.</span></p>
+<!--MORE-->
+<h3>Gaz réfrigérant R32</h3>
+<p>Airton utilise le <strong>gaz R32</strong> afin de :<br><br>• Réduire de 68% les <strong>émissions de gaz à effet de serre</strong> en passant d'un <strong>PRG</strong> (Potentiel Réchauffement Global) de 2088 pour le R410A à <strong>675 </strong>pour le <strong>R32</strong>.</p>
+<p>• Réduire la quantité de fluide dans l’installation permettant de diminuer la <strong>taille des appareils</strong>, augmenter leur <strong>discrétion</strong> et diminuer l'utilisation de matières premières.</p>
+<p>• Augmenter les <strong>performances énergétiques</strong> jusqu'à 7% grâce à une meilleure gestion thermique.</p>
+<p>• Apporter un <strong>niveau sonore</strong> encore plus <strong>faible</strong> via une<strong> technologie élaborée</strong>.</p>
+<h3>Ecofriendly</h3>
+<p>Dans le cadre du <strong>développement durable</strong>, les climatiseurs Airton sont optimisés. De la conception à la production, nous veillons à ce que les <strong>fluides frigorigènes</strong> ainsi que les <strong>matières premières</strong> soient mesurés pour ne pas avoir d'<strong>impact environnemental négatif</strong>. Cela permet notamment d'avoir un <strong>potentiel de réchauffement global</strong> (PRG) égal à 675 grâce au <strong>gaz R32</strong>, contre 2088 avec l'ancien <strong>gaz R410A</strong>. Aussi, en économisant les matières premières nous sommes parvenus à produire des climatiseurs plus <strong>petits </strong>et plus <strong>discrets.</strong></p></td>
+  </tr>
+</table>
+]]>
+    </summary>
+    <s:tag># -&gt; COMMERCIAUX</s:tag>
+    <s:tag>ANNIVERSAIRE</s:tag>
+    <s:tag>Catalogue</s:tag>
+    <s:tag>climatiseurs réversibles</s:tag>
+    <s:tag>monosplit</s:tag>
+    <s:tag>SOLDES</s:tag>
+    <s:variant>
+      <id>https://airton.shop/products/7179500716075</id>
+      <title>2500W (jusqu&apos;à 30m²)</title>
+      <s:price currency="EUR">799.90</s:price>
+      <s:sku>409934</s:sku>
+      <s:grams>38010</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://airton.shop/products/7179500716075</id>
+      <title>2100W (jusqu&apos;à 29m²)</title>
+      <s:price currency="EUR">399.90</s:price>
+      <s:sku>409965</s:sku>
+      <s:grams>38010</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://airton.shop/products/7179500716075</id>
+      <title>3400W (Jusqu&apos;à 45m²)</title>
+      <s:price currency="EUR">499.90</s:price>
+      <s:sku>409935</s:sku>
+      <s:grams>40000</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://airton.shop/products/7179500716075</id>
+      <title>3400W (Jusqu&apos;à 44m²)</title>
+      <s:price currency="EUR">499.90</s:price>
+      <s:sku>409966</s:sku>
+      <s:grams>40000</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://airton.shop/products/7179500716075</id>
+      <title>5100W (jusqu&apos;à 60m²)</title>
+      <s:price currency="EUR">899.90</s:price>
+      <s:sku>409967</s:sku>
+      <s:grams>46000</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://airton.shop/products/7179500716075</id>
+      <title>5270W (jusqu&apos;à 65m²)</title>
+      <s:price currency="EUR">899.90</s:price>
+      <s:sku>409936</s:sku>
+      <s:grams>46000</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://airton.shop/products/7179500716075</id>
+      <title>6200W (jusqu&apos;à 74m²)</title>
+      <s:price currency="EUR">1199.90</s:price>
+      <s:sku>409968</s:sku>
+      <s:grams>46000</s:grams>
+    </s:variant>
+  </entry>
+</feed>
