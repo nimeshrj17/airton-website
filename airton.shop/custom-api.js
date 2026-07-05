@@ -104,9 +104,23 @@ function interceptExternalLinks() {
     });
 }
 
+function interceptForms() {
+    document.addEventListener('submit', (e) => {
+        const form = e.target;
+        if (form && form.tagName === 'FORM') {
+            const action = form.getAttribute('action') || '';
+            if (action.includes('airton.shop/localization') || action.includes('/localization')) {
+                e.preventDefault();
+                console.log('Intercepted localization form submit');
+            }
+        }
+    });
+}
+
 document.addEventListener('DOMContentLoaded', () => {
     console.log('Custom API script loaded.');
     fetchProducts();
     interceptAddToCart();
     interceptExternalLinks();
+    interceptForms();
 });
