@@ -1,55 +1,265 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login - Airton Shop (Local)</title>
+    <title>Se connecter - Airton</title>
     <style>
-        body { font-family: sans-serif; display: flex; justify-content: center; align-items: center; height: 100vh; background-color: #f5f5f5; margin: 0; }
-        .container { background: white; padding: 40px; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); width: 100%; max-width: 400px; text-align: center; }
-        input { width: 100%; padding: 10px; margin: 10px 0; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; }
-        button { width: 100%; padding: 10px; background: #007bff; color: white; border: none; border-radius: 4px; cursor: pointer; font-size: 16px; }
-        button:hover { background: #0056b3; }
-        a { color: #007bff; text-decoration: none; }
+        body { 
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
+            background-color: white; 
+            margin: 0; 
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+        
+        .header {
+            margin-top: 40px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .logo {
+            height: 36px;
+            margin-bottom: 12px;
+        }
+
+        .badge-clients {
+            background-color: black;
+            color: white;
+            font-size: 18px;
+            padding: 4px 12px;
+            font-weight: 400;
+            display: inline-block;
+            margin-bottom: 10px;
+        }
+
+        .badge-clients strong {
+            font-weight: 700;
+        }
+
+        .trustpilot-box {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 15px;
+            color: #000;
+        }
+
+        .trustpilot-box img {
+            height: 20px;
+        }
+        
+        .trustpilot-text {
+            font-weight: bold;
+            font-size: 15px;
+        }
+
+        .trustpilot-avis {
+            color: #333;
+            font-size: 14px;
+        }
+
+        .login-container {
+            width: 100%;
+            max-width: 440px;
+            margin-top: 100px;
+            padding: 0 20px;
+            box-sizing: border-box;
+            text-align: left;
+        }
+
+        .title {
+            font-size: 22px;
+            font-weight: 700;
+            margin: 0 0 6px 0;
+            color: #000;
+        }
+
+        .subtitle {
+            font-size: 14px;
+            color: #666;
+            margin: 0 0 24px 0;
+        }
+
+        .btn-shop {
+            background-color: #5a31f4;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            width: 100%;
+            padding: 14px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+            box-sizing: border-box;
+        }
+
+        .btn-shop:hover {
+            background-color: #4a28cc;
+        }
+
+        .divider {
+            display: flex;
+            align-items: center;
+            text-align: center;
+            margin: 24px 0;
+        }
+
+        .divider::before, .divider::after {
+            content: '';
+            flex: 1;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .divider span {
+            padding: 0 10px;
+            color: #777;
+            font-size: 13px;
+        }
+
+        .input-group {
+            position: relative;
+            margin-bottom: 16px;
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 16px 45px 16px 16px;
+            border: 2px solid #0056b3;
+            border-radius: 8px;
+            font-size: 15px;
+            box-sizing: border-box;
+            outline: none;
+            color: #000;
+        }
+        
+        .input-group input::placeholder {
+            color: #777;
+        }
+
+        .input-group button {
+            position: absolute;
+            right: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 18px;
+            color: #333;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .checkbox-group {
+            display: flex;
+            align-items: center;
+            margin-bottom: 30px;
+            cursor: pointer;
+        }
+
+        .checkbox-group input {
+            margin: 0 10px 0 0;
+            width: 18px;
+            height: 18px;
+            accent-color: #0056b3;
+            cursor: pointer;
+        }
+
+        .checkbox-group label {
+            font-size: 13px;
+            color: #000;
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        .footer-text {
+            font-size: 11px;
+            color: #777;
+            text-align: center;
+        }
+
+        .footer-text a {
+            color: #777;
+            text-decoration: underline;
+        }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h2>Local Login</h2>
-        <p>This is a custom local login page replacing the original Shopify login.</p>
-        <form id="loginForm">
-            <input type="email" id="email" placeholder="Email" required>
-            <input type="password" id="password" placeholder="Password" required>
-            <button type="submit">Log In</button>
-        </form>
-        <p style="margin-top: 20px;"><a href="index.html">← Back to Home</a></p>
+
+    <div class="header">
+        <img src="../cdn.shopify.com/s/files/1/2600/0244/files/LOGO_OFF%EF%B9%96v=1737552371.png" alt="Airton" class="logo">
+        <div class="badge-clients">Plus de <strong>130 000</strong> clients</div>
+        <div class="trustpilot-box">
+            <span style="color: #00b67a; font-size: 20px; line-height: 1;">★</span>
+            <span class="trustpilot-text">Trustpilot</span>
+            <svg viewBox="0 0 100 20" width="100" height="20" xmlns="http://www.w3.org/2000/svg">
+                <rect width="18" height="18" x="1" y="1" fill="#00b67a"/>
+                <path fill="#fff" d="M10 3l2 5.5h5.5l-4.5 3.5 1.5 5.5-5-3.5-5 3.5 1.5-5.5-4.5-3.5h5.5z"/>
+                <rect width="18" height="18" x="21" y="1" fill="#00b67a"/>
+                <path fill="#fff" d="M30 3l2 5.5h5.5l-4.5 3.5 1.5 5.5-5-3.5-5 3.5 1.5-5.5-4.5-3.5h5.5z"/>
+                <rect width="18" height="18" x="41" y="1" fill="#00b67a"/>
+                <path fill="#fff" d="M50 3l2 5.5h5.5l-4.5 3.5 1.5 5.5-5-3.5-5 3.5 1.5-5.5-4.5-3.5h5.5z"/>
+                <rect width="18" height="18" x="61" y="1" fill="#00b67a"/>
+                <path fill="#fff" d="M70 3l2 5.5h5.5l-4.5 3.5 1.5 5.5-5-3.5-5 3.5 1.5-5.5-4.5-3.5h5.5z"/>
+                <rect width="18" height="18" x="81" y="1" fill="#00b67a"/>
+                <path fill="#fff" d="M90 3l2 5.5h5.5l-4.5 3.5 1.5 5.5-5-3.5-5 3.5 1.5-5.5-4.5-3.5h5.5z"/>
+            </svg>
+            <span class="trustpilot-avis">13 800 avis</span>
+        </div>
     </div>
-    
+
+    <div class="login-container">
+        <h1 class="title">Se connecter</h1>
+        <p class="subtitle">Se connecter ou créer un compte</p>
+
+        <a href="#" class="btn-shop">Continuer avec sh<span style="display:inline-flex;align-items:center;background:white;color:#5a31f4;border-radius:50%;width:16px;height:16px;justify-content:center;font-size:12px;margin:0 1px;">o</span>p</a>
+
+        <div class="divider">
+            <span>ou</span>
+        </div>
+
+        <form id="loginForm">
+            <div class="input-group">
+                <input type="email" id="email" placeholder="Adresse e-mail" required>
+                <button type="submit">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                        <polyline points="12 5 19 12 12 19"></polyline>
+                    </svg>
+                </button>
+            </div>
+
+            <label class="checkbox-group">
+                <input type="checkbox" checked>
+                <span>Envoyez-moi des nouvelles et des offres par e-mail</span>
+            </label>
+        </form>
+
+        <p class="footer-text">
+            En continuant, vous acceptez nos <a href="#">Conditions d'utilisation</a>
+        </p>
+    </div>
+
     <script>
         document.getElementById('loginForm').addEventListener('submit', async (e) => {
             e.preventDefault();
             const email = document.getElementById('email').value;
-            const password = document.getElementById('password').value;
-            
-            try {
-                const response = await fetch('http://localhost:4000/api/user/login', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ email, password })
-                });
-                const data = await response.json();
-                if (data.success) {
-                    localStorage.setItem('token', data.token);
-                    alert('Logged in successfully!');
-                    window.location.href = 'index.html';
-                } else {
-                    alert('Error: ' + data.message);
-                }
-            } catch (err) {
-                alert('Failed to connect to backend.');
-            }
+            alert('Connexion / Création de compte via e-mail :\nUn lien a été envoyé à ' + email);
+            window.location.href = 'index.html';
         });
     </script>
-<script src="/airton.shop/custom-api.js"></script>
+    <script src="custom-api.js"></script>
 </body>
 </html>
