@@ -166,3 +166,14 @@ document.addEventListener('DOMContentLoaded', () => {
         };
     }
 });
+// Fix Vercel 404 on index.html
+document.addEventListener('click', (e) => {
+    const link = e.target.closest('a');
+    if (link && link.href && link.href.endsWith('index.html')) {
+        // If we are on Vercel or a web server, /index.html often 404s with cleanUrls.
+        if (window.location.protocol.startsWith('http')) {
+            e.preventDefault();
+            window.location.href = '/';
+        }
+    }
+});
