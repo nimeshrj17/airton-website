@@ -80,6 +80,16 @@ function setupAddToCartInterception() {
             e.stopPropagation();
         }
     }, true);
+    
+    // Strip existing event listeners and prevent native form submit by cloning all ATC buttons
+    const atcButtons = document.querySelectorAll('button[name="add"], .product-form__submit, .configurator-sticky-btn, .configurator-useful-card__add, .configurator-content-footer-add-to-cart');
+    atcButtons.forEach(btn => {
+        const clone = btn.cloneNode(true);
+        clone.type = 'button'; // Strip submit behavior
+        if (btn.parentNode) {
+            btn.parentNode.replaceChild(clone, btn);
+        }
+    });
 
     // Global click interceptor in capture phase to beat any existing frameworks (React/Vue/etc)
     document.addEventListener('click', async (e) => {
