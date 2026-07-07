@@ -24,7 +24,9 @@ async function seedProducts() {
         if (!name) name = slug.replace(/-/g, ' '); // fallback
 
         // Try to extract price
-        let priceText = $('.price-item, .price-item--regular, .f-price-item').first().text().trim().replace(/[^0-9,.]/g, '').replace(',', '.');
+        let rawPriceText = $('.price-item, .price-item--regular, .f-price-item').first().text().trim();
+        rawPriceText = rawPriceText.replace(/,/g, ''); // Remove thousands separator
+        let priceText = rawPriceText.replace(/[^0-9.]/g, ''); // Extract numbers and decimals
         let price = parseFloat(priceText);
         if (isNaN(price)) price = 399.90; // Better fallback
 

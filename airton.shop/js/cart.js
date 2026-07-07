@@ -311,16 +311,20 @@ function renderCartDrawer() {
     const cart = getCart();
     
     if (cart.length === 0) {
+        drawer.setAttribute('is-empty', '');
+        drawer.classList.add('is-empty');
         if (emptyState) {
             emptyState.classList.remove('hidden');
-            emptyState.style.display = '';
+            emptyState.style.setProperty('display', 'block', 'important');
         }
         if (bodyState) bodyState.classList.add('hidden');
         if (footerState) footerState.classList.add('hidden');
     } else {
+        drawer.removeAttribute('is-empty');
+        drawer.classList.remove('is-empty');
         if (emptyState) {
             emptyState.classList.add('hidden');
-            emptyState.style.display = 'none';
+            emptyState.style.setProperty('display', 'none', 'important');
         }
         if (bodyState) {
             bodyState.classList.remove('hidden');
