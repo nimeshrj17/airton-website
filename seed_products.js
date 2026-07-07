@@ -23,10 +23,10 @@ async function seedProducts() {
         let name = $('h1').first().text().trim();
         if (!name) name = slug.replace(/-/g, ' '); // fallback
 
-        // Try to extract price (assume .price-item--regular)
-        let priceText = $('.price-item--regular').first().text().trim().replace(/[^0-9,.]/g, '').replace(',', '.');
+        // Try to extract price
+        let priceText = $('.price-item, .price-item--regular, .f-price-item').first().text().trim().replace(/[^0-9,.]/g, '').replace(',', '.');
         let price = parseFloat(priceText);
-        if (isNaN(price)) price = 99.99; // fallback
+        if (isNaN(price)) price = 399.90; // Better fallback
 
         // Insert into Supabase
         const { error } = await supabase

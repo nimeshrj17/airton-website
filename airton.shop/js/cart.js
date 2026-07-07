@@ -185,10 +185,10 @@ function renderCart() {
         
         tbody.innerHTML = html;
         
-        // Update subtotal
-        const subtotalEl = document.querySelector('.cart-subtotal');
-        if (subtotalEl) {
-            subtotalEl.textContent = `€${total.toFixed(2)}`;
+        // Update subtotal (Shopify's default class)
+        const subtotalEls = document.querySelectorAll('.totals__subtotal-value, .cart-subtotal');
+        if (subtotalEls.length > 0) {
+            subtotalEls.forEach(el => el.textContent = `€${total.toFixed(2)}`);
         } else {
             // If the element doesn't exist, we can create a simple total display in the footer
             const summaryContainer = document.querySelector('.cart__footer-wrapper');
@@ -269,6 +269,7 @@ function initCart() {
     setupCheckoutButton();
     setupAddToCartInterception();
     
+    
     const urlParams = new URLSearchParams(window.location.search);
     if (urlParams.get('auto_checkout') === '1' && getCart().length > 0 && localStorage.getItem('user_logged_in') === 'true') {
         const btn = document.querySelector('[name="checkout"], .cart__checkout-button');
@@ -276,6 +277,18 @@ function initCart() {
             setTimeout(() => btn.click(), 500); // slight delay to allow rendering
         }
     }
+    
+    // Restrict shipping calculator countries
+    const countrySelects = document.querySelectorAll('select[name="address[country]"]');
+    countrySelects.forEach(select => {
+        select.innerHTML = `
+            <option value="France" data-provinces="[]">France</option>
+            <option value="Belgium" data-provinces="[]">Belgique</option>
+            <option value="Switzerland" data-provinces="[]">Suisse</option>
+            <option value="Spain" data-provinces="[]">Espagne</option>
+            <option value="Italy" data-provinces="[]">Italie</option>
+        `;
+    });
 }
 
 if (document.readyState === 'loading') {
