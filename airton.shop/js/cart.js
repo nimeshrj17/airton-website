@@ -249,54 +249,13 @@ function setupCheckoutButton() {
             
             // Check if user is logged in
             if (localStorage.getItem('user_logged_in') !== 'true') {
-                window.location.href = '/airton.shop/login.html?redirect=' + encodeURIComponent('/airton.shop/cart.html');
+                window.location.href = '/airton.shop/login.html?redirect=' + encodeURIComponent('/airton.shop/checkout.html');
                 return;
             }
             
-            // If they are not on the cart page, redirect to the cart page first
-            if (!window.location.pathname.includes('cart.html')) {
-                window.location.href = '/airton.shop/cart.html';
-                return;
-            }
-            
-            btn.textContent = 'Chargement...';
-            btn.disabled = true;
-            
-            try {
-                const response = await fetch('/api/checkout', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ items: cart })
-                });
-                
-                if (!response.ok) {
-                    let errorMsg = 'Impossible d\'initialiser le paiement.';
-                    const text = await response.text();
-                    try {
-                        const json = JSON.parse(text);
-                        errorMsg = json.error || errorMsg;
-                    } catch(e) {}
-                    alert('Erreur: ' + errorMsg);
-                    btn.textContent = 'Passer la commande';
-                    btn.disabled = false;
-                    return;
-                }
-                
-                const data = await response.json();
-                if (data.url) {
-                    window.location.href = data.url;
-                } else {
-                    alert('Erreur: ' + (data.error || 'Impossible d\'initialiser le paiement.'));
-                    btn.textContent = 'Passer la commande';
-                    btn.disabled = false;
-                }
-            } catch (err) {
-                console.error(err);
-                alert('Erreur réseau. Veuillez réessayer.');
-                btn.textContent = 'Passer la commande';
-                btn.disabled = false;
-            }
-        };
+            // Route directly to checkout form
+            window.location.href = '/airton.shop/checkout.html';
+        }
     });
 }
 

@@ -1,54 +1,301 @@
-<!DOCTYPE html><html lang="en"><head>
+<!DOCTYPE html>
+<html lang="fr">
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Checkout - Airton Shop (Local)</title>
+    <title>Paiement - Airton</title>
     <style>
-        body { font-family: sans-serif; display: flex; justify-content: center; align-items: center; height: 100vh; background-color: #f5f5f5; margin: 0; }
-        .container { background: white; padding: 40px; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); text-align: center; }
-        a { color: #007bff; text-decoration: none; display: inline-block; margin-top: 20px; }
-        .cart-items { margin-top: 20px; text-align: left; }
+        body {
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        .checkout-header {
+            background: white;
+            padding: 20px;
+            text-align: center;
+            border-bottom: 1px solid #ddd;
+        }
+        .checkout-header img {
+            height: 40px;
+        }
+        .checkout-container {
+            display: flex;
+            flex-direction: column;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            gap: 40px;
+        }
+        @media(min-width: 768px) {
+            .checkout-container {
+                flex-direction: row;
+            }
+        }
+        .checkout-left, .checkout-right {
+            flex: 1;
+        }
+        .checkout-left {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+        .checkout-right {
+            background: #fafafa;
+            padding: 30px;
+            border-radius: 8px;
+            border: 1px solid #eee;
+        }
+        h2 {
+            font-size: 1.25rem;
+            margin-top: 0;
+            margin-bottom: 20px;
+            font-weight: 500;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-row {
+            display: flex;
+            gap: 15px;
+        }
+        .form-row .form-group {
+            flex: 1;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-size: 0.875rem;
+            color: #555;
+        }
+        input, select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+            font-size: 1rem;
+        }
+        input:focus, select:focus {
+            outline: none;
+            border-color: #000;
+        }
+        .btn-submit {
+            background-color: #000;
+            color: white;
+            border: none;
+            padding: 15px 20px;
+            font-size: 1rem;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 20px;
+            font-weight: bold;
+            transition: background 0.3s;
+        }
+        .btn-submit:hover {
+            background-color: #333;
+        }
+        .cart-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            gap: 15px;
+        }
+        .cart-item img {
+            width: 64px;
+            height: 64px;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+            object-fit: cover;
+        }
+        .cart-item-details {
+            flex: 1;
+        }
+        .cart-item-title {
+            font-weight: bold;
+            font-size: 0.9rem;
+            margin: 0 0 5px 0;
+        }
+        .cart-item-price {
+            color: #555;
+            font-size: 0.9rem;
+        }
+        .cart-total {
+            border-top: 1px solid #ddd;
+            margin-top: 20px;
+            padding-top: 20px;
+            display: flex;
+            justify-content: space-between;
+            font-weight: bold;
+            font-size: 1.25rem;
+        }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h2>Local Checkout</h2>
-        <p>This is a custom local checkout page.</p>
-        <div class="cart-items" id="cartItems">
-            <p>Loading cart data...</p>
+    <header class="checkout-header">
+        <a href="index.html">
+            <img src="cdn/shop/files/logo-airton.png" alt="Airton">
+        </a>
+    </header>
+
+    <div class="checkout-container">
+        <!-- Left: Form -->
+        <div class="checkout-left">
+            <h2>Contact</h2>
+            <div class="form-group">
+                <input type="email" id="email" placeholder="Adresse e-mail" required>
+            </div>
+            <div class="form-group">
+                <input type="tel" id="phone" placeholder="Téléphone" required>
+            </div>
+
+            <h2 style="margin-top: 40px;">Adresse de livraison</h2>
+            <div class="form-row">
+                <div class="form-group">
+                    <input type="text" id="firstName" placeholder="Prénom" required>
+                </div>
+                <div class="form-group">
+                    <input type="text" id="lastName" placeholder="Nom" required>
+                </div>
+            </div>
+            <div class="form-group">
+                <input type="text" id="address" placeholder="Adresse (ex: 12 rue de la Paix)" required>
+            </div>
+            <div class="form-row">
+                <div class="form-group">
+                    <input type="text" id="zipcode" placeholder="Code postal" required>
+                </div>
+                <div class="form-group">
+                    <input type="text" id="city" placeholder="Ville" required>
+                </div>
+            </div>
+            <div class="form-group">
+                <select id="country">
+                    <option value="France">France</option>
+                    <option value="Belgique">Belgique</option>
+                    <option value="Suisse">Suisse</option>
+                </select>
+            </div>
+
+            <button class="btn-submit" id="payButton">Continuer vers le paiement</button>
         </div>
-        <a href="index.html">← Back to Home</a>
+
+        <!-- Right: Order Summary -->
+        <div class="checkout-right">
+            <h2>Résumé de la commande</h2>
+            <div id="checkoutCartItems">
+                <!-- Items populated via JS -->
+            </div>
+            <div class="cart-total">
+                <span>Total</span>
+                <span id="checkoutTotal">0,00 €</span>
+            </div>
+        </div>
     </div>
-    
+
+    <script src="/airton.shop/custom-api.js"></script>
     <script>
-        // Fetch cart items from the backend
-        async function loadCart() {
+        // Load Cart from localStorage (simulated)
+        function loadCheckoutCart() {
+            let cart = [];
             try {
-                const response = await fetch('http://localhost:4000/api/cart/get', {
+                cart = JSON.parse(localStorage.getItem('cart_items') || '[]');
+            } catch(e) {}
+            
+            const container = document.getElementById('checkoutCartItems');
+            const totalEl = document.getElementById('checkoutTotal');
+            
+            if (cart.length === 0) {
+                container.innerHTML = '<p>Votre panier est vide.</p>';
+                document.getElementById('payButton').disabled = true;
+                return;
+            }
+            
+            let total = 0;
+            container.innerHTML = cart.map(item => {
+                total += item.price * item.quantity;
+                return `
+                    <div class="cart-item">
+                        <img src="${item.image || 'https://via.placeholder.com/64'}" alt="${item.name}">
+                        <div class="cart-item-details">
+                            <p class="cart-item-title">${item.name}</p>
+                            <span class="cart-item-price">${item.quantity} x ${item.price.toFixed(2).replace('.',',')} €</span>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+            
+            totalEl.textContent = total.toFixed(2).replace('.', ',') + ' €';
+        }
+
+        document.addEventListener('DOMContentLoaded', loadCheckoutCart);
+
+        // Handle Payment Submit
+        document.getElementById('payButton').addEventListener('click', async (e) => {
+            e.preventDefault();
+            
+            const email = document.getElementById('email').value;
+            const firstName = document.getElementById('firstName').value;
+            const lastName = document.getElementById('lastName').value;
+            const address = document.getElementById('address').value;
+            const city = document.getElementById('city').value;
+            const zipcode = document.getElementById('zipcode').value;
+            
+            if (!email || !firstName || !lastName || !address || !city || !zipcode) {
+                alert('Veuillez remplir tous les champs obligatoires.');
+                return;
+            }
+            
+            const cart = JSON.parse(localStorage.getItem('cart_items') || '[]');
+            const amount = cart.reduce((acc, item) => acc + (item.price * item.quantity), 0);
+            
+            const orderData = {
+                userId: localStorage.getItem('user_id') || 'guest_' + Date.now(),
+                items: cart,
+                amount: amount,
+                address: {
+                    firstName, lastName, email,
+                    street: address, city, zipcode,
+                    country: document.getElementById('country').value,
+                    phone: document.getElementById('phone').value
+                }
+            };
+            
+            const btn = document.getElementById('payButton');
+            btn.textContent = 'Traitement...';
+            btn.disabled = true;
+
+            try {
+                // Call backend API
+                const response = await fetch('http://localhost:4000/api/order/place', {
                     method: 'POST',
                     headers: { 
                         'Content-Type': 'application/json',
                         'token': localStorage.getItem('token') || ''
                     },
-                    body: JSON.stringify({}) // Backend expects userId or extracts from token
+                    body: JSON.stringify(orderData)
                 });
-                const data = await response.json();
-                const cartContainer = document.getElementById('cartItems');
                 
+                const data = await response.json();
                 if (data.success) {
-                    cartContainer.innerHTML = `<pre>${JSON.stringify(data.cartData, null, 2)}</pre>`;
+                    // Clear cart
+                    localStorage.removeItem('cart_items');
+                    window.location.href = 'checkout-success.html';
                 } else {
-                    cartContainer.innerHTML = `<p>Error: ${data.message}</p>`;
+                    alert('Erreur: ' + (data.message || 'Paiement refusé'));
+                    btn.textContent = 'Continuer vers le paiement';
+                    btn.disabled = false;
                 }
             } catch (err) {
-                document.getElementById('cartItems').innerHTML = '<p>Failed to connect to backend.</p>';
+                alert('Erreur de connexion au serveur. Assurez-vous que le backend fonctionne.');
+                btn.textContent = 'Continuer vers le paiement';
+                btn.disabled = false;
             }
-        }
-        
-        document.addEventListener('DOMContentLoaded', loadCart);
+        });
     </script>
-<script src="/airton.shop/custom-api.js"></script>
-
-
-
-<script src="/airton.shop/js/cart.js"></script>
-</body></html>
+</body>
+</html>
