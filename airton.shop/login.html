@@ -254,8 +254,17 @@
         document.getElementById('loginForm').addEventListener('submit', async (e) => {
             e.preventDefault();
             const email = document.getElementById('email').value;
-            alert('Connexion / Création de compte via e-mail :\nUn lien a été envoyé à ' + email);
-            window.location.href = 'index.html';
+            localStorage.setItem('user_logged_in', 'true');
+            localStorage.setItem('user_email', email);
+            alert('Vous êtes maintenant connecté(e) (' + email + ')');
+            
+            const urlParams = new URLSearchParams(window.location.search);
+            const redirect = urlParams.get('redirect');
+            if (redirect) {
+                window.location.href = redirect;
+            } else {
+                window.location.href = 'index.html';
+            }
         });
     </script>
     <script src="custom-api.js"></script>

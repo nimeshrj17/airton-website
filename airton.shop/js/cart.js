@@ -215,6 +215,12 @@ function setupCheckoutButton() {
             const cart = getCart();
             if (cart.length === 0) return;
             
+            // Check if user is logged in
+            if (localStorage.getItem('user_logged_in') !== 'true') {
+                window.location.href = '/airton.shop/login.html?redirect=' + encodeURIComponent('/airton.shop/cart.html?auto_checkout=1');
+                return;
+            }
+            
             btn.textContent = 'Chargement...';
             btn.disabled = true;
             
@@ -262,6 +268,14 @@ function initCart() {
     if (typeof renderCartDrawer === 'function') renderCartDrawer();
     setupCheckoutButton();
     setupAddToCartInterception();
+    
+    const urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.get('auto_checkout') === '1' && getCart().length > 0 && localStorage.getItem('user_logged_in') === 'true') {
+        const btn = document.querySelector('[name="checkout"], .cart__checkout-button');
+        if (btn) {
+            setTimeout(() => btn.click(), 500); // slight delay to allow rendering
+        }
+    }
 }
 
 if (document.readyState === 'loading') {
