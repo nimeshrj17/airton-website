@@ -224,6 +224,20 @@ function setupCheckoutButton() {
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ items: cart })
                 });
+                
+                if (!response.ok) {
+                    let errorMsg = 'Impossible d\'initialiser le paiement.';
+                    const text = await response.text();
+                    try {
+                        const json = JSON.parse(text);
+                        errorMsg = json.error || errorMsg;
+                    } catch(e) {}
+                    alert('Erreur: ' + errorMsg);
+                    btn.textContent = 'Passer la commande';
+                    btn.disabled = false;
+                    return;
+                }
+                
                 const data = await response.json();
                 if (data.url) {
                     window.location.href = data.url;

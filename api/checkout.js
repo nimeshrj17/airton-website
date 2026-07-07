@@ -1,5 +1,12 @@
 const { createClient } = require('@supabase/supabase-js');
-const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
+let stripe;
+try {
+    if (process.env.STRIPE_SECRET_KEY) {
+        stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
+    }
+} catch (e) {
+    console.error('Failed to initialize Stripe:', e);
+}
 
 const supabaseUrl = process.env.SUPABASE_URL || 'https://alvwqkqsokaiarrmweht.supabase.co';
 const supabaseKey = process.env.SUPABASE_ANON_KEY || 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImFsdndxa3Fzb2thaWFycm13ZWh0Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODMzOTcyNjQsImV4cCI6MjA5ODk3MzI2NH0.fR2O_DvLGcDxUC3Ld4DrRafKJH4kEJhCUScswKaUKfA';
@@ -27,8 +34,8 @@ module.exports = async (req, res) => {
             return res.status(400).json({ error: 'Cart is empty' });
         }
 
-        if (!process.env.STRIPE_SECRET_KEY) {
-            return res.status(500).json({ error: 'La configuration Stripe est manquante sur le serveur.' });
+        if (!process.env.STRIPE_SECRET_KEY || !stripe) {
+            return res.status(500).json({ error: 'La configuration Stripe est manquante sur le serveur. Veuillez ajouter STRIPE_SECRET_KEY dans les variables d\'environnement Vercel.' });
         }
 
         const lineItems = [];
