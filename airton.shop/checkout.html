@@ -203,7 +203,7 @@
         function loadCheckoutCart() {
             let cart = [];
             try {
-                cart = JSON.parse(localStorage.getItem('cart_items') || '[]');
+                cart = JSON.parse(localStorage.getItem('airton_cart') || '[]');
             } catch(e) {}
             
             const container = document.getElementById('checkoutCartItems');
@@ -220,7 +220,7 @@
                 total += item.price * item.quantity;
                 return `
                     <div class="cart-item">
-                        <img src="${item.image || 'https://via.placeholder.com/64'}" alt="${item.name}">
+                        <img src="${item.image_url || 'https://via.placeholder.com/64'}" alt="${item.name}">
                         <div class="cart-item-details">
                             <p class="cart-item-title">${item.name}</p>
                             <span class="cart-item-price">${item.quantity} x ${item.price.toFixed(2).replace('.',',')} €</span>
@@ -250,7 +250,7 @@
                 return;
             }
             
-            const cart = JSON.parse(localStorage.getItem('cart_items') || '[]');
+            const cart = JSON.parse(localStorage.getItem('airton_cart') || '[]');
             const amount = cart.reduce((acc, item) => acc + (item.price * item.quantity), 0);
             
             const orderData = {
