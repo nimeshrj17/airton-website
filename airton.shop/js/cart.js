@@ -73,53 +73,32 @@ function updateCartIcon() {
 }
 
 function setupAddToCartInterception() {
-    const forms = document.querySelectorAll('form[action*="/cart/add"]');
-    
-    forms.forEach(form => {
-        form.addEventListener('submit', (e) => {
+    // Intercept form submissions just in case
+    document.addEventListener('submit', (e) => {
+        if (e.target.matches('form[action*="/cart/add"]')) {
             e.preventDefault();
             e.stopPropagation();
-            if (window.airtonCurrentProduct) {
-                const qtyInput = form.querySelector('input[name="quantity"]');
-                const quantity = qtyInput ? parseInt(qtyInput.value) || 1 : 1;
-                addToCart(window.airtonCurrentProduct, quantity);
-            } else {
-                alert("Erreur: Impossible d'ajouter ce produit au panier.");
-            }
-        }, true); // Use capture phase to intercept before Shopify scripts
-        
-        // Also intercept clicks on the submit button itself
-        let submitBtn = form.querySelector('[type="submit"], [name="add"]');
-        if (submitBtn) {
-            // Clone the button to completely strip any existing Shopify event listeners that might cause a reload
-            const newBtn = submitBtn.cloneNode(true);
-            newBtn.type = 'button'; // Prevent native HTML form submission
-            submitBtn.parentNode.replaceChild(newBtn, submitBtn);
-            
-            newBtn.addEventListener('click', (e) => {
-                e.preventDefault();
-                e.stopPropagation();
-                if (window.airtonCurrentProduct) {
-                    const qtyInput = form.querySelector('input[name="quantity"]');
-                    const quantity = qtyInput ? parseInt(qtyInput.value) || 1 : 1;
-                    addToCart(window.airtonCurrentProduct, quantity);
-                } else {
-                    alert("Erreur: Impossible d'ajouter ce produit au panier.");
-                }
-            });
         }
-    });
-    
-    const addButtons = document.querySelectorAll('.configurator-sticky-btn, .configurator-useful-card__add, .configurator-content-footer-add-to-cart');
-    addButtons.forEach(btn => {
-        const newBtn = btn.cloneNode(true);
-        btn.parentNode.replaceChild(newBtn, btn);
+    }, true);
+
+    // Global click interceptor in capture phase to beat any existing frameworks (React/Vue/etc)
+    document.addEventListener('click', (e) => {
+        const atcBtn = e.target.closest('button[name="add"], .product-form__submit, .configurator-sticky-btn, .configurator-useful-card__add, .configurator-content-footer-add-to-cart');
         
-        newBtn.addEventListener('click', (e) => {
+        if (atcBtn) {
             e.preventDefault();
             e.stopPropagation();
+            
             if (window.airtonCurrentProduct) {
-                addToCart(window.airtonCurrentProduct, 1);
+                let quantity = 1;
+                const form = atcBtn.closest('form');
+                if (form) {
+                    const qtyInput = form.querySelector('input[name="quantity"]');
+                    if (qtyInput) quantity = parseInt(qtyInput.value) || 1;
+                }
+                
+                addToCart(window.airtonCurrentProduct, quantity);
+                
                 // Try to open the cart drawer automatically
                 const cartDrawer = document.querySelector('cart-drawer');
                 if (cartDrawer && typeof cartDrawer.open === 'function') {
@@ -132,8 +111,8 @@ function setupAddToCartInterception() {
             } else {
                 alert("Erreur: Impossible d'ajouter ce produit au panier.");
             }
-        });
-    });
+        }
+    }, true);
 }
 
 function renderCart() {
