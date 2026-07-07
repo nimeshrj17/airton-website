@@ -22,8 +22,8 @@
 
         <main class="content">
             <header>
-                <h1>Gestion des Produits</h1>
-                <button id="btn-add-product" class="btn btn-primary">+ Ajouter un produit</button>
+                <h1 id="main-heading">Gestion des Produits</h1>
+                <button id="btn-add-item" class="btn btn-primary">+ Ajouter un produit</button>
             </header>
 
             <!-- Error/Success Messages -->
@@ -93,6 +93,41 @@
 
                     <div class="form-actions">
                         <button type="button" id="btn-cancel" class="btn btn-secondary">Annuler</button>
+                        <button type="submit" class="btn btn-primary">Enregistrer</button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Categories Table View -->
+            <div id="categories-view" class="view hidden">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Nom</th>
+                            <th>Slug</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="categories-table-body">
+                        <tr><td colspan="3">Chargement...</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Add Category Form -->
+            <div id="category-form-view" class="view hidden">
+                <h2>Ajouter une catégorie</h2>
+                <form id="category-form">
+                    <div class="form-group">
+                        <label for="cat-name">Nom de la catégorie *</label>
+                        <input type="text" id="cat-name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="cat-slug">Slug de l'URL *</label>
+                        <input type="text" id="cat-slug" required>
+                    </div>
+                    <div class="form-actions">
+                        <button type="button" id="btn-cancel-cat" class="btn btn-secondary">Annuler</button>
                         <button type="submit" class="btn btn-primary">Enregistrer</button>
                     </div>
                 </form>
