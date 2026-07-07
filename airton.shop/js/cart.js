@@ -74,25 +74,46 @@ function setupAddToCartInterception() {
     const forms = document.querySelectorAll('form[action*="/cart/add"]');
     
     forms.forEach(form => {
-        // Remove standard submit to prevent page reload
-        form.onsubmit = (e) => {
+        form.addEventListener('submit', (e) => {
             e.preventDefault();
+            e.stopPropagation();
             if (window.airtonCurrentProduct) {
                 const qtyInput = form.querySelector('input[name="quantity"]');
                 const quantity = qtyInput ? parseInt(qtyInput.value) || 1 : 1;
                 addToCart(window.airtonCurrentProduct, quantity);
+            } else {
+                alert("Erreur: Impossible d'ajouter ce produit au panier.");
             }
-        };
+        }, true); // Use capture phase to intercept before Shopify scripts
+        
+        // Also intercept clicks on the submit button itself
+        const submitBtn = form.querySelector('[type="submit"], [name="add"]');
+        if (submitBtn) {
+            submitBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                if (window.airtonCurrentProduct) {
+                    const qtyInput = form.querySelector('input[name="quantity"]');
+                    const quantity = qtyInput ? parseInt(qtyInput.value) || 1 : 1;
+                    addToCart(window.airtonCurrentProduct, quantity);
+                } else {
+                    alert("Erreur: Impossible d'ajouter ce produit au panier.");
+                }
+            }, true);
+        }
     });
     
     const addButtons = document.querySelectorAll('.configurator-sticky-btn, .configurator-useful-card__add');
     addButtons.forEach(btn => {
-        btn.onclick = (e) => {
+        btn.addEventListener('click', (e) => {
             e.preventDefault();
+            e.stopPropagation();
             if (window.airtonCurrentProduct) {
                 addToCart(window.airtonCurrentProduct, 1);
+            } else {
+                alert("Erreur: Impossible d'ajouter ce produit au panier.");
             }
-        };
+        }, true);
     });
 }
 
@@ -210,12 +231,18 @@ function setupCheckoutButton() {
     });
 }
 
-document.addEventListener('DOMContentLoaded', () => {
+function initCart() {
     updateCartIcon();
     renderCart();
     setupCheckoutButton();
-    setTimeout(setupAddToCartInterception, 1000); 
-});
+    setupAddToCartInterception();
+}
+
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initCart);
+} else {
+    initCart();
+}
 
 window.updateQuantity = updateQuantity;
 window.removeFromCart = removeFromCart;
