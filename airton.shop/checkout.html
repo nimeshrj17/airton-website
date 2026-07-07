@@ -270,23 +270,21 @@
             btn.disabled = true;
 
             try {
-                // Call backend API
-                const response = await fetch('http://localhost:4000/api/order/place', {
+                // Call Stripe backend API
+                const response = await fetch('/api/checkout', {
                     method: 'POST',
                     headers: { 
-                        'Content-Type': 'application/json',
-                        'token': localStorage.getItem('token') || ''
+                        'Content-Type': 'application/json'
                     },
-                    body: JSON.stringify(orderData)
+                    body: JSON.stringify({ items: cart })
                 });
                 
                 const data = await response.json();
-                if (data.success) {
-                    // Clear cart
-                    localStorage.removeItem('cart_items');
-                    window.location.href = 'checkout-success.html';
+                if (response.ok && data.url) {
+                    // Redirect to Stripe Checkout
+                    window.location.href = data.url;
                 } else {
-                    alert('Erreur: ' + (data.message || 'Paiement refusé'));
+                    alert('Erreur: ' + (data.error || 'Paiement refusé'));
                     btn.textContent = 'Continuer vers le paiement';
                     btn.disabled = false;
                 }
