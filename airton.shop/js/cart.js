@@ -89,9 +89,14 @@ function setupAddToCartInterception() {
         }, true); // Use capture phase to intercept before Shopify scripts
         
         // Also intercept clicks on the submit button itself
-        const submitBtn = form.querySelector('[type="submit"], [name="add"]');
+        let submitBtn = form.querySelector('[type="submit"], [name="add"]');
         if (submitBtn) {
-            submitBtn.addEventListener('click', (e) => {
+            // Clone the button to completely strip any existing Shopify event listeners that might cause a reload
+            const newBtn = submitBtn.cloneNode(true);
+            newBtn.type = 'button'; // Prevent native HTML form submission
+            submitBtn.parentNode.replaceChild(newBtn, submitBtn);
+            
+            newBtn.addEventListener('click', (e) => {
                 e.preventDefault();
                 e.stopPropagation();
                 if (window.airtonCurrentProduct) {
@@ -101,13 +106,16 @@ function setupAddToCartInterception() {
                 } else {
                     alert("Erreur: Impossible d'ajouter ce produit au panier.");
                 }
-            }, true);
+            });
         }
     });
     
     const addButtons = document.querySelectorAll('.configurator-sticky-btn, .configurator-useful-card__add, .configurator-content-footer-add-to-cart');
     addButtons.forEach(btn => {
-        btn.addEventListener('click', (e) => {
+        const newBtn = btn.cloneNode(true);
+        btn.parentNode.replaceChild(newBtn, btn);
+        
+        newBtn.addEventListener('click', (e) => {
             e.preventDefault();
             e.stopPropagation();
             if (window.airtonCurrentProduct) {
@@ -124,7 +132,7 @@ function setupAddToCartInterception() {
             } else {
                 alert("Erreur: Impossible d'ajouter ce produit au panier.");
             }
-        }, true);
+        });
     });
 }
 
