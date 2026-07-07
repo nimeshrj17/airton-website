@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Airton - Admin Panel</title>
+    <link rel="stylesheet" href="admin.css">
+</head>
+<body>
+    <div class="admin-container">
+        <aside class="sidebar">
+            <div class="logo">
+                <h2>Airton Admin</h2>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#" id="nav-products" class="active">Produits</a></li>
+                    <li><a href="#" id="nav-categories">Catégories</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <main class="content">
+            <header>
+                <h1>Gestion des Produits</h1>
+                <button id="btn-add-product" class="btn btn-primary">+ Ajouter un produit</button>
+            </header>
+
+            <!-- Error/Success Messages -->
+            <div id="message-container"></div>
+
+            <!-- Products Table -->
+            <div id="products-view" class="view active">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Nom</th>
+                            <th>Slug</th>
+                            <th>Prix</th>
+                            <th>Prix Remisé</th>
+                            <th>Stock</th>
+                            <th>Catégories</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="products-table-body">
+                        <!-- Loaded dynamically -->
+                        <tr><td colspan="7">Chargement...</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Add/Edit Product Form -->
+            <div id="product-form-view" class="view hidden">
+                <h2 id="form-title">Ajouter un produit</h2>
+                <form id="product-form">
+                    <input type="hidden" id="product-id">
+                    
+                    <div class="form-group">
+                        <label for="name">Nom du produit *</label>
+                        <input type="text" id="name" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="slug">Slug de l'URL (ex: climatiseur-fixe-reversible) *</label>
+                        <input type="text" id="slug" required>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="price">Prix régulier (€) *</label>
+                            <input type="number" step="0.01" id="price" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="discount_price">Prix remisé (€)</label>
+                            <input type="number" step="0.01" id="discount_price">
+                        </div>
+                        <div class="form-group">
+                            <label for="stock">Stock</label>
+                            <input type="number" id="stock" value="100">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="categories">Catégories (séparées par une virgule)</label>
+                        <input type="text" id="categories" placeholder="Climatiseurs, Accessoires">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="features">Spécifications / Caractéristiques (JSON ou Texte)</label>
+                        <textarea id="features" rows="5" placeholder='{"Puissance": "3500W", "Surface": "30m2"}'></textarea>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="button" id="btn-cancel" class="btn btn-secondary">Annuler</button>
+                        <button type="submit" class="btn btn-primary">Enregistrer</button>
+                    </div>
+                </form>
+            </div>
+        </main>
+    </div>
+
+    <script src="admin.js"></script>
+</body>
+</html>
