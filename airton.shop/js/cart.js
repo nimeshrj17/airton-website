@@ -273,10 +273,10 @@ function initCart() {
     countrySelects.forEach(select => {
         select.innerHTML = `
             <option value="France" data-provinces="[]">France</option>
+            <option value="Monaco" data-provinces="[]">Monaco</option>
             <option value="Belgium" data-provinces="[]">Belgique</option>
+            <option value="Luxembourg" data-provinces="[]">Luxembourg</option>
             <option value="Switzerland" data-provinces="[]">Suisse</option>
-            <option value="Spain" data-provinces="[]">Espagne</option>
-            <option value="Italy" data-provinces="[]">Italie</option>
         `;
     });
 }

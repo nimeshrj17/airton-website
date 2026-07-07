@@ -72,7 +72,7 @@ module.exports = async (req, res) => {
             success_url: `https://${req.headers.host || 'airton.shop'}/airton.shop/checkout-success.html`,
             cancel_url: `https://${req.headers.host || 'airton.shop'}/airton.shop/cart.html`,
             shipping_address_collection: {
-                allowed_countries: ['FR', 'BE', 'CH', 'ES', 'IT'],
+                allowed_countries: ['FR', 'MC', 'BE', 'LU', 'CH'],
             }
         });
 
