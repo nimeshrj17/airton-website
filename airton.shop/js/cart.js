@@ -34,13 +34,13 @@ function addToCart(product, quantity = 1) {
 
 function removeFromCart(productId) {
     let cart = getCart();
-    cart = cart.filter(item => item.id !== productId);
+    cart = cart.filter(item => String(item.id) !== String(productId));
     saveCart(cart);
 }
 
 function updateQuantity(productId, quantity) {
     const cart = getCart();
-    const item = cart.find(item => item.id === productId);
+    const item = cart.find(item => String(item.id) === String(productId));
     if (item) {
         item.quantity = Math.max(1, quantity);
         saveCart(cart);
