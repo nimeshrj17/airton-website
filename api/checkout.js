@@ -80,10 +80,10 @@ module.exports = async (req, res) => {
             line_items: lineItems,
             mode: 'payment',
             // Hardcoding URLs relative to the request for success/cancel
-            success_url: `https://${req.headers.host || 'airton.shop'}/checkout-success.html`,
-            cancel_url: `https://${req.headers.host || 'airton.shop'}/cart.html`,
+            success_url: `https://${req.headers.host || 'airton.shop'}/airton.shop/checkout-success.html`,
+            cancel_url: `https://${req.headers.host || 'airton.shop'}/airton.shop/cart.html`,
             shipping_address_collection: {
-                allowed_countries: ['FR', 'BE', 'CH'],
+                allowed_countries: ['FR', 'BE', 'CH', 'ES', 'IT'],
             }
         });
 
