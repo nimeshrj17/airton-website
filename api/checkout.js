@@ -65,7 +65,6 @@ module.exports = async (req, res) => {
         // Create Stripe Checkout Session
         const session = await stripe.checkout.sessions.create({
             customer: customer.id,
-            payment_method_types: ['sepa_debit'],
             line_items: lineItems,
             mode: 'payment',
             // Hardcoding URLs relative to the request for success/cancel
