@@ -382,13 +382,15 @@
         @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
         
         .ticket-cutout {
-            position: absolute;
-            left: 0;
-            right: 0;
-            top: 45%;
+            position: relative;
+            margin-left: -30px;
+            margin-right: -30px;
+            width: calc(100% + 60px);
             height: 1px;
             border-top: 2px dashed #e0e0e0;
             z-index: 1;
+            margin-top: 30px;
+            margin-bottom: 30px;
         }
         .ticket-cutout::before, .ticket-cutout::after {
             content: '';
@@ -404,7 +406,7 @@
         
         .ticket-emoji { font-size: 3rem; margin-bottom: 15px; }
         .ticket-title { font-size: 1.5rem; font-weight: 600; margin-bottom: 10px; font-family: 'Playfair Display', serif; }
-        .ticket-desc { color: #777; font-size: 0.9rem; line-height: 1.5; margin-bottom: 60px; }
+        .ticket-desc { color: #777; font-size: 0.9rem; line-height: 1.5; margin-bottom: 20px; }
         
         .ticket-details {
             display: grid;
@@ -991,7 +993,6 @@
 
     <!-- Ticket Success UI (Hidden) -->
     <div class="ticket-container" id="ticketSuccess">
-        <div class="ticket-cutout"></div>
         <div class="ticket-emoji" style="display:flex; justify-content:center; align-items:center; margin-top:20px;">
             <svg width="54" height="54" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M10.5213 2.62368C11.3147 1.75255 12.6853 1.75255 13.4787 2.62368L14.4989 3.74391C14.8998 4.18418 15.4761 4.42288 16.0694 4.39498L17.5805 4.32381C18.7614 4.26815 19.7319 5.23864 19.6762 6.41951L19.605 7.9306C19.5771 8.52388 19.8158 9.10016 20.2561 9.50111L21.3763 10.5213C22.2475 11.3147 22.2475 12.6853 21.3763 13.4787L20.2561 14.4989C19.8158 14.8998 19.5771 15.4761 19.605 16.0694L19.6762 17.5805C19.7319 18.7614 18.7614 19.7319 17.5805 19.6762L16.0694 19.605C15.4761 19.5771 14.8998 19.8158 14.4989 20.2561L13.4787 21.3763C12.6853 22.2475 11.3147 22.2475 10.5213 21.3763L9.50111 20.2561C9.10016 19.8158 8.52388 19.5771 7.9306 19.605L6.41951 19.6762C5.23864 19.7319 4.26815 18.7614 4.32381 17.5805L4.39498 16.0694C4.42288 15.4761 4.18418 14.8998 3.74391 14.4989L2.62368 13.4787C1.75255 12.6853 1.75255 11.3147 2.62368 10.5213L3.74391 9.50111C4.18418 9.10016 4.42288 8.52388 4.39498 7.9306L4.32381 6.41951C4.26815 5.23864 5.23864 4.26815 6.41951 4.32381L7.9306 4.39498C8.52388 4.42288 9.10016 4.18418 9.50111 3.74391L10.5213 2.62368Z" fill="#28a745"/>
@@ -1000,6 +1001,8 @@
         </div>
         <div class="ticket-title">Merci !</div>
         <div class="ticket-desc">Votre commande a été confirmée avec succès. Vous recevrez très bientôt une confirmation par e-mail.</div>
+        
+        <div class="ticket-cutout"></div>
         
         <div class="ticket-details">
             <div>

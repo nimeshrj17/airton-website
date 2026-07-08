@@ -158,7 +158,7 @@ module.exports = async (req, res) => {
                                     </div>
                                 </div>
                                 
-                                ${orderData.order_data?.payment_method === 'bank_transfer' ? `
+                                ${(orderData.order_data?.payment_method === 'bank_transfer' || orderData.order_data?.payment_method === 'bank') ? `
                                 <!-- Bank Transfer Steps -->
                                 <h3 style="font-size: 16px; color: #016FD0; margin-bottom: 20px;">Si vous payez par virement bancaire.</h3>
                                 <div style="background: #ffffff; border-radius: 8px; display: table; width: 100%; padding: 20px 0; box-shadow: 0 4px 15px rgba(0,0,0,0.03);">
