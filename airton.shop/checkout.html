@@ -1314,16 +1314,31 @@
             document.querySelector('.checkout-container').style.display = 'block';
         }
         
-        function confirmTransferSent() {
+        async function confirmTransferSent() {
             const ref = document.getElementById('userConfirmRef').value;
             if(!ref) {
                 alert('Veuillez entrer la référence de votre paiement.');
                 return;
             }
+            
+            // Save reference to DB
+            if (window.currentOrderId) {
+                try {
+                    await fetch('/api/update-reference', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({
+                            orderId: window.currentOrderId,
+                            reference: ref
+                        })
+                    });
+                } catch(e) { console.error('Failed to save reference', e); }
+            }
+
             document.getElementById('mollieTransfer').classList.remove('active');
             
             // Show original ticket Success
-            const ticketId = 'AIR-' + Math.floor(100000 + Math.random() * 900000);
+            const ticketId = window.currentOrderId || 'AIR-' + Math.floor(100000 + Math.random() * 900000);
             const now = new Date();
             const dateStr = now.toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' });
             const timeStr = now.toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' });
