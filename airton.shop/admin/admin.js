@@ -255,7 +255,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const orders = await response.json();
             
             if (orders.length === 0) {
-                orderTableBody.innerHTML = `<tr><td colspan="6" style="text-align:center;">Aucune commande.</td></tr>`;
+                orderTableBody.innerHTML = `<tr><td colspan="7" style="text-align:center;">Aucune commande.</td></tr>`;
                 return;
             }
             
@@ -273,11 +273,44 @@ document.addEventListener('DOMContentLoaded', () => {
                             ${o.status.toUpperCase()}
                         </span>
                     </td>
+                    <td>
+                        ${o.status === 'pending' ? `<button class="btn btn-primary btn-confirm-order" style="padding: 4px 8px; font-size: 0.8rem;" data-id="${o.id}">Confirmer</button>` : '-'}
+                    </td>
                 `;
                 orderTableBody.appendChild(tr);
             });
+
+            document.querySelectorAll('.btn-confirm-order').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    if (confirm('Confirmer le paiement et envoyer l\\'email au client ?')) {
+                        confirmOrder(e.target.getAttribute('data-id'));
+                    }
+                });
+            });
         } catch (error) {
-            orderTableBody.innerHTML = `<tr><td colspan="6" style="color:red;text-align:center;">${error.message}</td></tr>`;
+            orderTableBody.innerHTML = `<tr><td colspan="7" style="color:red;text-align:center;">${error.message}</td></tr>`;
+        }
+    }
+
+    async function confirmOrder(id) {
+        showMessage('Confirmation en cours...', 'success');
+        try {
+            const response = await fetch('/api/confirm-order', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ orderId: id })
+            });
+            const data = await response.json();
+            if (!response.ok) throw new Error(data.error || 'Erreur lors de la confirmation');
+            
+            if (data.emailSent) {
+                showMessage('Commande confirmée et email envoyé !', 'success');
+            } else {
+                showMessage('Commande confirmée (mais SMTP non configuré pour email).', 'success');
+            }
+            fetchOrders();
+        } catch (error) {
+            showMessage(error.message, 'error');
         }
     }
 
