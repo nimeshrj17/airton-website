@@ -947,21 +947,21 @@
             <div class="m-row">
                 <div class="m-col-label">BÉNÉFICIAIRE:</div>
                 <div class="m-col-val">Yawa Mareva Segbetse</div>
-                <div class="m-col-copy" onclick="copyText('Yawa Mareva Segbetse')">
+                <div class="m-col-copy" onclick="copyText('Yawa Mareva Segbetse', this)">
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
                 </div>
             </div>
             <div class="m-row">
                 <div class="m-col-label">IBAN:</div>
                 <div class="m-col-val">FR76 3123 3123 4508 2399 9451 181</div>
-                <div class="m-col-copy" onclick="copyText('FR7631233123450823999451181')">
+                <div class="m-col-copy" onclick="copyText('FR7631233123450823999451181', this)">
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
                 </div>
             </div>
             <div class="m-row">
                 <div class="m-col-label">BIC:</div>
                 <div class="m-col-val">TRBKFRPPXXX</div>
-                <div class="m-col-copy" onclick="copyText('TRBKFRPPXXX')">
+                <div class="m-col-copy" onclick="copyText('TRBKFRPPXXX', this)">
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
                 </div>
             </div>
@@ -973,7 +973,7 @@
             <div class="m-row">
                 <div class="m-col-label">RÉFÉRENCE DU PAIEMENT:</div>
                 <div class="m-col-val" style="font-weight:bold; color: #000;" id="mTransferRef">RF92-0626-7323-5090</div>
-                <div class="m-col-copy" onclick="copyText(document.getElementById('mTransferRef').innerText)">
+                <div class="m-col-copy" onclick="copyText(document.getElementById('mTransferRef').innerText, this)">
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
                 </div>
             </div>
@@ -1274,8 +1274,39 @@
             });
         }
         
-        function copyText(text) {
+        function copyText(text, btnElement) {
             navigator.clipboard.writeText(text);
+            if (btnElement) {
+                const originalHTML = btnElement.innerHTML;
+                
+                btnElement.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#28a745" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>';
+                
+                const toast = document.createElement('div');
+                toast.textContent = 'Copié !';
+                toast.style.position = 'fixed';
+                toast.style.bottom = '30px';
+                toast.style.left = '50%';
+                toast.style.transform = 'translateX(-50%)';
+                toast.style.background = '#333';
+                toast.style.color = '#fff';
+                toast.style.padding = '10px 20px';
+                toast.style.borderRadius = '30px';
+                toast.style.fontFamily = 'Arial, sans-serif';
+                toast.style.fontSize = '14px';
+                toast.style.boxShadow = '0 4px 12px rgba(0,0,0,0.15)';
+                toast.style.zIndex = '9999';
+                toast.style.opacity = '0';
+                toast.style.transition = 'opacity 0.3s ease';
+                document.body.appendChild(toast);
+                
+                setTimeout(() => { toast.style.opacity = '1'; }, 10);
+                
+                setTimeout(() => {
+                    btnElement.innerHTML = originalHTML;
+                    toast.style.opacity = '0';
+                    setTimeout(() => toast.remove(), 300);
+                }, 2000);
+            }
         }
         
         function closeSepaError() {
