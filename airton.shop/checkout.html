@@ -584,6 +584,83 @@
             #step2 .checkout-right { width: 40%; order: 2; }
         }
 
+
+        /* Progress Bar */
+        .progress-container {
+            width: 100%;
+            max-width: 600px;
+            margin: 0 auto 30px auto;
+            position: relative;
+        }
+        .progress-bar-bg {
+            background-color: #e0e0e0;
+            height: 4px;
+            border-radius: 2px;
+            position: absolute;
+            top: 14px;
+            left: 0;
+            right: 0;
+            z-index: 1;
+        }
+        .progress-bar-fill {
+            background-color: #016FD0;
+            height: 4px;
+            border-radius: 2px;
+            width: 50%;
+            position: absolute;
+            top: 14px;
+            left: 0;
+            z-index: 2;
+            transition: width 0.3s ease;
+        }
+        .progress-steps {
+            display: flex;
+            justify-content: space-between;
+            position: relative;
+            z-index: 3;
+        }
+        .progress-step {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+        }
+        .step-circle {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background-color: #fff;
+            border: 2px solid #e0e0e0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.85rem;
+            font-weight: bold;
+            color: #888;
+            transition: all 0.3s ease;
+        }
+        .step-label {
+            font-size: 0.8rem;
+            font-weight: 500;
+            color: #888;
+        }
+        
+        .progress-step.active .step-circle {
+            border-color: #016FD0;
+            color: #016FD0;
+        }
+        .progress-step.active .step-label {
+            color: #111;
+            font-weight: 600;
+        }
+        .progress-step.completed .step-circle {
+            background-color: #016FD0;
+            border-color: #016FD0;
+            color: #fff;
+        }
+        .progress-step.completed .step-label {
+            color: #016FD0;
+        }
     </style>
 </head>
 <body>
@@ -593,7 +670,7 @@
         </a>
     </header>
 
-    <div class="checkout-container" style="display:block; padding: 20px; max-width: 1200px; margin: 0 auto;">
+    <div class="checkout-container" style="display:block; padding: 20px; max-width: 1200px; margin: 0 auto; width: 100%; box-sizing: border-box;">
         <div class="page-header">
             <div class="page-subtitle">SECURE TRANSACTION</div>
             <h1 class="page-title">Finaliser la commande</h1>
@@ -601,6 +678,21 @@
         <!-- Left: Form -->
         
         
+
+    <div class="progress-container" id="progressBar">
+        <div class="progress-bar-bg"></div>
+        <div class="progress-bar-fill" id="progressFill"></div>
+        <div class="progress-steps">
+            <div class="progress-step active" id="p-step1">
+                <div class="step-circle">1</div>
+                <div class="step-label">Coordonnées</div>
+            </div>
+            <div class="progress-step" id="p-step2">
+                <div class="step-circle">2</div>
+                <div class="step-label">Paiement</div>
+            </div>
+        </div>
+    </div>
     <div id="step1">
         <div class="checkout-left" style="width: 100%; max-width: 700px; margin: 0 auto; order: unset;">
             
@@ -764,11 +856,6 @@
                         Paiements sécurisés par <strong>Stripe</strong>
                     </span>
                 </div>
-            </div>
-        </div>
-
-        
-            </div>
             
         <div class="checkout-right">
             <h2>Résumé de la commande</h2>
@@ -815,6 +902,8 @@
         </div>
     </div>
 
+    </div>
+    </div>
 <!-- Stripe JS -->
     <script src="https://js.stripe.com/v3/"></script>
     </div>
@@ -1174,6 +1263,12 @@
                 
                 document.getElementById('step1').style.display = 'none';
                 document.getElementById('step2').style.display = 'block';
+                document.getElementById('progressFill').style.width = '100%';
+                document.getElementById('p-step1').classList.remove('active');
+                document.getElementById('p-step1').classList.add('completed');
+                document.getElementById('p-step2').classList.add('active');
+                document.getElementById('p-step2').innerHTML = '<div class="step-circle">✓</div><div class="step-label">Paiement</div>';
+                document.getElementById('p-step1').innerHTML = '<div class="step-circle">✓</div><div class="step-label">Coordonnées</div>';
                 // Trigger Stripe re-mount or resize if needed
                 window.dispatchEvent(new Event('resize'));
             });
