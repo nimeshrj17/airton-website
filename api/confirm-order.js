@@ -79,7 +79,7 @@ module.exports = async (req, res) => {
                                 <h2 style="font-size: 24px; font-weight: bold; margin-bottom: 10px;">Votre commande est confirmée !</h2>
                                 <p style="font-size: 13px; color: #555; margin-bottom: 30px; line-height: 1.5;">
                                     Si vous constatez une erreur dans votre commande,<br>
-                                    contactez nous à l'adresse : <a href="mailto:info@airton.shop" style="color: #016FD0; text-decoration: none;">info@airton.shop</a>
+                                    contactez nous à l'adresse : <a href="mailto:service-client@airton-shop.eu" style="color: #016FD0; text-decoration: none;">service-client@airton-shop.eu</a>
                                 </p>
                                 
                                 <h3 style="font-size: 18px; margin-bottom: 5px;">Détail de votre commande.</h3>
@@ -113,7 +113,7 @@ module.exports = async (req, res) => {
                                 </div>
                                 
                                 <!-- Action Button -->
-                                <a href="mailto:info@airton.shop?subject=Demande%20de%20facture%20pour%20la%20commande%20%23${orderData.id}" style="display: inline-block; background-color: #2b8cff; color: #ffffff; text-decoration: none; padding: 14px 30px; border-radius: 30px; font-weight: 600; font-size: 14px; margin-bottom: 20px;">
+                                <a href="mailto:service-client@airton-shop.eu?subject=Demande%20de%20facture%20pour%20la%20commande%20%23${orderData.id}" style="display: inline-block; background-color: #2b8cff; color: #ffffff; text-decoration: none; padding: 14px 30px; border-radius: 30px; font-weight: 600; font-size: 14px; margin-bottom: 20px;">
                                     Demander ma facture
                                 </a>
                                 
@@ -150,13 +150,13 @@ module.exports = async (req, res) => {
                                 <h3 style="font-size: 16px; color: #016FD0; margin-bottom: 20px;">Si vous payez par virement bancaire.</h3>
                                 <div style="background: #ffffff; border-radius: 8px; display: table; width: 100%; padding: 20px 0; box-shadow: 0 4px 15px rgba(0,0,0,0.03);">
                                     <div style="display: table-cell; width: 33%; text-align: center; border-right: 1px solid #e0e0e0; vertical-align: middle; padding: 0 10px;">
-                                        <p style="margin: 0; font-size: 11px; font-weight: bold;">Téléchargez<br>notre RIB <a href="mailto:info@airton.shop?subject=Demande%20de%20RIB" style="color: #016FD0; text-decoration: none;">ici</a></p>
+                                        <p style="margin: 0; font-size: 11px; font-weight: bold;">Téléchargez<br>notre RIB <a href="mailto:service-client@airton-shop.eu?subject=Demande%20de%20RIB" style="color: #016FD0; text-decoration: none;">ici</a></p>
                                     </div>
                                     <div style="display: table-cell; width: 33%; text-align: center; border-right: 1px solid #e0e0e0; vertical-align: middle; padding: 0 10px;">
                                         <p style="margin: 0; font-size: 11px; font-weight: bold;">Faire le virement<br>avec la référence <span style="color: #016FD0;">${orderData.order_data?.bank_reference || '#' + orderData.id}</span></p>
                                     </div>
                                     <div style="display: table-cell; width: 33%; text-align: center; vertical-align: middle; padding: 0 10px;">
-                                        <p style="margin: 0; font-size: 11px; font-weight: bold;">Envoyer le justificatif<br>à <a href="mailto:info@airton.shop" style="color: #016FD0; text-decoration: none;">info@airton.shop</a></p>
+                                        <p style="margin: 0; font-size: 11px; font-weight: bold;">Envoyer le justificatif<br>à <a href="mailto:service-client@airton-shop.eu" style="color: #016FD0; text-decoration: none;">service-client@airton-shop.eu</a></p>
                                     </div>
                                 </div>
                                 ` : ''}
