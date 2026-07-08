@@ -494,11 +494,11 @@
             
             if (fullItems.length === 0) {
                 container.innerHTML = '<p>Votre panier est vide.</p>';
-                document.getElementById('payButton').disabled = true;
+                document.getElementById('mainPayButton').disabled = true;
                 return;
             }
             
-            document.getElementById('payButton').disabled = false;
+            document.getElementById('mainPayButton').disabled = false;
             
             let subtotal = 0;
             container.innerHTML = fullItems.map(item => {
