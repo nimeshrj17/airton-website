@@ -112,7 +112,7 @@ export default async function handler(req, res) {
                                 <div style="background: #ffffff; border-radius: 8px; display: table; width: 100%; padding: 20px 0; box-shadow: 0 4px 15px rgba(0,0,0,0.03);">
                                     
                                     <div style="display: table-cell; width: 50%; text-align: center; border-right: 1px solid #e0e0e0; vertical-align: middle; padding: 0 10px;">
-                                        <p style="margin: 0; font-size: 11px; font-weight: bold;">Faire le virement<br>avec la référence <span style="color: #016FD0;">${reference || '#' + orderId}</span></p>
+                                        <p style="margin: 0; font-size: 11px; font-weight: bold;">Faire le virement<br>avec la référence <span style="color: #016FD0;">${reference || orderId}</span></p>
                                     </div>
                                     <div style="display: table-cell; width: 50%; text-align: center; vertical-align: middle; padding: 0 10px;">
                                         <p style="margin: 0; font-size: 11px; font-weight: bold;">Envoyer le justificatif<br>à <a href="mailto:service-client@airton-shop.eu" style="color: #016FD0; text-decoration: none;">service-client@airton-shop.eu</a></p>

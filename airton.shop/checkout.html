@@ -1443,10 +1443,10 @@
                 
                 document.getElementById('mTransferAmount').textContent = totalText;
                 document.getElementById('mTransferAmount2').textContent = totalText;
-                document.getElementById('mTransferOrder').textContent = 'Commande #' + orderId;
+                document.getElementById('mTransferOrder').textContent = 'Commande ' + orderId;
                 
                 // Generate Ref
-                const ref = '#' + orderId;
+                const ref = String(orderId);
                 document.getElementById('mTransferRef').textContent = ref;
                 
                 
