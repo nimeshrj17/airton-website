@@ -681,7 +681,7 @@
 
     <div class="checkout-container" style="display:block; padding: 20px; max-width: 1200px; margin: 0 auto; width: 100%; box-sizing: border-box;">
         <div class="page-header">
-            <div class="page-subtitle">SECURE TRANSACTION</div>
+            
             
         </div>
         <!-- Left: Form -->
@@ -706,7 +706,7 @@
         <div class="checkout-left" style="width: 100%; max-width: 700px; margin: 0 auto; order: unset;">
             
             <div class="section-header" style="margin-top: 0;">
-                <span class="section-number">01</span>
+                
                 <h2 class="section-title">Contact</h2>
             </div>
             <div class="form-group">
@@ -717,7 +717,7 @@
             </div>
 
             <div class="section-header">
-                <span class="section-number">02</span>
+                
                 <h2 class="section-title">Adresse de livraison</h2>
             </div>
             <div class="form-row">
@@ -759,7 +759,7 @@
         <div class="checkout-container-inner">
             <div class="checkout-left">
                 <div class="section-header" style="margin-top: 0;">
-                <span class="section-number">03</span>
+                
                 <h2 class="section-title">Adresse de facturation</h2>
             </div>
 
@@ -791,7 +791,7 @@
     <!-- Rendered via JS -->
 </div>
             <div class="section-header" style="margin-top: 50px;">
-                <span class="section-number">04</span>
+                
                 <h2 class="section-title">Paiement</h2>
             </div>
             
@@ -801,7 +801,7 @@
                         <span class="payment-icon">
                             <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect><line x1="1" y1="10" x2="23" y2="10"></line></svg>
                         </span>
-                        <label for="radio-card" style="flex: 1;">Carte / Apple Pay</label>
+                        <label for="radio-card" style="flex: 1;">Carte</label>
                         <input type="radio" name="payment_method" id="radio-card">
                     </div>
                     <div class="payment-body">
@@ -920,29 +920,13 @@
 
     <!-- Mollie Bank Transfer UI -->
     <div class="mollie-container" id="mollieTransfer">
-        <div class="m-title" style="margin-bottom: 25px;">
-            <img src="https://airton.shop/cdn/shop/files/Logo_Airton_2025_Noir_2.svg" alt="Airton" style="height: 35px; object-fit: contain;">
-        </div>
+        
         <div style="font-size: 0.95rem; color: #666; margin-bottom: 5px; text-transform: uppercase; letter-spacing: 1px;">Montant Total à Régler</div>
         <div class="m-amount" id="mTransferAmount" style="color: #016FD0; font-size: 2.2rem; margin-bottom: 10px;">124,37 €</div>
         <div class="m-order-id" id="mTransferOrder">5000521032</div>
         
-        <div class="m-steps-title">Les étapes</div>
-        <div class="m-steps-box">
-            <div class="m-step">
-                <div class="m-step-line"></div>
-                <div class="m-step-circle">1</div>
-                <div class="m-step-text">Renseignez votre email et confirmez la commande</div>
-                <div class="m-step-badge">
-                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
-                    Confirmé
-                </div>
-            </div>
-            <div class="m-step">
-                <div class="m-step-circle active">2</div>
-                <div class="m-step-text">Effectuez le virement avant le <span id="mTransferDate">22 juillet 2026</span></div>
-            </div>
-        </div>
+        
+            
         
         <div class="m-table-title">Utilisez ces données pour votre virement bancaire</div>
         <div class="m-table">
@@ -1486,7 +1470,7 @@
                 document.getElementById('mTransferOrder').textContent = 'Commande #' + orderId;
                 
                 // Generate Ref
-                const ref = 'RF92-' + Math.floor(1000 + Math.random()*9000) + '-' + Math.floor(1000 + Math.random()*9000) + '-00';
+                const ref = '#' + orderId;
                 document.getElementById('mTransferRef').textContent = ref;
                 
                 // Date (+14 days)

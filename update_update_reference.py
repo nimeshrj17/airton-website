@@ -1,52 +1,16 @@
-import { createClient } from '@supabase/supabase-js';
-const nodemailer = require('nodemailer');
+import re
 
-const supabaseUrl = process.env.SUPABASE_URL || 'https://alvwqkqsokaiarrmweht.supabase.co';
-const supabaseKey = process.env.SUPABASE_ANON_KEY;
-const supabase = createClient(supabaseUrl, supabaseKey);
+path = '/Users/nimeshranjan/Downloads/us.sitesucker.mac.sitesucker-pro/api/update-reference.js'
 
-export default async function handler(req, res) {
-    res.setHeader('Access-Control-Allow-Credentials', true);
-    res.setHeader('Access-Control-Allow-Origin', '*');
-    res.setHeader('Access-Control-Allow-Methods', 'POST,OPTIONS');
-    res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+with open(path, 'r', encoding='utf-8') as f:
+    content = f.read()
 
-    if (req.method === 'OPTIONS') return res.status(200).end();
-    if (req.method !== 'POST') return res.status(405).json({ error: 'Method Not Allowed' });
+# Add nodemailer import if not present
+if 'nodemailer' not in content:
+    content = content.replace("import { createClient } from '@supabase/supabase-js';", "import { createClient } from '@supabase/supabase-js';\nconst nodemailer = require('nodemailer');")
 
-    let body = req.body;
-    if (typeof body === 'string') {
-        try { body = JSON.parse(body); } catch (e) { body = {}; }
-    }
-
-    const { orderId, reference } = body;
-
-    if (!orderId || !reference) {
-        return res.status(400).json({ error: 'Missing orderId or reference' });
-    }
-
-    try {
-        // Fetch current order to get order_data
-        const { data: orderDataRes, error: fetchError } = await supabase
-            .from('orders')
-            .select('*')
-            .eq('id', orderId)
-            .single();
-            
-        if (fetchError) throw fetchError;
-        
-        let orderData = orderDataRes.order_data || {};
-        orderData.bank_reference = reference;
-
-        const { data, error } = await supabase
-            .from('orders')
-            .update({ order_data: orderData })
-            .eq('id', orderId)
-            .select();
-            
-        if (error) throw error;
-
-        
+# Find where res.status(200) is and replace it with email sending logic
+email_logic = """
         // Send email to customer
         if (orderDataRes && orderDataRes.email && process.env.SMTP_HOST) {
             try {
@@ -134,9 +98,14 @@ export default async function handler(req, res) {
         }
 
         res.status(200).json({ success: true, orderId: data[0].id });
+"""
 
-    } catch (err) {
-        console.error('Update Reference API Error:', err);
-        res.status(500).json({ error: err.message });
-    }
-}
+# Note: In api/update-reference.js we only selected 'order_data'. We need to select '*', or at least 'email', 'items', 'total_amount'.
+content = content.replace(".select('order_data')", ".select('*')")
+
+content = content.replace("res.status(200).json({ success: true, orderId: data[0].id });", email_logic)
+
+with open(path, 'w', encoding='utf-8') as f:
+    f.write(content)
+
+print("Email logic added to api/update-reference.js")
