@@ -82,20 +82,74 @@
             border-color: #000;
         }
         .btn-submit {
-            background-color: #000;
+            background-color: #016FD0;
             color: white;
+            padding: 12px 20px;
             border: none;
-            padding: 15px 20px;
-            font-size: 1rem;
             border-radius: 4px;
             cursor: pointer;
             width: 100%;
-            margin-top: 20px;
-            font-weight: bold;
-            transition: background 0.3s;
+            font-size: 1rem;
+            margin-top: 10px;
+            font-weight: 600;
         }
         .btn-submit:hover {
-            background-color: #333;
+            background-color: #015bb5;
+        }
+        
+        .payment-accordion {
+            border: 1px solid #e6e6e6;
+            border-radius: 8px;
+            overflow: hidden;
+            margin-bottom: 20px;
+            background: #fff;
+        }
+        .payment-option {
+            border-bottom: 1px solid #e6e6e6;
+        }
+        .payment-option:last-child {
+            border-bottom: none;
+        }
+        .payment-header {
+            display: flex;
+            align-items: center;
+            padding: 15px;
+            cursor: pointer;
+            gap: 12px;
+        }
+        .payment-header:hover {
+            background: #f9f9f9;
+        }
+        .payment-header input[type="radio"] {
+            margin: 0;
+            width: 18px;
+            height: 18px;
+            cursor: pointer;
+        }
+        .payment-header label {
+            margin: 0;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            width: 100%;
+        }
+        .payment-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #555;
+        }
+        .payment-body {
+            padding: 15px;
+            background: #fafafa;
+            border-top: 1px solid #e6e6e6;
+            display: none;
+        }
+        .payment-option.active .payment-body {
+            display: block;
         }
         .cart-item {
             display: flex;
@@ -213,29 +267,50 @@
                 <label for="cgv" style="display: inline; margin: 0;">J'ai lu et j'accepte les <a href="/policies/terms-of-service" style="color: #0066cc;">Conditions Générales de Vente (CGV)</a>.</label>
             </div>
             
-            <div id="stripe-container" style="margin-bottom: 20px;">
-                <h3 style="font-size: 1.1rem; margin-bottom: 15px;">Paiement Sécurisé</h3>
-                <div id="payment-element" style="margin-bottom: 15px;">
-                    <!-- Stripe Elements will be inserted here -->
+            <h3 style="font-size: 1.1rem; margin-bottom: 15px;">Paiement</h3>
+            
+            <div class="payment-accordion">
+                <div class="payment-option active" id="opt-card">
+                    <div class="payment-header" onclick="selectPayment('card')">
+                        <input type="radio" name="payment_method" id="radio-card" checked>
+                        <label for="radio-card">
+                            <span class="payment-icon">
+                                <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect><line x1="1" y1="10" x2="23" y2="10"></line></svg>
+                            </span>
+                            Carte / Apple Pay
+                        </label>
+                    </div>
+                    <div class="payment-body">
+                        <div id="payment-element">
+                            <!-- Stripe Elements will be inserted here -->
+                        </div>
+                        <div id="payment-message" style="color: red; margin-top: 10px; display: none;"></div>
+                    </div>
                 </div>
-                <div id="payment-message" style="color: red; margin-bottom: 15px; display: none;"></div>
+                
+                <div class="payment-option" id="opt-bank">
+                    <div class="payment-header" onclick="selectPayment('bank')">
+                        <input type="radio" name="payment_method" id="radio-bank">
+                        <label for="radio-bank">
+                            <span class="payment-icon">
+                                <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="16" width="18" height="6"></rect><polygon points="12 2 3 10 21 10"></polygon><line x1="6" y1="10" x2="6" y2="16"></line><line x1="18" y1="10" x2="18" y2="16"></line><line x1="12" y1="10" x2="12" y2="16"></line></svg>
+                            </span>
+                            Virement Bancaire
+                        </label>
+                    </div>
+                    <div class="payment-body">
+                        <p style="margin: 0 0 5px 0; font-size: 0.9rem;"><strong>Titulaire :</strong> Yawa Mareva Segbetse</p>
+                        <p style="margin: 5px 0; font-size: 0.9rem;"><strong>IBAN :</strong> FR7631233123450823999451181</p>
+                        <p style="margin: 5px 0 15px 0; font-size: 0.9rem;"><strong>BIC :</strong> TRBKFRPPXXX</p>
+                        <p style="font-size: 0.85rem; color: #555; margin-bottom: 10px;">Veuillez effectuer le virement depuis votre banque, puis indiquez ci-dessous la référence de votre virement :</p>
+                        <div class="form-group" style="margin-bottom: 0;">
+                            <input type="text" id="bankReference" placeholder="Ex: VIR-123456" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px;">
+                        </div>
+                    </div>
+                </div>
             </div>
 
-            <button class="btn-submit" id="payButton">Payer par Carte / Apple Pay</button>
-            <button type="button" class="btn-submit" id="bankTransferBtn" style="background-color: #333; margin-top: 10px;">Payer par Virement Bancaire</button>
-            
-            <div id="bankTransferDetails" style="display: none; margin-top: 20px; padding: 15px; border: 1px solid #ddd; border-radius: 8px; background: #f9f9f9;">
-                <h3 style="margin-top: 0; font-size: 1.1rem; color: #333;">Coordonnées Bancaires</h3>
-                <p style="margin: 5px 0;"><strong>Titulaire :</strong> Yawa Mareva Segbetse</p>
-                <p style="margin: 5px 0;"><strong>IBAN :</strong> FR7631233123450823999451181</p>
-                <p style="margin: 5px 0; margin-bottom: 15px;"><strong>BIC :</strong> TRBKFRPPXXX</p>
-                
-                <p style="font-size: 0.85rem; color: #555; margin-bottom: 10px;">Veuillez effectuer le virement depuis votre banque, puis indiquez ci-dessous la référence de votre virement :</p>
-                <div class="form-group" style="margin-bottom: 15px;">
-                    <input type="text" id="bankReference" placeholder="Ex: VIR-123456" required style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px;">
-                </div>
-                <button type="button" class="btn-submit" id="confirmBankTransferBtn" style="margin-top: 0; background-color: #016FD0;">Confirmer ma commande</button>
-            </div>
+            <button type="button" class="btn-submit" id="mainPayButton">Confirmer le paiement</button>
         </div>
 
         <!-- Right: Order Summary -->
@@ -485,18 +560,24 @@
                     console.error("Stripe Publishable Key not found");
                 }
             } catch (err) {
-                console.error("Failed to initialize");
+                console.error("Failed         let currentPaymentMethod = 'card';
+        function selectPayment(method) {
+            currentPaymentMethod = method;
+            document.getElementById('radio-card').checked = (method === 'card');
+            document.getElementById('radio-bank').checked = (method === 'bank');
+            
+            if(method === 'card') {
+                document.getElementById('opt-card').classList.add('active');
+                document.getElementById('opt-bank').classList.remove('active');
+            } else {
+                document.getElementById('opt-card').classList.remove('active');
+                document.getElementById('opt-bank').classList.add('active');
             }
-        });
+        }
 
         // Handle Payment Submit
-        document.getElementById('payButton').addEventListener('click', async (e) => {
+        document.getElementById('mainPayButton').addEventListener('click', async (e) => {
             e.preventDefault();
-            
-            if (!stripe || !elements) {
-                alert("Erreur: Le module de paiement n'est pas initialisé correctement.");
-                return;
-            }
             
             const email = document.getElementById('email').value;
             const firstName = document.getElementById('firstName').value;
@@ -514,108 +595,93 @@
                 alert('Veuillez accepter les CGV.');
                 return;
             }
-            
-            const btn = document.getElementById('payButton');
+
+            const btn = document.getElementById('mainPayButton');
             btn.textContent = 'Traitement...';
             btn.disabled = true;
 
-            const returnUrl = window.location.origin + '/airton.shop/checkout-success.html';
+            if (currentPaymentMethod === 'card') {
+                // STRIPE PAYMENT
+                if (!stripe || !elements) {
+                    alert("Erreur: Le module de paiement n'est pas initialisé correctement.");
+                    btn.textContent = 'Confirmer le paiement';
+                    btn.disabled = false;
+                    return;
+                }
 
-            const { error } = await stripe.confirmPayment({
-                elements,
-                confirmParams: {
-                    return_url: returnUrl,
-                    payment_method_data: {
-                        billing_details: {
-                            name: firstName + ' ' + lastName,
-                            email: email,
-                            address: {
-                                line1: address,
-                                city: city,
-                                postal_code: zipcode,
-                                country: document.getElementById('country').value,
+                const returnUrl = window.location.origin + '/airton.shop/checkout-success.html';
+
+                const { error } = await stripe.confirmPayment({
+                    elements,
+                    confirmParams: {
+                        return_url: returnUrl,
+                        payment_method_data: {
+                            billing_details: {
+                                name: firstName + ' ' + lastName,
+                                email: email,
+                                address: {
+                                    line1: address,
+                                    city: city,
+                                    postal_code: zipcode,
+                                    country: document.getElementById('country').value,
+                                }
                             }
                         }
                     }
-                }
-            });
-
-            if (error) {
-                const messageContainer = document.querySelector('#payment-message');
-                messageContainer.style.display = 'block';
-                messageContainer.textContent = error.message;
-                
-                btn.textContent = 'Payer par Carte / Apple Pay';
-                btn.disabled = false;
-            } else {
-                // Redirects automatically to return_url
-            }
-        });
-
-        // Show Bank Transfer Details
-        document.getElementById('bankTransferBtn').addEventListener('click', () => {
-            document.getElementById('payButton').style.display = 'none';
-            document.getElementById('bankTransferBtn').style.display = 'none';
-            document.getElementById('bankTransferDetails').style.display = 'block';
-        });
-
-        // Handle Bank Transfer Submit
-        document.getElementById('confirmBankTransferBtn').addEventListener('click', async () => {
-            const email = document.getElementById('email').value;
-            const firstName = document.getElementById('firstName').value;
-            const lastName = document.getElementById('lastName').value;
-            const address = document.getElementById('address').value;
-            const city = document.getElementById('city').value;
-            const zipcode = document.getElementById('zipcode').value;
-            const cgv = document.getElementById('cgv').checked;
-            const bankReference = document.getElementById('bankReference').value;
-            
-            if (!email || !firstName || !lastName || !address || !city || !zipcode || !bankReference) {
-                alert('Veuillez remplir tous les champs obligatoires, y compris la référence du virement.');
-                return;
-            }
-            if (!cgv) {
-                alert('Veuillez accepter les CGV.');
-                return;
-            }
-            
-            const btn = document.getElementById('confirmBankTransferBtn');
-            btn.disabled = true;
-            btn.textContent = 'Traitement en cours...';
-            
-            const cartItems = JSON.parse(localStorage.getItem('airton_cart') || '[]');
-            const fullItems = getFullItemsList(cartItems);
-            
-            try {
-                const response = await fetch('/api/bank-transfer', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({
-                        items: fullItems,
-                        orderData: { 
-                            email, firstName, lastName, address, city, zipcode, 
-                            payment_method: 'bank_transfer',
-                            bank_reference: bankReference
-                        }
-                    })
                 });
-                
-                const data = await response.json();
-                if (!response.ok) {
-                    throw new Error(data.error || 'Une erreur est survenue.');
+
+                if (error) {
+                    const messageContainer = document.querySelector('#payment-message');
+                    messageContainer.style.display = 'block';
+                    messageContainer.textContent = error.message;
+                    btn.textContent = 'Confirmer le paiement';
+                    btn.disabled = false;
                 }
+            } else if (currentPaymentMethod === 'bank') {
+                // BANK TRANSFER
+                const bankReference = document.getElementById('bankReference').value;
+                if (!bankReference) {
+                    alert('Veuillez indiquer la référence de votre virement.');
+                    btn.textContent = 'Confirmer le paiement';
+                    btn.disabled = false;
+                    return;
+                }
+
+                const cartItems = JSON.parse(localStorage.getItem('airton_cart') || '[]');
+                const fullItems = getFullItemsList(cartItems);
                 
-                // Success: clear cart and redirect
-                localStorage.removeItem('airton_cart');
-                localStorage.removeItem('airton_upsells');
-                window.location.href = 'checkout-success.html';
-            } catch (err) {
-                console.error(err);
-                alert(err.message);
-                btn.disabled = false;
-                btn.textContent = 'Confirmer ma commande';
+                try {
+                    const response = await fetch('/api/bank-transfer', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({
+                            items: fullItems,
+                            orderData: { 
+                                email, firstName, lastName, address, city, zipcode, 
+                                country: document.getElementById('country').value,
+                                phone: document.getElementById('phone').value,
+                                payment_method: 'bank_transfer',
+                                bank_reference: bankReference
+                            }
+                        })
+                    });
+                    
+                    const data = await response.json();
+                    if (!response.ok) {
+                        throw new Error(data.error || 'Une erreur est survenue.');
+                    }
+                    
+                    localStorage.removeItem('airton_cart');
+                    localStorage.removeItem('airton_upsells');
+                    window.location.href = 'checkout-success.html';
+                } catch (err) {
+                    console.error(err);
+                    alert(err.message);
+                    btn.disabled = false;
+                    btn.textContent = 'Confirmer le paiement';
+                }
             }
         });
-</script>
-
-</body></html>
+    </script>
+</body>
+</html>
