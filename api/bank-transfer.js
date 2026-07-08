@@ -32,19 +32,35 @@ export default async function handler(req, res) {
 
         const totalAmount = subtotal;
 
-        // Save to Supabase
-        const { data, error } = await supabase
-            .from('orders')
-            .insert([{
-                email: orderData.email,
-                first_name: orderData.firstName,
-                last_name: orderData.lastName,
-                total_amount: totalAmount,
-                status: 'pending',
-                order_data: orderData,
-                items: items
-            }])
-            .select();
+        // Update existing order or create new
+        let data, error;
+        
+        const orderDataToSave = {
+            email: orderData.email,
+            first_name: orderData.firstName,
+            last_name: orderData.lastName,
+            total_amount: totalAmount,
+            status: 'pending',
+            order_data: orderData,
+            items: items
+        };
+
+        if (body.orderId) {
+            const res = await supabase
+                .from('orders')
+                .update(orderDataToSave)
+                .eq('id', body.orderId)
+                .select();
+            data = res.data;
+            error = res.error;
+        } else {
+            const res = await supabase
+                .from('orders')
+                .insert([orderDataToSave])
+                .select();
+            data = res.data;
+            error = res.error;
+        }
             
         if (error) {
             console.error('Supabase insert error:', error);

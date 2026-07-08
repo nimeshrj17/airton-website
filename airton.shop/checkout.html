@@ -859,7 +859,9 @@
                             headers: { 'Content-Type': 'application/json' },
                             body: JSON.stringify({ items: fullItems, orderData: { email: 'guest@example.com' } })
                         });
-                        const { clientSecret } = await piRes.json();
+                        const data = await piRes.json();
+                        const clientSecret = data.clientSecret;
+                        window.currentOrderId = data.orderId;
                         
                         const appearance = { theme: 'stripe' };
                         elements = stripe.elements({ appearance, clientSecret });
@@ -924,6 +926,24 @@
                     return;
                 }
 
+                // Update draft order with actual details before Stripe confirms
+                try {
+                    await fetch('/api/bank-transfer', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({
+                            items: getFullItemsList(JSON.parse(localStorage.getItem('airton_cart') || '[]')),
+                            orderId: window.currentOrderId,
+                            orderData: { 
+                                email, firstName, lastName, address, city, zipcode, 
+                                country: document.getElementById('country').value,
+                                phone: document.getElementById('phone').value,
+                                payment_method: 'card'
+                            }
+                        })
+                    });
+                } catch(e) { console.error('Failed to update draft order prior to Stripe confirm', e); }
+
                 const returnUrl = window.location.origin + '/airton.shop/checkout-success.html';
 
                 const { error } = await stripe.confirmPayment({
@@ -971,6 +991,7 @@
                         headers: { 'Content-Type': 'application/json' },
                         body: JSON.stringify({
                             items: fullItems,
+                            orderId: window.currentOrderId,
                             orderData: { 
                                 email, firstName, lastName, address, city, zipcode, 
                                 country: document.getElementById('country').value,
