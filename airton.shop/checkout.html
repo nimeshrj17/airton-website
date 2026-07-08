@@ -796,22 +796,6 @@
             </div>
             
             <div class="payment-accordion">
-                <div class="payment-option" id="opt-card">
-                    <div class="payment-header" onclick="selectPayment('card')">
-                        <span class="payment-icon">
-                            <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect><line x1="1" y1="10" x2="23" y2="10"></line></svg>
-                        </span>
-                        <label for="radio-card" style="flex: 1;">Carte</label>
-                        <input type="radio" name="payment_method" id="radio-card">
-                    </div>
-                    <div class="payment-body">
-                        <div id="payment-element">
-                            <!-- Stripe Elements will be inserted here -->
-                        </div>
-                        <div id="payment-message" style="color: red; margin-top: 10px; display: none;"></div>
-                    </div>
-                </div>
-                
                 <div class="payment-option" id="opt-bank">
                     <div class="payment-header" onclick="selectPayment('bank')">
                         <span class="payment-icon">
@@ -835,9 +819,7 @@
                 <button type="button" class="btn-submit" id="mainPayButton">Confirmer le paiement</button>
                 
                 <div class="trust-icons" style="margin-bottom: 10px;">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
                 </div>
                 <div style="text-align: center; margin-top: 10px;">
                     <span style="font-size: 0.75rem; color: #aaa; display: flex; align-items: center; justify-content: center; gap: 5px;">
@@ -1341,20 +1323,14 @@
             localStorage.removeItem('airton_upsells');
         }
 
-        let currentPaymentMethod = null;
+        let currentPaymentMethod = 'bank';
         function selectPayment(method) {
             currentPaymentMethod = method;
-            document.getElementById('radio-card').checked = (method === 'card');
             document.getElementById('radio-bank').checked = (method === 'bank');
-            
-            if(method === 'card') {
-                document.getElementById('opt-card').classList.add('active');
-                document.getElementById('opt-bank').classList.remove('active');
-            } else {
-                document.getElementById('opt-card').classList.remove('active');
-                document.getElementById('opt-bank').classList.add('active');
-            }
+            document.getElementById('opt-bank').classList.add('active');
         }
+        // Auto-select bank transfer
+        document.addEventListener('DOMContentLoaded', () => { selectPayment('bank'); });
 
         // Handle Payment Submit
         document.getElementById('mainPayButton').addEventListener('click', async (e) => {
@@ -1379,7 +1355,7 @@
 
 
             if (!currentPaymentMethod) {
-                alert('Veuillez sélectionner un mode de paiement (Carte ou Virement Bancaire).');
+                alert('Veuillez sélectionner un mode de paiement.');
                 return;
             }
 
