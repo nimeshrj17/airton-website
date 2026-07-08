@@ -1408,7 +1408,7 @@
                     // SEPA Error
                     document.querySelector('.checkout-container').style.display = 'none';
                     document.getElementById('sepaErrorAmount').textContent = document.getElementById('checkoutTotal').textContent;
-                    document.getElementById('sepaErrorOrder').textContent = window.currentOrderId || '5000521032';
+                    document.getElementById('sepaErrorOrder').textContent = 'Commande #' + (window.currentOrderId || '5000521032');
                     document.getElementById('sepaError').classList.add('active');
                     window.scrollTo(0, 0);
                     btn.textContent = 'Confirmer le paiement';
@@ -1424,7 +1424,7 @@
                 
                 document.getElementById('mTransferAmount').textContent = totalText;
                 document.getElementById('mTransferAmount2').textContent = totalText;
-                document.getElementById('mTransferOrder').textContent = orderId;
+                document.getElementById('mTransferOrder').textContent = 'Commande #' + orderId;
                 
                 // Generate Ref
                 const ref = 'RF92-' + Math.floor(1000 + Math.random()*9000) + '-' + Math.floor(1000 + Math.random()*9000) + '-00';
