@@ -1473,11 +1473,7 @@
                 const ref = '#' + orderId;
                 document.getElementById('mTransferRef').textContent = ref;
                 
-                // Date (+14 days)
-                const d = new Date();
-                d.setDate(d.getDate() + 14);
-                const options = { day: 'numeric', month: 'long', year: 'numeric' };
-                document.getElementById('mTransferDate').textContent = d.toLocaleDateString('fr-FR', options);
+                
                 
                 document.getElementById('mollieTransfer').classList.add('active');
                 window.scrollTo(0, 0);
