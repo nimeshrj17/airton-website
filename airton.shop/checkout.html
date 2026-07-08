@@ -212,7 +212,21 @@
                 <input type="checkbox" id="cgv" required="" style="width: auto; margin-top: 3px;">
                 <label for="cgv" style="display: inline; margin: 0;">J'ai lu et j'accepte les <a href="/policies/terms-of-service" style="color: #0066cc;">Conditions Générales de Vente (CGV)</a>.</label>
             </div>
-            <button class="btn-submit" id="payButton">Valider le paiement</button>
+            <button class="btn-submit" id="payButton">Payer par Carte / Apple Pay</button>
+            <button type="button" class="btn-submit" id="bankTransferBtn" style="background-color: #333; margin-top: 10px;">Payer par Virement Bancaire</button>
+            
+            <div id="bankTransferDetails" style="display: none; margin-top: 20px; padding: 15px; border: 1px solid #ddd; border-radius: 8px; background: #f9f9f9;">
+                <h3 style="margin-top: 0; font-size: 1.1rem; color: #333;">Coordonnées Bancaires</h3>
+                <p style="margin: 5px 0;"><strong>Titulaire :</strong> AIRTON SHOP</p>
+                <p style="margin: 5px 0;"><strong>IBAN :</strong> FR76 1234 5678 9012 3456 7890 123</p>
+                <p style="margin: 5px 0; margin-bottom: 15px;"><strong>BIC :</strong> AIRTONFR</p>
+                
+                <p style="font-size: 0.85rem; color: #555; margin-bottom: 10px;">Veuillez effectuer le virement depuis votre banque, puis indiquez ci-dessous la référence de votre virement :</p>
+                <div class="form-group" style="margin-bottom: 15px;">
+                    <input type="text" id="bankReference" placeholder="Ex: VIR-123456" required style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px;">
+                </div>
+                <button type="button" class="btn-submit" id="confirmBankTransferBtn" style="margin-top: 0; background-color: #016FD0;">Confirmer ma commande</button>
+            </div>
         </div>
 
         <!-- Right: Order Summary -->

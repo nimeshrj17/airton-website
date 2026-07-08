@@ -265,7 +265,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 tr.innerHTML = `
                     <td><strong>#${o.id}</strong></td>
                     <td>${new Date(o.created_at).toLocaleString('fr-FR')}</td>
-                    <td>${o.first_name} ${o.last_name || ''}</td>
+                    <td>
+                        ${o.first_name} ${o.last_name || ''}
+                        ${o.order_data && o.order_data.bank_reference ? `<br><small style="color:#016FD0; font-weight:bold;">Ref: ${o.order_data.bank_reference}</small>` : ''}
+                    </td>
                     <td>${o.email}</td>
                     <td>${o.total_amount} €</td>
                     <td>
