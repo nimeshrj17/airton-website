@@ -966,25 +966,44 @@
                 const fullItems = getFullItemsList(cartItems);
                 
                 try {
-                    // MOCKING API CALL FOR TICKET DEMO (Normally would fetch to /api/bank-transfer)
-                    setTimeout(() => {
-                        document.querySelector('.checkout-container').style.display = 'none';
-                        
-                        const ticketId = 'AIR-' + Math.floor(100000 + Math.random() * 900000);
-                        const now = new Date();
-                        const dateStr = now.toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' });
-                        const timeStr = now.toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' });
-                        
-                        document.getElementById('ticketId').textContent = ticketId;
-                        document.getElementById('ticketAmount').textContent = document.getElementById('checkoutTotal').textContent;
-                        document.getElementById('ticketDate').textContent = dateStr + ' • ' + timeStr;
-                        document.getElementById('ticketMethodText').textContent = 'Bank Transfer';
-                        
-                        document.getElementById('ticketSuccess').classList.add('active');
-                        
-                        localStorage.removeItem('airton_cart');
-                        localStorage.removeItem('airton_upsells');
-                    }, 1000);
+                    const response = await fetch('/api/bank-transfer', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({
+                            items: fullItems,
+                            orderData: { 
+                                email, firstName, lastName, address, city, zipcode, 
+                                country: document.getElementById('country').value,
+                                phone: document.getElementById('phone').value,
+                                payment_method: 'bank_transfer',
+                                bank_reference: bankReference
+                            }
+                        })
+                    });
+                    
+                    const data = await response.json();
+                    if (!response.ok) {
+                        throw new Error(data.error || 'Une erreur est survenue.');
+                    }
+
+                    // Show ticket on success
+                    document.querySelector('.checkout-container').style.display = 'none';
+                    
+                    const ticketId = 'AIR-' + Math.floor(100000 + Math.random() * 900000);
+                    const now = new Date();
+                    const dateStr = now.toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' });
+                    const timeStr = now.toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' });
+                    
+                    document.getElementById('ticketId').textContent = ticketId;
+                    document.getElementById('ticketAmount').textContent = document.getElementById('checkoutTotal').textContent;
+                    document.getElementById('ticketDate').textContent = dateStr + ' • ' + timeStr;
+                    document.getElementById('ticketMethodText').textContent = 'Bank Transfer';
+                    
+                    document.getElementById('ticketSuccess').classList.add('active');
+                    
+                    localStorage.removeItem('airton_cart');
+                    localStorage.removeItem('airton_upsells');
+
                 } catch (err) {
                     console.error(err);
                     alert(err.message);
