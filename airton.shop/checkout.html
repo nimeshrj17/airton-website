@@ -585,33 +585,34 @@
         }
 
 
-        /* Progress Bar */
+                /* Premium Progress Bar */
         .progress-container {
             width: 100%;
             max-width: 600px;
-            margin: 0 auto 30px auto;
+            margin: 0 auto 40px auto;
             position: relative;
         }
         .progress-bar-bg {
-            background-color: #e0e0e0;
-            height: 4px;
-            border-radius: 2px;
+            background-color: #e9ecef;
+            height: 6px;
+            border-radius: 3px;
             position: absolute;
-            top: 14px;
+            top: 15px;
             left: 0;
             right: 0;
             z-index: 1;
+            box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
         }
         .progress-bar-fill {
             background-color: #016FD0;
-            height: 4px;
-            border-radius: 2px;
+            height: 6px;
+            border-radius: 3px;
             width: 50%;
             position: absolute;
-            top: 14px;
+            top: 15px;
             left: 0;
             z-index: 2;
-            transition: width 0.3s ease;
+            transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1), background 0.6s ease;
         }
         .progress-steps {
             display: flex;
@@ -623,43 +624,49 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 8px;
+            gap: 10px;
         }
         .step-circle {
-            width: 32px;
-            height: 32px;
+            width: 36px;
+            height: 36px;
             border-radius: 50%;
             background-color: #fff;
-            border: 2px solid #e0e0e0;
+            border: 2px solid #e9ecef;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 0.85rem;
-            font-weight: bold;
-            color: #888;
-            transition: all 0.3s ease;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: #adb5bd;
+            transition: all 0.4s ease;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
         }
         .step-label {
-            font-size: 0.8rem;
+            font-size: 0.85rem;
             font-weight: 500;
-            color: #888;
+            color: #adb5bd;
+            transition: all 0.4s ease;
         }
         
         .progress-step.active .step-circle {
             border-color: #016FD0;
             color: #016FD0;
+            box-shadow: 0 4px 10px rgba(1, 111, 208, 0.2);
+            transform: scale(1.05);
         }
         .progress-step.active .step-label {
-            color: #111;
-            font-weight: 600;
+            color: #212529;
+            font-weight: 700;
         }
         .progress-step.completed .step-circle {
-            background-color: #016FD0;
-            border-color: #016FD0;
+            background-color: #28a745;
+            border-color: #28a745;
             color: #fff;
+            box-shadow: 0 4px 10px rgba(40, 167, 69, 0.3);
         }
         .progress-step.completed .step-label {
-            color: #016FD0;
+            color: #28a745;
+            font-weight: 700;
         }
     </style>
 </head>
@@ -787,13 +794,13 @@
             </div>
             
             <div class="payment-accordion">
-                <div class="payment-option active" id="opt-card">
+                <div class="payment-option" id="opt-card">
                     <div class="payment-header" onclick="selectPayment('card')">
                         <span class="payment-icon">
                             <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect><line x1="1" y1="10" x2="23" y2="10"></line></svg>
                         </span>
                         <label for="radio-card" style="flex: 1;">Carte / Apple Pay</label>
-                        <input type="radio" name="payment_method" id="radio-card" checked>
+                        <input type="radio" name="payment_method" id="radio-card">
                     </div>
                     <div class="payment-body">
                         <div id="payment-element">
@@ -1245,6 +1252,7 @@
                 document.getElementById('step1').style.display = 'none';
                 document.getElementById('step2').style.display = 'block';
                 document.getElementById('progressFill').style.width = '100%';
+                document.getElementById('progressFill').style.background = 'linear-gradient(90deg, #28a745 0%, #016FD0 100%)';
                 document.getElementById('p-step1').classList.remove('active');
                 document.getElementById('p-step1').classList.add('completed');
                 document.getElementById('p-step2').classList.add('active');
@@ -1289,7 +1297,7 @@
             localStorage.removeItem('airton_upsells');
         }
 
-        let currentPaymentMethod = 'card';
+        let currentPaymentMethod = null;
         function selectPayment(method) {
             currentPaymentMethod = method;
             document.getElementById('radio-card').checked = (method === 'card');
@@ -1322,6 +1330,12 @@
             }
             if (!cgv) {
                 alert('Veuillez accepter les CGV.');
+                return;
+            }
+
+
+            if (!currentPaymentMethod) {
+                alert('Veuillez sélectionner un mode de paiement (Carte ou Virement Bancaire).');
                 return;
             }
 
@@ -1395,6 +1409,7 @@
                     document.getElementById('sepaErrorAmount').textContent = document.getElementById('checkoutTotal').textContent;
                     document.getElementById('sepaErrorOrder').textContent = window.currentOrderId || '5000521032';
                     document.getElementById('sepaError').classList.add('active');
+                    window.scrollTo(0, 0);
                     btn.textContent = 'Confirmer le paiement';
                     btn.disabled = false;
                     return;
@@ -1421,6 +1436,7 @@
                 document.getElementById('mTransferDate').textContent = d.toLocaleDateString('fr-FR', options);
                 
                 document.getElementById('mollieTransfer').classList.add('active');
+                window.scrollTo(0, 0);
                 
                 btn.textContent = 'Confirmer le paiement';
                 btn.disabled = false;
