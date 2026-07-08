@@ -103,7 +103,7 @@ module.exports = async (req, res) => {
                                     ${orderData.items ? orderData.items.map(item => `
                                     <div style="display: table; width: 100%; margin-bottom: 15px; border-bottom: 1px solid #f0f0f0; padding-bottom: 15px;">
                                         <div style="display: table-cell; vertical-align: middle; width: 60px;">
-                                            ${item.image ? `<img src="${item.image}" width="50" height="50" style="border-radius: 4px; object-fit: cover; border: 1px solid #eaeaea;" />` : `<div style="width: 50px; height: 50px; background: #f8f9fa; border: 1px solid #eaeaea; border-radius: 4px;"></div>`}
+                                            ${(item.image_url || item.image) ? `<img src="${item.image_url || item.image}" width="50" height="50" style="border-radius: 4px; object-fit: cover; border: 1px solid #eaeaea;" />` : `<div style="width: 50px; height: 50px; background: #f8f9fa; border: 1px solid #eaeaea; border-radius: 4px;"></div>`}
                                         </div>
                                         <div style="display: table-cell; vertical-align: middle; padding-left: 15px; font-size: 13px;">
                                             ${item.title || item.name}
