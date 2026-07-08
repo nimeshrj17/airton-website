@@ -14,6 +14,7 @@
                 <ul>
                     <li><a href="#" id="nav-products" class="active">Produits</a></li>
                     <li><a href="#" id="nav-categories">Catégories</a></li>
+                    <li><a href="#" id="nav-orders">Commandes</a></li>
                 </ul>
             </nav>
         </aside>
@@ -129,6 +130,25 @@
                         <button type="submit" class="btn btn-primary">Enregistrer</button>
                     </div>
                 </form>
+            </div>
+
+            <!-- Orders Table View -->
+            <div id="orders-view" class="view hidden">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Date</th>
+                            <th>Client</th>
+                            <th>Email</th>
+                            <th>Montant</th>
+                            <th>Statut</th>
+                        </tr>
+                    </thead>
+                    <tbody id="orders-table-body">
+                        <tr><td colspan="6">Chargement...</td></tr>
+                    </tbody>
+                </table>
             </div>
         </main>
     </div>

@@ -5,11 +5,13 @@ document.addEventListener('DOMContentLoaded', () => {
     // UI Elements
     const navProducts = document.getElementById('nav-products');
     const navCategories = document.getElementById('nav-categories');
+    const navOrders = document.getElementById('nav-orders');
     
     const productsView = document.getElementById('products-view');
     const productFormView = document.getElementById('product-form-view');
     const categoriesView = document.getElementById('categories-view');
     const categoryFormView = document.getElementById('category-form-view');
+    const ordersView = document.getElementById('orders-view');
     
     const btnAddItem = document.getElementById('btn-add-item');
     const mainHeading = document.getElementById('main-heading');
@@ -36,6 +38,7 @@ document.addEventListener('DOMContentLoaded', () => {
         currentTab = 'products';
         navProducts.classList.add('active');
         navCategories.classList.remove('active');
+        navOrders.classList.remove('active');
         mainHeading.textContent = "Gestion des Produits";
         btnAddItem.textContent = "+ Ajouter un produit";
         showView('products');
@@ -47,10 +50,23 @@ document.addEventListener('DOMContentLoaded', () => {
         currentTab = 'categories';
         navCategories.classList.add('active');
         navProducts.classList.remove('active');
+        navOrders.classList.remove('active');
         mainHeading.textContent = "Gestion des Catégories";
         btnAddItem.textContent = "+ Ajouter une catégorie";
         showView('categories');
         fetchCategories();
+    });
+
+    navOrders.addEventListener('click', (e) => {
+        e.preventDefault();
+        currentTab = 'orders';
+        navOrders.classList.add('active');
+        navProducts.classList.remove('active');
+        navCategories.classList.remove('active');
+        mainHeading.textContent = "Gestion des Commandes";
+        btnAddItem.classList.add('hidden');
+        showView('orders');
+        fetchOrders();
     });
 
     // Add Item Button
@@ -128,6 +144,7 @@ document.addEventListener('DOMContentLoaded', () => {
         productFormView.classList.add('hidden');
         categoriesView.classList.add('hidden');
         categoryFormView.classList.add('hidden');
+        ordersView.classList.add('hidden');
         btnAddItem.classList.add('hidden');
 
         if (view === 'products') {
@@ -140,6 +157,8 @@ document.addEventListener('DOMContentLoaded', () => {
             btnAddItem.classList.remove('hidden');
         } else if (view === 'category-form') {
             categoryFormView.classList.remove('hidden');
+        } else if (view === 'orders') {
+            ordersView.classList.remove('hidden');
         }
     }
 
@@ -225,6 +244,40 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         } catch (error) {
             catTableBody.innerHTML = `<tr><td colspan="3" style="color:red;text-align:center;">${error.message}</td></tr>`;
+        }
+    }
+
+    async function fetchOrders() {
+        const orderTableBody = document.getElementById('orders-table-body');
+        try {
+            const response = await fetch('/api/orders');
+            if (!response.ok) throw new Error('Erreur de chargement des commandes');
+            const orders = await response.json();
+            
+            if (orders.length === 0) {
+                orderTableBody.innerHTML = `<tr><td colspan="6" style="text-align:center;">Aucune commande.</td></tr>`;
+                return;
+            }
+            
+            orderTableBody.innerHTML = '';
+            orders.forEach(o => {
+                const tr = document.createElement('tr');
+                tr.innerHTML = `
+                    <td><strong>#${o.id}</strong></td>
+                    <td>${new Date(o.created_at).toLocaleString('fr-FR')}</td>
+                    <td>${o.first_name} ${o.last_name || ''}</td>
+                    <td>${o.email}</td>
+                    <td>${o.total_amount} €</td>
+                    <td>
+                        <span style="padding: 3px 8px; border-radius: 4px; font-size: 0.85rem; color: white; background-color: ${o.status === 'paid' ? 'green' : (o.status === 'pending' ? 'orange' : 'gray')}">
+                            ${o.status.toUpperCase()}
+                        </span>
+                    </td>
+                `;
+                orderTableBody.appendChild(tr);
+            });
+        } catch (error) {
+            orderTableBody.innerHTML = `<tr><td colspan="6" style="color:red;text-align:center;">${error.message}</td></tr>`;
         }
     }
 
