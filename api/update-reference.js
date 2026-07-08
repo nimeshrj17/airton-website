@@ -74,12 +74,11 @@ export default async function handler(req, res) {
                                 <!-- Header -->
                                 <h2 style="font-size: 24px; font-weight: bold; margin-bottom: 10px;">Votre commande est en attente de confirmation</h2>
                                 <p style="font-size: 14px; color: #555; margin-bottom: 30px; line-height: 1.5;">
-                                    Nous avons bien reçu la référence de votre virement bancaire. Votre commande sera traitée dès réception de votre paiement sur notre compte.<br><br>
                                     Pour toute question, notre support client est à votre écoute : <br><a href="mailto:service-client@airton-shop.eu" style="color: #016FD0; text-decoration: none;">service-client@airton-shop.eu</a>
                                 </p>
                                 
                                 <h3 style="font-size: 18px; margin-bottom: 5px;">Détail de votre commande.</h3>
-                                <p style="font-size: 16px; margin-bottom: 25px; font-weight: bold;">Commande <span style="color: #016FD0;">#${orderId}</span>.</p>
+                                <p style="font-size: 16px; margin-bottom: 25px; font-weight: bold;">Commande <span style="color: #016FD0;">${orderId}</span>.</p>
                                 
                                 <!-- Order Items Card -->
                                 <div style="background-color: #ffffff; border-radius: 8px; padding: 25px; margin-bottom: 30px; text-align: left; box-shadow: 0 4px 15px rgba(0,0,0,0.03);">
