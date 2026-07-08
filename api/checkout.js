@@ -39,9 +39,11 @@ module.exports = async (req, res) => {
         }
 
         const lineItems = [];
+        let subtotal = 0;
 
         // Use the prices directly from the cart (required for dynamically configured products)
         for (const item of items) {
+            subtotal += (item.price * item.quantity);
             lineItems.push({
                 price_data: {
                     currency: 'eur',
@@ -55,7 +57,19 @@ module.exports = async (req, res) => {
             });
         }
 
-        if (lineItems.length === 0) {
+        const taxAmount = subtotal * 0.166;
+        lineItems.push({
+            price_data: {
+                currency: 'eur',
+                product_data: {
+                    name: 'Taxes (16.6%)',
+                },
+                unit_amount: Math.round(taxAmount * 100),
+            },
+            quantity: 1,
+        });
+
+        if (lineItems.length <= 1) { // Only tax item means no valid products
             return res.status(400).json({ error: 'No valid items found' });
         }
 
