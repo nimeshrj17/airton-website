@@ -680,7 +680,7 @@
     <div class="checkout-container" style="display:block; padding: 20px; max-width: 1200px; margin: 0 auto; width: 100%; box-sizing: border-box;">
         <div class="page-header">
             <div class="page-subtitle">SECURE TRANSACTION</div>
-            <h1 class="page-title">Finaliser la commande</h1>
+            
         </div>
         <!-- Left: Form -->
         
@@ -992,21 +992,26 @@
     <!-- Ticket Success UI (Hidden) -->
     <div class="ticket-container" id="ticketSuccess">
         <div class="ticket-cutout"></div>
-        <div class="ticket-emoji">🎉</div>
-        <div class="ticket-title">Thank you!</div>
-        <div class="ticket-desc">Your order has been confirmed successfully. You will receive the confirmation via email shortly.</div>
+        <div class="ticket-emoji" style="display:flex; justify-content:center; align-items:center; margin-top:20px;">
+            <svg width="54" height="54" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M10.5213 2.62368C11.3147 1.75255 12.6853 1.75255 13.4787 2.62368L14.4989 3.74391C14.8998 4.18418 15.4761 4.42288 16.0694 4.39498L17.5805 4.32381C18.7614 4.26815 19.7319 5.23864 19.6762 6.41951L19.605 7.9306C19.5771 8.52388 19.8158 9.10016 20.2561 9.50111L21.3763 10.5213C22.2475 11.3147 22.2475 12.6853 21.3763 13.4787L20.2561 14.4989C19.8158 14.8998 19.5771 15.4761 19.605 16.0694L19.6762 17.5805C19.7319 18.7614 18.7614 19.7319 17.5805 19.6762L16.0694 19.605C15.4761 19.5771 14.8998 19.8158 14.4989 20.2561L13.4787 21.3763C12.6853 22.2475 11.3147 22.2475 10.5213 21.3763L9.50111 20.2561C9.10016 19.8158 8.52388 19.5771 7.9306 19.605L6.41951 19.6762C5.23864 19.7319 4.26815 18.7614 4.32381 17.5805L4.39498 16.0694C4.42288 15.4761 4.18418 14.8998 3.74391 14.4989L2.62368 13.4787C1.75255 12.6853 1.75255 11.3147 2.62368 10.5213L3.74391 9.50111C4.18418 9.10016 4.42288 8.52388 4.39498 7.9306L4.32381 6.41951C4.26815 5.23864 5.23864 4.26815 6.41951 4.32381L7.9306 4.39498C8.52388 4.42288 9.10016 4.18418 9.50111 3.74391L10.5213 2.62368Z" fill="#28a745"/>
+                <path d="M10.5 14L7 10.5L8.41 9.09L10.5 11.17L15.59 6.08L17 7.5L10.5 14Z" fill="white"/>
+            </svg>
+        </div>
+        <div class="ticket-title">Merci !</div>
+        <div class="ticket-desc">Votre commande a été confirmée avec succès. Vous recevrez très bientôt une confirmation par e-mail.</div>
         
         <div class="ticket-details">
             <div>
-                <div class="ticket-label">Order ID</div>
+                <div class="ticket-label">N° de Commande</div>
                 <div class="ticket-val" id="ticketId">--</div>
             </div>
             <div>
-                <div class="ticket-label">Amount</div>
+                <div class="ticket-label">Montant</div>
                 <div class="ticket-val" id="ticketAmount">--</div>
             </div>
             <div>
-                <div class="ticket-label">Date & Time</div>
+                <div class="ticket-label">Date et Heure</div>
                 <div class="ticket-val" id="ticketDate">--</div>
             </div>
         </div>
@@ -1015,7 +1020,7 @@
             <div class="ticket-method-icon">
                 <svg viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none"><rect x="3" y="16" width="18" height="6"></rect><polygon points="12 2 3 10 21 10"></polygon><line x1="6" y1="10" x2="6" y2="16"></line><line x1="18" y1="10" x2="18" y2="16"></line><line x1="12" y1="10" x2="12" y2="16"></line></svg>
             </div>
-            <div class="ticket-method-text" id="ticketMethodText">Bank Transfer</div>
+            <div class="ticket-method-text" id="ticketMethodText">Virement bancaire</div>
         </div>
         
         <div class="barcode"></div>
@@ -1265,7 +1270,7 @@
         }
         
         function copyText(text) {
-            navigator.clipboard.writeText(text).then(() => alert('Copié !'));
+            navigator.clipboard.writeText(text);
         }
         
         function closeSepaError() {
