@@ -88,7 +88,12 @@ function setupAddToCartInterception() {
             e.preventDefault();
             e.stopPropagation();
             
-            let productToAdd = window.airtonCurrentProduct ? {...window.airtonCurrentProduct} : null;
+            let productToAdd = null;
+            
+            // If it's NOT an accessory card, we use the current product from the page
+            if (!atcBtn.classList.contains('configurator-useful-card__add') && window.airtonCurrentProduct) {
+                productToAdd = {...window.airtonCurrentProduct};
+            }
             
             if (productToAdd && (atcBtn.classList.contains('configurator-content-footer-add-to-cart') || atcBtn.classList.contains('configurator-sticky-btn'))) {
                 const totalEl = document.querySelector('.configurator-content-footer-total-price-value');
@@ -104,14 +109,20 @@ function setupAddToCartInterception() {
             }
             
             if (!productToAdd) {
-                // We are likely on a collection page or homepage. Try to extract slug from a product link in the same card.
-                const card = atcBtn.closest('.grid__item, .product-card-wrapper, li, form, div');
+                // We are likely on a collection page, homepage, or accessory card. Try to extract slug from a product link in the same card.
+                const card = atcBtn.closest('.grid__item, .product-card-wrapper, li, form, div.configurator-useful-card');
                 let slug = null;
                 if (card) {
-                    const link = card.querySelector('a[href*="products/"]');
+                    const link = card.querySelector('a[href*="products/"], a.configurator-useful-card__name');
                     if (link) {
-                        const match = link.getAttribute('href').match(/products\/([^.]+)/);
-                        if (match) slug = match[1];
+                        const href = link.getAttribute('href');
+                        const match = href.match(/products\/([^.]+)/);
+                        if (match) {
+                            slug = match[1];
+                        } else {
+                            const baseMatch = href.match(/([^/]+)\.html/);
+                            if (baseMatch) slug = baseMatch[1];
+                        }
                     }
                 }
                 
