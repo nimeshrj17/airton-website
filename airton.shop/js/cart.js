@@ -21,10 +21,10 @@ function addToCart(product, quantity = 1) {
     } else {
         cart.push({
             id: product.id,
-            slug: product.slug,
-            name: product.name,
+            slug: product.slug || product.handle,
+            name: product.name || product.title,
             price: parseFloat(product.price),
-            image_url: product.image_url,
+            image_url: product.image_url || product.image,
             quantity: quantity
         });
     }
