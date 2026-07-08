@@ -169,9 +169,14 @@ ${(orderData.order_data?.payment_method === 'bank_transfer' || orderData.order_d
                                 </div>
                                 ` : ''}
                                 
-                            </div>
-                        </div>
-                    `
+                                <!-- Footer -->
+                                <div style="text-align: center; margin-top: 30px; padding-top: 20px; border-top: 1px solid #eee;">
+                                    <p style="margin: 0; font-size: 12px; color: #888;">Pour toute question, contactez notre service client : <a href="mailto:service-client@airton-shop.eu" style="color: #016FD0; text-decoration: none;">service-client@airton-shop.eu</a></p>
+                                </div>
+                                 
+                             </div>
+                         </div>
+                     `
                 };
 
                 await transporter.sendMail(mailOptions);
