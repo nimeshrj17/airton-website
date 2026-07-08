@@ -60,9 +60,7 @@ export default async function handler(req, res) {
         const paymentIntent = await stripe.paymentIntents.create({
             amount: Math.round(totalAmount * 100),
             currency: 'eur',
-            automatic_payment_methods: {
-                enabled: true,
-            },
+            payment_method_types: ['card'],
             metadata: {
                 orderId: orderId ? orderId.toString() : ''
             }
