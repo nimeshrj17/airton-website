@@ -32,15 +32,22 @@ module.exports = async (req, res) => {
         return res.status(400).send(`Webhook Error: ${err.message}`);
     }
 
+    let orderId = null;
+    let isPaid = false;
+
     if (event.type === 'checkout.session.completed' || event.type === 'checkout.session.async_payment_succeeded') {
         const session = event.data.object;
-        
-        // For bank transfers, checkout.session.completed means the customer agreed to pay, but funds are unpaid.
-        // We only want to send the email and update status when payment_status is 'paid'
         if (session.payment_status === 'paid') {
-            const orderId = session.client_reference_id;
-            
-            if (orderId) {
+            orderId = session.client_reference_id;
+            isPaid = true;
+        }
+    } else if (event.type === 'payment_intent.succeeded') {
+        const paymentIntent = event.data.object;
+        orderId = paymentIntent.metadata ? paymentIntent.metadata.orderId : null;
+        isPaid = true;
+    }
+
+    if (isPaid && orderId) {
                 // Update order status in Supabase
                 const { error } = await supabase
                     .from('orders')
