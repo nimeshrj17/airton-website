@@ -32,59 +32,64 @@ module.exports = async (req, res) => {
         return res.status(400).send(`Webhook Error: ${err.message}`);
     }
 
-    if (event.type === 'checkout.session.completed') {
+    if (event.type === 'checkout.session.completed' || event.type === 'checkout.session.async_payment_succeeded') {
         const session = event.data.object;
-        const orderId = session.client_reference_id;
         
-        if (orderId) {
-            // Update order status in Supabase
-            const { error } = await supabase
-                .from('orders')
-                .update({ status: 'paid' })
-                .eq('id', orderId);
+        // For bank transfers, checkout.session.completed means the customer agreed to pay, but funds are unpaid.
+        // We only want to send the email and update status when payment_status is 'paid'
+        if (session.payment_status === 'paid') {
+            const orderId = session.client_reference_id;
+            
+            if (orderId) {
+                // Update order status in Supabase
+                const { error } = await supabase
+                    .from('orders')
+                    .update({ status: 'paid' })
+                    .eq('id', orderId);
 
-            if (error) {
-                console.error('Failed to update Supabase order:', error);
-            }
+                if (error) {
+                    console.error('Failed to update Supabase order:', error);
+                }
 
-            // Fetch order details for the email
-            const { data: orderData } = await supabase
-                .from('orders')
-                .select('*')
-                .eq('id', orderId)
-                .single();
+                // Fetch order details for the email
+                const { data: orderData } = await supabase
+                    .from('orders')
+                    .select('*')
+                    .eq('id', orderId)
+                    .single();
 
-            if (orderData && process.env.SMTP_HOST) {
-                try {
-                    const transporter = nodemailer.createTransport({
-                        host: process.env.SMTP_HOST,
-                        port: process.env.SMTP_PORT || 587,
-                        secure: process.env.SMTP_SECURE === 'true',
-                        auth: {
-                            user: process.env.SMTP_USER,
-                            pass: process.env.SMTP_PASS,
-                        },
-                    });
+                if (orderData && process.env.SMTP_HOST) {
+                    try {
+                        const transporter = nodemailer.createTransport({
+                            host: process.env.SMTP_HOST,
+                            port: process.env.SMTP_PORT || 587,
+                            secure: process.env.SMTP_SECURE === 'true',
+                            auth: {
+                                user: process.env.SMTP_USER,
+                                pass: process.env.SMTP_PASS,
+                            },
+                        });
 
-                    const mailOptions = {
-                        from: '"Airton Shop" <service-client@airton-shop.eu>',
-                        to: orderData.email,
-                        subject: 'Confirmation de votre commande Airton',
-                        html: `
-                            <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
-                                <h2>Merci pour votre commande, ${orderData.first_name || 'Client'}!</h2>
-                                <p>Votre paiement a été validé avec succès. Nous préparons votre commande pour l'expédition.</p>
-                                <p><strong>Montant total:</strong> ${orderData.total_amount.toFixed(2).replace('.', ',')} €</p>
-                                <hr />
-                                <p>Pour toute question, contactez-nous à <a href="mailto:service-client@airton-shop.eu">service-client@airton-shop.eu</a>.</p>
-                            </div>
-                        `
-                    };
+                        const mailOptions = {
+                            from: '"Airton Shop" <service-client@airton-shop.eu>',
+                            to: orderData.email,
+                            subject: 'Confirmation de votre commande Airton',
+                            html: `
+                                <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
+                                    <h2>Merci pour votre commande, ${orderData.first_name || 'Client'}!</h2>
+                                    <p>Votre paiement a été validé avec succès. Nous préparons votre commande pour l'expédition.</p>
+                                    <p><strong>Montant total:</strong> ${Number(orderData.total_amount).toFixed(2).replace('.', ',')} €</p>
+                                    <hr />
+                                    <p>Pour toute question, contactez-nous à <a href="mailto:service-client@airton-shop.eu">service-client@airton-shop.eu</a>.</p>
+                                </div>
+                            `
+                        };
 
-                    await transporter.sendMail(mailOptions);
-                    console.log('Confirmation email sent to', orderData.email);
-                } catch (emailErr) {
-                    console.error('Failed to send email:', emailErr);
+                        await transporter.sendMail(mailOptions);
+                        console.log('Confirmation email sent to', orderData.email);
+                    } catch (emailErr) {
+                        console.error('Failed to send email:', emailErr);
+                    }
                 }
             }
         }
