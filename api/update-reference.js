@@ -109,6 +109,14 @@ export default async function handler(req, res) {
                                 
                                 <!-- Footer -->
                                 <div style="text-align: center; margin-top: 30px; padding-top: 20px; border-top: 1px solid #eee;">
+                                    <details style="margin-bottom: 20px; cursor: pointer; text-align: center;">
+                                        <summary style="color: #016FD0; text-decoration: underline; font-weight: bold; font-size: 14px; list-style-position: inside;">Cliquez ici pour voir nos coordonnées bancaires</summary>
+                                        <div style="margin-top: 15px; padding: 15px; background: #f8f9fa; border: 1px solid #eaeaea; border-radius: 4px; text-align: left; font-size: 13px; color: #333; display: inline-block; width: 100%; max-width: 400px; box-sizing: border-box;">
+                                            <p style="margin: 0 0 8px 0;"><strong>BÉNÉFICIAIRE :</strong> Yawa Mareva Segbetse</p>
+                                            <p style="margin: 0 0 8px 0;"><strong>IBAN :</strong> FR76 3123 3123 4508 2399 9451 181</p>
+                                            <p style="margin: 0;"><strong>BIC :</strong> TRBKFRPPXXX</p>
+                                        </div>
+                                    </details>
                                     <p style="margin: 0; font-size: 12px; color: #888;">Pour toute question, contactez notre service client : <a href="mailto:service-client@airton-shop.eu" style="color: #016FD0; text-decoration: none;">service-client@airton-shop.eu</a></p>
                                 </div>
                                  

@@ -746,7 +746,7 @@
                     <option value="Belgique">Belgique</option>
                     <option value="Luxembourg">Luxembourg</option>
                     <option value="Suisse">Suisse</option>
-                    <option value="États-Unis">États-Unis</option>
+
                 </select>
             </div>
             
@@ -1098,7 +1098,7 @@
             });
             localStorage.setItem('airton_cart', JSON.stringify(cart));
             loadCheckoutCart();
-            alert(name + " ajouté au panier !");
+            updateOrderSummary();
         }
 
         function getFullItemsList() {
@@ -1315,7 +1315,7 @@
             document.getElementById('ticketId').textContent = ticketId;
             document.getElementById('ticketAmount').textContent = document.getElementById('checkoutTotal').textContent;
             document.getElementById('ticketDate').textContent = dateStr + ' • ' + timeStr;
-            document.getElementById('ticketMethodText').textContent = 'Bank Transfer';
+            document.getElementById('ticketMethodText').textContent = 'Virement bancaire';
             
             document.getElementById('ticketSuccess').classList.add('active');
             
@@ -1496,7 +1496,7 @@
                     document.getElementById('ticketId').textContent = ticketId;
                     document.getElementById('ticketAmount').textContent = document.getElementById('checkoutTotal').textContent;
                     document.getElementById('ticketDate').textContent = dateStr + ' • ' + timeStr;
-                    document.getElementById('ticketMethodText').textContent = 'Bank Transfer';
+                    document.getElementById('ticketMethodText').textContent = 'Virement bancaire';
                     
                     document.getElementById('ticketSuccess').classList.add('active');
                     
