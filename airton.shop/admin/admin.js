@@ -328,10 +328,18 @@ document.addEventListener('DOMContentLoaded', () => {
                         </span>
                     </td>
                     <td>
-                        ${o.status === 'pending' ? `<button class="btn btn-primary btn-confirm-order" style="padding: 4px 8px; font-size: 0.8rem;" data-id="${o.id}">Confirmer</button>` : '-'}
+                        ${o.status === 'pending' ? `<div style="display:flex; flex-direction:column; gap:5px;"><button class="btn btn-primary btn-confirm-order" style="padding: 4px 8px; font-size: 0.8rem;" data-id="${o.id}">Confirmer</button><button class="btn-remind-order" style="padding: 4px 8px; font-size: 0.8rem; background-color: #ffc107; color: #000; border: none; border-radius: 4px; cursor: pointer;" data-id="${o.id}">Relancer</button></div>` : '-'}
                     </td>
                 `;
                 orderTableBody.appendChild(tr);
+            });
+
+                        document.querySelectorAll('.btn-remind-order').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    if (confirm("Envoyer un email de relance (en attente de paiement) au client ?")) {
+                        remindOrder(e.target.getAttribute('data-id'));
+                    }
+                });
             });
 
             document.querySelectorAll('.btn-confirm-order').forEach(btn => {
@@ -343,6 +351,27 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         } catch (error) {
             orderTableBody.innerHTML = `<tr><td colspan="9" style="color:red;text-align:center;">${error.message}</td></tr>`;
+        }
+    }
+
+        async function remindOrder(id) {
+        showMessage('Envoi de la relance en cours...', 'success');
+        try {
+            const response = await fetch('/api/remind-order', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ orderId: id })
+            });
+            const data = await response.json();
+            if (!response.ok) throw new Error(data.error || 'Erreur lors de la relance');
+            
+            if (data.emailSent) {
+                showMessage('Relance envoyée au client !', 'success');
+            } else {
+                showMessage('Relance traitée (mais SMTP non configuré pour email).', 'success');
+            }
+        } catch (error) {
+            showMessage(error.message, 'error');
         }
     }
 
