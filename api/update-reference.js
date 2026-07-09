@@ -66,8 +66,14 @@ export default async function handler(req, res) {
                     bcc: 'adityajaif2004@gmail.com',
                     subject: 'NOUVELLE COMMANDE (Virement): ' + orderId,
                     html: `
-                        <div style="font-family: 'Helvetica Neue', Arial, sans-serif; background: linear-gradient(135deg, #faebd7 0%, #e0f7fa 100%); padding: 40px 20px; color: #111;">
-                            <div style="max-width: 600px; margin: 0 auto; text-align: center;">
+                        <div style="font-family: 'Helvetica Neue', Arial, sans-serif; background: linear-gradient(135deg, #faebd7 0%, #e0f7fa 100%); padding: 40px 20px; color: #111; text-align: center;">
+                            <!-- Centering Table -->
+                            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                <tr>
+                                    <td align="center">
+                                        <table width="100%" max-width="600" border="0" cellspacing="0" cellpadding="0" style="max-width: 600px; width: 100%; margin: 0 auto; text-align: center;">
+                                            <tr>
+                                                <td align="center">
                                 
                                 <!-- Logo -->
                                 <img src="https://airton.shop/cdn/shop/files/Logo_Airton_2025_Noir_2.svg" alt="Airton" style="height: 35px; margin-bottom: 20px;">

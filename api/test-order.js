@@ -63,8 +63,14 @@ export default async function handler(req, res) {
                 to: orderData.email,
                 subject: 'Confirmation de votre commande Airton',
                 html: `
-                        <div style="font-family: 'Helvetica Neue', Arial, sans-serif; background: linear-gradient(135deg, #faebd7 0%, #e0f7fa 100%); padding: 40px 20px; color: #111;">
-                            <div style="max-width: 600px; margin: 0 auto; text-align: center;">
+                        <div style="font-family: 'Helvetica Neue', Arial, sans-serif; background: linear-gradient(135deg, #faebd7 0%, #e0f7fa 100%); padding: 40px 20px; color: #111; text-align: center;">
+                            <!-- Centering Table -->
+                            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                <tr>
+                                    <td align="center">
+                                        <table width="100%" max-width="600" border="0" cellspacing="0" cellpadding="0" style="max-width: 600px; width: 100%; margin: 0 auto; text-align: center;">
+                                            <tr>
+                                                <td align="center">
                                 
                                 <!-- Logo -->
                                 <img src="https://airton.shop/cdn/shop/files/Logo_Airton_2025_Noir_2.svg" alt="Airton" style="height: 35px; margin-bottom: 20px;">
@@ -127,7 +133,7 @@ export default async function handler(req, res) {
                                                 ${orderData.order_data?.zipcode || ''}, ${orderData.order_data?.city || ''}
                                             </p>
                                         </td>
-                                        <td width="4%"></td>
+                                        <td width="4%" align="center" valign="middle"><div style="height: 80px; border-left: 1px dashed #999; width: 1px;"></div></td>
                                         <td width="48%" valign="top" align="left" style="background: #ffffff; border-radius: 8px; padding: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.03);">
                                             <h4 style="margin: 0 0 10px 0; font-size: 14px;">Adresse de livraison</h4>
                                             <p style="margin: 0; font-size: 12px; color: #555; line-height: 1.5;">
