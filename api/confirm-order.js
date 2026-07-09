@@ -161,7 +161,7 @@ ${(orderData.order_data?.payment_method === 'bank_transfer' || orderData.order_d
                                 <div style="background: #ffffff; border-radius: 8px; display: table; width: 100%; padding: 25px 0; box-shadow: 0 4px 15px rgba(0,0,0,0.03);">
                                     
                                     <div style="display: table-cell; width: 33%; text-align: center; border-right: 2px solid #2b8cff; vertical-align: middle; padding: 0 10px;">
-                                        <p style="margin: 0; font-size: 12px; font-weight: bold; color: #222;">Téléchargez<br>notre RIB <a href="https://airton.shop/pages/bank-details.html" style="color: #2b8cff; text-decoration: none;">ici</a></p>
+                                        <p style="margin: 0; font-size: 12px; font-weight: bold; color: #222;">Téléchargez<br>notre RIB <a href="https://airton-website.vercel.app/pages/bank-details" style="color: #2b8cff; text-decoration: none;">ici</a></p>
                                     </div>
                                     <div style="display: table-cell; width: 34%; text-align: center; border-right: 2px solid #2b8cff; vertical-align: middle; padding: 0 10px;">
                                         <p style="margin: 0; font-size: 12px; font-weight: bold; color: #222;">Faire le virement<br>avec la référence <span style="color: #2b8cff;">#${orderData.order_data?.bank_reference || orderData.id}</span></p>
