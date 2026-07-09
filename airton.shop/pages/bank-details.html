@@ -82,6 +82,10 @@
                 <div class="m-col-label">BIC:</div>
                 <div class="m-col-val" id="val-bic">TRBKFRPPXXX</div>
             </div>
+            <div class="m-row" id="amount-row" style="display: none;">
+                <div class="m-col-label">MONTANT:</div>
+                <div class="m-col-val" id="val-amount" style="font-weight:bold; color: #000;"></div>
+            </div>
             <div class="m-row" id="ref-row" style="display: none;">
                 <div class="m-col-label">RÉFÉRENCE DE COMMANDE:</div>
                 <div class="m-col-val" id="val-ref" style="font-weight:bold; color: #016FD0;"></div>
@@ -98,6 +102,11 @@
             if (ref) {
                 document.getElementById('ref-row').style.display = 'flex';
                 document.getElementById('val-ref').textContent = '#' + ref.replace(/^#/, '');
+            }
+            const amount = urlParams.get('amount');
+            if (amount) {
+                document.getElementById('amount-row').style.display = 'flex';
+                document.getElementById('val-amount').textContent = Number(amount).toFixed(2).replace('.', ',') + ' €';
             }
             try {
                 const response = await fetch('/api/settings?key=bank_details');
