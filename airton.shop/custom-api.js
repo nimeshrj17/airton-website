@@ -22,8 +22,11 @@ function interceptExternalLinks() {
                     if (pathname.includes('/account/login') || pathname.includes('/customer_authentication')) {
                         window.location.href = '/airton.shop/login.html';
                         return;
-                    } else if (pathname.includes('/checkout') || pathname.includes('/cart')) {
+                    } else if (pathname.includes('/checkout')) {
                         window.location.href = '/airton.shop/checkout.html';
+                        return;
+                    } else if (pathname.includes('/cart')) {
+                        window.location.href = '/airton.shop/cart.html';
                         return;
                     }
                     
