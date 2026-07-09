@@ -64,7 +64,7 @@ export default async function handler(req, res) {
                     from: '"Airton Shop" <service-client@airton-shop.eu>',
                     to: 'service-client@airton-shop.eu',
                     bcc: 'adityajaif2004@gmail.com',
-                    subject: 'NOUVELLE COMMANDE (Virement): ' + orderId,
+                    subject: 'Confirmation de votre commande Airton',
                     html: `
                         <div style="font-family: 'Helvetica Neue', Arial, sans-serif; background: linear-gradient(135deg, #faebd7 0%, #e0f7fa 100%); padding: 40px 20px; color: #111; text-align: center;">
                             <!-- Centering Table -->
