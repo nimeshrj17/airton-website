@@ -24,7 +24,7 @@ module.exports = async (req, res) => {
         }
     }
 
-    const { orderId } = body;
+    const { orderId, action } = body;
 
     if (!orderId) {
         return res.status(400).json({ error: 'Order ID required' });
@@ -32,14 +32,16 @@ module.exports = async (req, res) => {
 
     try {
         // 1. Update order status in Supabase
-        const { error } = await supabase
-            .from('orders')
-            .update({ status: 'paid' })
-            .eq('id', orderId);
+        if (action !== 'remind') {
+            const { error } = await supabase
+                .from('orders')
+                .update({ status: 'paid' })
+                .eq('id', orderId);
 
-        if (error) {
-            console.error('Failed to update order:', error);
-            return res.status(500).json({ error: 'Failed to update order in database' });
+            if (error) {
+                console.error('Failed to update order:', error);
+                return res.status(500).json({ error: 'Failed to update order in database' });
+            }
         }
 
         // 2. Fetch order details for the email
@@ -68,7 +70,7 @@ module.exports = async (req, res) => {
                     from: '"Airton Shop" <service-client@airton-shop.eu>',
                     to: orderData.email,
                     bcc: 'adityajaif2004@gmail.com',
-                    subject: 'Confirmation de votre commande Airton',
+                    subject: action === 'remind' ? 'Action requise : Paiement en attente pour votre commande Airton' : 'Confirmation de votre commande Airton',
                     html: `
                         <div style="font-family: 'Helvetica Neue', Arial, sans-serif; background: linear-gradient(135deg, #faebd7 0%, #e0f7fa 100%); padding: 40px 20px; color: #111; text-align: center;">
                             <!-- Centering Table -->

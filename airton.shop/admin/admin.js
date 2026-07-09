@@ -357,10 +357,10 @@ document.addEventListener('DOMContentLoaded', () => {
         async function remindOrder(id) {
         showMessage('Envoi de la relance en cours...', 'success');
         try {
-            const response = await fetch('/api/remind-order', {
+            const response = await fetch('/api/confirm-order', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ orderId: id })
+                body: JSON.stringify({ orderId: id, action: 'remind' })
             });
             const data = await response.json();
             if (!response.ok) throw new Error(data.error || 'Erreur lors de la relance');
