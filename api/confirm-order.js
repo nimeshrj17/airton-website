@@ -85,11 +85,21 @@ module.exports = async (req, res) => {
                                 <img src="https://airton.shop/cdn/shop/files/Logo_Airton_2025_Noir_2.svg" alt="Airton" style="height: 35px; margin-bottom: 20px;">
                                 
                                 <!-- Header -->
+                                ${action === 'remind' ? `
+                                <h2 style="font-size: 28px; color: #111; margin: 0 0 15px 0; font-weight: 800; letter-spacing: -0.5px; line-height: 1.2;">
+                                    ${orderData.first_name || 'Bonjour'}, votre commande est en attente de paiement.
+                                </h2>
+                                <p style="font-size: 15px; color: #555; margin-bottom: 30px; line-height: 1.6;">
+                                    Votre commande Airton a bien été enregistrée, mais nous n’avons toujours pas reçu votre paiement par virement. Ce règlement est indispensable pour que nous puissions confirmer et traiter votre commande.<br><br>Une fois le virement reçu, nous pourrons immédiatement lancer la préparation et l’expédition.
+                                </p>
+                                ` : `
                                 <h2 style="font-size: 24px; font-weight: bold; margin-bottom: 10px;">Votre commande est confirmée !</h2>
                                 <p style="font-size: 13px; color: #555; margin-bottom: 30px; line-height: 1.5;">
                                     Si vous constatez une erreur dans votre commande,<br>
                                     contactez nous à l'adresse : <a href="mailto:service-client@airton.shop" style="color: #016FD0; text-decoration: none;">service-client@airton.shop</a>
                                 </p>
+                                `}
+
                                 
                                 <h3 style="font-size: 18px; margin-bottom: 5px;">Détail de votre commande.</h3>
                                 <p style="font-size: 16px; margin-bottom: 25px; font-weight: bold;">Commande <span style="color: #016FD0;">#${orderData.id}</span>.</p>
