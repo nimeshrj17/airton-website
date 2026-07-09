@@ -1290,6 +1290,13 @@
                 return;
             }
             
+            const btn = document.querySelector('.m-ref-input-box button');
+            const originalText = btn.innerHTML;
+            btn.innerHTML = 'Traitement en cours...';
+            btn.style.opacity = '0.7';
+            btn.style.cursor = 'not-allowed';
+            btn.disabled = true;
+            
             // Save reference to DB
             if (window.currentOrderId) {
                 try {
@@ -1303,6 +1310,11 @@
                     });
                 } catch(e) { console.error('Failed to save reference', e); }
             }
+            
+            btn.innerHTML = originalText;
+            btn.style.opacity = '1';
+            btn.style.cursor = 'pointer';
+            btn.disabled = false;
 
             document.getElementById('mollieTransfer').classList.remove('active');
             
