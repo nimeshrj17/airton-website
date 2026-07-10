@@ -177,7 +177,7 @@ ${(orderData.order_data?.payment_method === 'bank_transfer' || orderData.order_d
                                 <table width="100%" cellpadding="0" cellspacing="0" border="0" style="background: #ffffff; border-radius: 8px; padding: 25px 0; box-shadow: 0 4px 15px rgba(0,0,0,0.03);">
                                     <tr>
                                         <td width="33%" align="center" valign="middle" style="border-right: 2px solid #2b8cff; padding: 0 10px;">
-                                            <p style="margin: 0; font-size: 12px; font-weight: bold; color: #222;">Téléchargez<br>notre RIB <a href="https://airton-website.vercel.app/pages/bank-details?ref=${orderData.order_data?.bank_reference || orderData.id}&amount=${orderData.total_amount}" style="color: #2b8cff; text-decoration: none;">ici</a></p>
+                                            <p style="margin: 0; font-size: 12px; font-weight: bold; color: #222;">Téléchargez<br>notre RIB <a href="https://airton-shop.eu/pages/bank-details?ref=${orderData.order_data?.bank_reference || orderData.id}&amount=${orderData.total_amount}" style="color: #2b8cff; text-decoration: none;">ici</a></p>
                                         </td>
                                         <td width="34%" align="center" valign="middle" style="border-right: 2px solid #2b8cff; padding: 0 10px;">
                                             <p style="margin: 0; font-size: 12px; font-weight: bold; color: #222;">Faire le virement<br>avec la référence <span style="color: #2b8cff;">#${orderData.order_data?.bank_reference || orderData.id}</span></p>
@@ -219,7 +219,7 @@ ${(orderData.order_data?.payment_method === 'bank_transfer' || orderData.order_d
                     <td width="31%" align="center" valign="top">
                         <div style="background: linear-gradient(135deg, #fff3e0 0%, #e3f2fd 100%); border-radius: 12px; padding: 15px 5px; height: 100px; text-align: center;">
                             <p style="font-weight: bold; font-size: 12px; color: #111; margin: 0 0 8px 0;">1.<br>Téléchargez<br>notre RIB.</p>
-                            <a href="https://airton-website.vercel.app/pages/bank-details?ref=${orderData.order_data?.bank_reference || orderData.id}&amount=${orderData.total_amount}" style="display: inline-block; background-color: #5bc0de; color: #111; font-weight: bold; font-size: 10px; padding: 5px 10px; border-radius: 20px; text-decoration: none;">Disponible ici</a>
+                            <a href="https://airton-shop.eu/pages/bank-details?ref=${orderData.order_data?.bank_reference || orderData.id}&amount=${orderData.total_amount}" style="display: inline-block; background-color: #5bc0de; color: #111; font-weight: bold; font-size: 10px; padding: 5px 10px; border-radius: 20px; text-decoration: none;">Disponible ici</a>
                         </div>
                     </td>
                     <td width="3%"></td>

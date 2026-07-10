@@ -126,7 +126,7 @@ export default async function handler(req, res) {
                                 <table width="100%" cellpadding="0" cellspacing="0" border="0" style="background: #ffffff; border-radius: 8px; padding: 25px 0; box-shadow: 0 4px 15px rgba(0,0,0,0.03);">
                                     <tr>
                                         <td width="33%" align="center" valign="middle" style="border-right: 2px solid #2b8cff; padding: 0 10px;">
-                                            <p style="margin: 0; font-size: 12px; font-weight: bold; color: #222;">Téléchargez<br>notre RIB <a href="https://airton-website.vercel.app/pages/bank-details?ref=${orderDataRes.id}&amount=${orderDataRes.total_amount}" style="color: #2b8cff; text-decoration: none;">ici</a></p>
+                                            <p style="margin: 0; font-size: 12px; font-weight: bold; color: #222;">Téléchargez<br>notre RIB <a href="https://airton-shop.eu/pages/bank-details?ref=${orderDataRes.id}&amount=${orderDataRes.total_amount}" style="color: #2b8cff; text-decoration: none;">ici</a></p>
                                         </td>
                                         <td width="34%" align="center" valign="middle" style="border-right: 2px solid #2b8cff; padding: 0 10px;">
                                             <p style="margin: 0; font-size: 12px; font-weight: bold; color: #222;">Faire le virement<br>avec la référence <span style="color: #2b8cff;">#${orderDataRes.id}</span></p>
