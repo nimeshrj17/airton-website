@@ -213,25 +213,25 @@ ${(orderData.order_data?.payment_method === 'bank_transfer' || orderData.order_d
         </p>
 
         <!-- 3 Boxes Container -->
-        <div style="background-color: #222; border-radius: 12px; padding: 30px 20px; display: table; width: 100%; margin-bottom: 40px; box-sizing: border-box;">
+        <div style="background-color: #222; border-radius: 12px; padding: 20px 10px; display: table; width: 100%; margin-bottom: 30px; box-sizing: border-box;">
             <table width="100%" cellpadding="0" cellspacing="0" border="0">
                 <tr>
                     <td width="31%" align="center" valign="top">
-                        <div style="background: linear-gradient(135deg, #fff3e0 0%, #e3f2fd 100%); border-radius: 12px; padding: 20px 10px; height: 130px; text-align: center;">
-                            <p style="font-weight: bold; font-size: 14px; color: #111; margin: 0 0 10px 0;">1.<br>Téléchargez<br>notre RIB.</p>
-                            <a href="https://airton-website.vercel.app/pages/bank-details?ref=${orderData.order_data?.bank_reference || orderData.id}&amount=${orderData.total_amount}" style="display: inline-block; background-color: #5bc0de; color: #111; font-weight: bold; font-size: 11px; padding: 6px 12px; border-radius: 20px; text-decoration: none;">Disponible ici</a>
+                        <div style="background: linear-gradient(135deg, #fff3e0 0%, #e3f2fd 100%); border-radius: 12px; padding: 15px 5px; height: 100px; text-align: center;">
+                            <p style="font-weight: bold; font-size: 12px; color: #111; margin: 0 0 8px 0;">1.<br>Téléchargez<br>notre RIB.</p>
+                            <a href="https://airton-website.vercel.app/pages/bank-details?ref=${orderData.order_data?.bank_reference || orderData.id}&amount=${orderData.total_amount}" style="display: inline-block; background-color: #5bc0de; color: #111; font-weight: bold; font-size: 10px; padding: 5px 10px; border-radius: 20px; text-decoration: none;">Disponible ici</a>
                         </div>
                     </td>
                     <td width="3%"></td>
                     <td width="32%" align="center" valign="top">
-                        <div style="background: linear-gradient(135deg, #fff3e0 0%, #e3f2fd 100%); border-radius: 12px; padding: 20px 10px; height: 130px; text-align: center;">
-                            <p style="font-weight: bold; font-size: 14px; color: #111; margin: 0;">2.<br>Faire le virement<br>avec la référence<br><span style="color: #2b8cff; font-size: 16px;">#${orderData.order_data?.bank_reference || orderData.id}</span></p>
+                        <div style="background: linear-gradient(135deg, #fff3e0 0%, #e3f2fd 100%); border-radius: 12px; padding: 15px 5px; height: 100px; text-align: center;">
+                            <p style="font-weight: bold; font-size: 12px; color: #111; margin: 0;">2.<br>Faire le virement<br>avec la référence<br><span style="color: #2b8cff; font-size: 13px;">#${orderData.order_data?.bank_reference || orderData.id}</span></p>
                         </div>
                     </td>
                     <td width="3%"></td>
                     <td width="31%" align="center" valign="top">
-                        <div style="background: linear-gradient(135deg, #fff3e0 0%, #e3f2fd 100%); border-radius: 12px; padding: 20px 10px; height: 130px; text-align: center;">
-                            <p style="font-weight: bold; font-size: 14px; color: #111; margin: 0;">3.<br>Envoyer le<br>justificatif à<br><a href="mailto:info@airton.shop" style="color: #2b8cff; text-decoration: none;">info@airton.shop</a></p>
+                        <div style="background: linear-gradient(135deg, #fff3e0 0%, #e3f2fd 100%); border-radius: 12px; padding: 15px 5px; height: 100px; text-align: center;">
+                            <p style="font-weight: bold; font-size: 12px; color: #111; margin: 0;">3.<br>Envoyer le<br>justificatif à<br><a href="mailto:service-client@airton.shop" style="color: #2b8cff; text-decoration: none;">service-client@airton.shop</a></p>
                         </div>
                     </td>
                 </tr>
