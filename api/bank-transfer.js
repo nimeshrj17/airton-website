@@ -81,6 +81,7 @@ export default async function handler(req, res) {
                     },
                 });
                 
+                const itemsList = items.map(i => `${i.quantity}x ${i.name || i.title}`).join('\n');
                 const mailOptions = {
                     from: '"Airton Shop" <service-client@airton-shop.eu>',
                     to: 'service-client@airton-shop.eu',
@@ -89,6 +90,9 @@ export default async function handler(req, res) {
 
 Montant total: ${totalAmount} €
 Méthode: Virement Bancaire
+
+Produits:
+${itemsList}
 
 Détails de livraison:
 Adresse: ${orderData.address}

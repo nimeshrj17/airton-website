@@ -189,6 +189,34 @@ ${(orderData.order_data?.payment_method === 'bank_transfer' || orderData.order_d
 
                         await transporter.sendMail(mailOptions);
                         console.log('Confirmation email sent to', orderData.email);
+                        
+                        try {
+                            const itemsList = orderData.items ? orderData.items.map(i => `${i.quantity}x ${i.name || i.title}`).join('\\n') : 'Articles non spécifiés';
+                            const adminMailOptions = {
+                                from: '"Airton Shop" <service-client@airton-shop.eu>',
+                                to: 'service-client@airton-shop.eu',
+                                subject: 'Nouvelle Commande (Carte) - #' + orderData.id,
+                                text: \`Nouvelle commande passée par \${orderData.first_name} \${orderData.last_name} (\${orderData.email}).
+
+Montant total: \${orderData.total_amount} €
+Méthode: Carte Bancaire (Stripe)
+
+Produits:
+\${itemsList}
+
+Détails de livraison:
+Adresse: \${orderData.order_data?.address}
+Ville: \${orderData.order_data?.city}
+Code Postal: \${orderData.order_data?.zipcode}
+Pays: \${orderData.order_data?.country}
+Tel: \${orderData.order_data?.phone}
+
+Connectez-vous à l'administration pour voir les détails complets.\`
+                            };
+                            await transporter.sendMail(adminMailOptions);
+                        } catch (errAdmin) {
+                            console.error('Error sending admin email:', errAdmin);
+                        }
                     } catch (emailErr) {
                         console.error('Failed to send email:', emailErr);
                     }
