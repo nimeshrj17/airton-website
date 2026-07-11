@@ -129,19 +129,30 @@ function setupAddToCartInterception() {
                 if (slug) {
                     const originalText = atcBtn.textContent;
                     atcBtn.textContent = '...';
-                    try {
-                        const response = await fetch(`/api/products?slug=${slug}`);
-                        if (response.ok) {
-                            productToAdd = await response.json();
-                            productToAdd.slug = slug;
-                            
-                            // Try to grab an image from the card for the cart thumbnail
-                            const img = card.querySelector('img');
-                            if (img) productToAdd.image_url = img.src || img.getAttribute('data-src') || productToAdd.image_url;
+                    
+                    // Static site fallback: Scrape product info directly from the card DOM
+                    const nameEl = card.querySelector('.card__heading, .product-title, .h5, .configurator-useful-card__name, h3');
+                    const priceEl = card.querySelector('.price-item--sale, .price-item--regular, .price__regular, .configurator-useful-card__price, .price, .money');
+                    const imgEl = card.querySelector('img');
+                    
+                    if (nameEl && priceEl) {
+                        const name = nameEl.textContent.trim();
+                        // Extract first valid price number
+                        const priceMatch = priceEl.textContent.match(/[0-9]+[.,]?[0-9]*/);
+                        const price = priceMatch ? parseFloat(priceMatch[0].replace(',', '.')) : 0;
+                        const image_url = imgEl ? (imgEl.src || imgEl.getAttribute('data-src')) : '';
+                        
+                        if (name && price > 0) {
+                            productToAdd = {
+                                id: slug, // use slug as ID to group quantities
+                                slug: slug,
+                                name: name,
+                                price: price,
+                                image_url: image_url
+                            };
                         }
-                    } catch (err) {
-                        console.error('Fetch error:', err);
                     }
+                    
                     atcBtn.textContent = originalText;
                 }
             }
