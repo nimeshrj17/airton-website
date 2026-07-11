@@ -69,7 +69,7 @@ export default async function handler(req, res) {
         }
 
         
-        if (process.env.SMTP_HOST && process.env.SMTP_USER && process.env.SMTP_PASS) {
+        if (orderData.payment_method === "bank" && process.env.SMTP_HOST && process.env.SMTP_USER && process.env.SMTP_PASS) {
             try {
                 const transporter = nodemailer.createTransport({
                     host: process.env.SMTP_HOST,
