@@ -25,10 +25,16 @@ export default async function handler(req, res) {
   }
 
   if (req.method === 'GET') {
-    const { data, error } = await supabase
-      .from('orders')
-      .select('*')
-      .order('created_at', { ascending: false });
+    const email = req.query.email;
+    let query = supabase.from('orders').select('*').order('created_at', { ascending: false });
+    
+    if (email) {
+      query = query.eq('email', email);
+    } else {
+      return res.status(400).json({ error: 'Email parameter is required.' });
+    }
+
+    const { data, error } = await query;
       
     if (error) return res.status(500).json({ error: error.message });
     return res.status(200).json(data);
