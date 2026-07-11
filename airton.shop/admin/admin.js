@@ -308,7 +308,7 @@ document.addEventListener('DOMContentLoaded', () => {
             orders.forEach(o => {
                 const tr = document.createElement('tr');
                 tr.innerHTML = `
-                    <td><strong>#${o.id}</strong></td>
+                    <td><a href="#" class="view-address-btn" style="color:#016FD0;text-decoration:underline;" data-address="${encodeURIComponent(JSON.stringify(o.order_data || {}))}"><strong>#${o.id}</strong></a></td>
                     <td>${new Date(o.created_at).toLocaleString('fr-FR')}</td>
                     <td>
                         ${(o.first_name && o.first_name !== 'null') ? (o.first_name + ' ' + (o.last_name || '')) : '<em style="color:#aaa;">Invité</em>'}
@@ -332,6 +332,22 @@ document.addEventListener('DOMContentLoaded', () => {
                     </td>
                 `;
                 orderTableBody.appendChild(tr);
+            });
+            
+            document.querySelectorAll('.view-address-btn').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    try {
+                        const orderData = JSON.parse(decodeURIComponent(e.currentTarget.getAttribute('data-address')));
+                        if (!orderData || !orderData.address) {
+                            alert("Aucune adresse complète enregistrée pour cette commande.");
+                            return;
+                        }
+                        alert(`Détails de Livraison:\n\nNom: ${orderData.firstName || ''} ${orderData.lastName || ''}\nEmail: ${orderData.email || ''}\nTéléphone: ${orderData.phone || ''}\n\nAdresse: ${orderData.address}\nVille: ${orderData.city}\nCode Postal: ${orderData.zipcode || orderData.zipCode || ''}\nPays: ${orderData.country || ''}`);
+                    } catch(err) {
+                        alert("Erreur lors de la lecture de l'adresse.");
+                    }
+                });
             });
 
                         document.querySelectorAll('.btn-remind-order').forEach(btn => {

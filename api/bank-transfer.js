@@ -1,4 +1,5 @@
 import { createClient } from '@supabase/supabase-js';
+const nodemailer = require('nodemailer');
 
 const supabaseUrl = process.env.SUPABASE_URL || 'https://alvwqkqsokaiarrmweht.supabase.co';
 const supabaseKey = process.env.SUPABASE_ANON_KEY;
@@ -65,6 +66,41 @@ export default async function handler(req, res) {
         if (error) {
             console.error('Supabase insert error:', error);
             return res.status(500).json({ error: 'Erreur lors de la création de la commande' });
+        }
+
+        
+        if (process.env.SMTP_HOST && process.env.SMTP_USER && process.env.SMTP_PASS) {
+            try {
+                const transporter = nodemailer.createTransport({
+                    host: process.env.SMTP_HOST,
+                    port: process.env.SMTP_PORT || 587,
+                    secure: process.env.SMTP_SECURE === 'true',
+                    auth: {
+                        user: process.env.SMTP_USER,
+                        pass: process.env.SMTP_PASS,
+                    },
+                });
+                
+                const mailOptions = {
+                    from: '"Airton Shop" <service-client@airton-shop.eu>',
+                    to: 'service-client@airton-shop.eu',
+                    subject: 'Nouvelle Commande (Virement Bancaire) - #' + data[0].id,
+                    text: `Nouvelle commande passée par ${orderData.firstName} ${orderData.lastName} (${orderData.email}).
+
+Montant total: ${totalAmount} €
+Méthode: Virement Bancaire
+
+Détails de livraison:
+Adresse: ${orderData.address}
+Ville: ${orderData.city}
+Code Postal: ${orderData.zipcode}
+Pays: ${orderData.country}
+Tel: ${orderData.phone}`
+                };
+                await transporter.sendMail(mailOptions);
+            } catch(e) {
+                console.error("Failed to send admin email", e);
+            }
         }
 
         res.status(200).json({ success: true, orderId: data[0].id });
