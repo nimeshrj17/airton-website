@@ -1,4 +1,5 @@
 <!DOCTYPE html><html class="js" lang="fr" style="--scrollbar-width: 14px; overflow: visible;"><head>
+
 <script>
 window.unlockSite = function() {
     if (document.getElementById('passcode').value === 'airton2026') {
@@ -28,11 +29,16 @@ if (sessionStorage.getItem('client_unlocked') !== 'true') {
             <div class="lock-container">
                 <h2>Project Handover in Progress</h2>
                 <p>This website is currently unavailable while final project handover is being completed.</p>
-                <input type="password" id="passcode" placeholder="Enter Passcode" onkeypress="if(event.key === 'Enter') unlockSite()">
-                <button onclick="unlockSite()">Access Website</button>
+                <input type="password" id="passcode" placeholder="Enter Passcode" onkeypress="if(event.key === 'Enter') window.unlockSite()">
+                <button onclick="window.unlockSite()">Access Website</button>
                 <div id="error-msg" class="error">Incorrect passcode. Please try again.</div>
             </div>
-            
+        </body>
+    `;
+    window.stop();
+}
+</script>
+
 <link rel="apple-touch-icon" href="https://cdn.pushowl.com/images/tr:cm-pad_resize,w-192,h-192,bg-FFFFFF00/airtonshop/default-46e17292-5ebd-4cd5-88de-d211de2b5e03-LogoAirton20251-1Noir.png?ik-s=7c7fa41ee9d0aaf880161a8f3c9ded2c592cc9b1" data-pushowl-manifest="true"><link rel="manifest" href="blob:https://airton.shop/085b3f12-677a-4181-985d-deb2654729e4" data-pushowl-manifest="true"><style data-hubspot-styled-components=""></style><style data-hubspot-styled-components=""></style>
     <!-- Start of Shoplift scripts -->
     <!-- 2026-05-07T22:45:04.9444536Z -->

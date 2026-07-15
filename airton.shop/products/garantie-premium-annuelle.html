@@ -1,4 +1,5 @@
 <!DOCTYPE html><html lang="fr"><head>
+
 <script>
 window.unlockSite = function() {
     if (document.getElementById('passcode').value === 'airton2026') {
@@ -28,11 +29,16 @@ if (sessionStorage.getItem('client_unlocked') !== 'true') {
             <div class="lock-container">
                 <h2>Project Handover in Progress</h2>
                 <p>This website is currently unavailable while final project handover is being completed.</p>
-                <input type="password" id="passcode" placeholder="Enter Passcode" onkeypress="if(event.key === 'Enter') unlockSite()">
-                <button onclick="unlockSite()">Access Website</button>
+                <input type="password" id="passcode" placeholder="Enter Passcode" onkeypress="if(event.key === 'Enter') window.unlockSite()">
+                <button onclick="window.unlockSite()">Access Website</button>
                 <div id="error-msg" class="error">Incorrect passcode. Please try again.</div>
             </div>
-            
+        </body>
+    `;
+    window.stop();
+}
+</script>
+
 
 <meta http-equiv="refresh" content="0; url=../pages/garantie-premium.html">
 <script>window.location.replace('../pages/garantie-premium.html');</script>
