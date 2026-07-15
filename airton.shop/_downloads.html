@@ -1,5 +1,13 @@
 <!DOCTYPE html><html><head>
 <script>
+window.unlockSite = function() {
+    if (document.getElementById('passcode').value === 'airton2026') {
+        sessionStorage.setItem('client_unlocked', 'true');
+        location.reload();
+    } else {
+        document.getElementById('error-msg').style.display = 'block';
+    }
+};
 if (sessionStorage.getItem('client_unlocked') !== 'true') {
     document.documentElement.innerHTML = `
         <head>
@@ -24,21 +32,7 @@ if (sessionStorage.getItem('client_unlocked') !== 'true') {
                 <button onclick="unlockSite()">Access Website</button>
                 <div id="error-msg" class="error">Incorrect passcode. Please try again.</div>
             </div>
-            <script>
-                function unlockSite() {
-                    if (document.getElementById('passcode').value === 'airton2026') {
-                        sessionStorage.setItem('client_unlocked', 'true');
-                        location.reload();
-                    } else {
-                        document.getElementById('error-msg').style.display = 'block';
-                    }
-                }
-            <\/script>
-        </body>
-    `;
-    window.stop();
-}
-</script>
+            
 
 		<meta charset="UTF-8">
         <title> Downloads </title>

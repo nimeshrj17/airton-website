@@ -1,5 +1,13 @@
 <!DOCTYPE html><html class="js" lang="fr" style="--scrollbar-width: 14px; overflow: visible;"><head>
 <script>
+window.unlockSite = function() {
+    if (document.getElementById('passcode').value === 'airton2026') {
+        sessionStorage.setItem('client_unlocked', 'true');
+        location.reload();
+    } else {
+        document.getElementById('error-msg').style.display = 'block';
+    }
+};
 if (sessionStorage.getItem('client_unlocked') !== 'true') {
     document.documentElement.innerHTML = `
         <head>
@@ -24,21 +32,7 @@ if (sessionStorage.getItem('client_unlocked') !== 'true') {
                 <button onclick="unlockSite()">Access Website</button>
                 <div id="error-msg" class="error">Incorrect passcode. Please try again.</div>
             </div>
-            <script>
-                function unlockSite() {
-                    if (document.getElementById('passcode').value === 'airton2026') {
-                        sessionStorage.setItem('client_unlocked', 'true');
-                        location.reload();
-                    } else {
-                        document.getElementById('error-msg').style.display = 'block';
-                    }
-                }
-            <\/script>
-        </body>
-    `;
-    window.stop();
-}
-</script>
+            
 <link rel="apple-touch-icon" href="https://cdn.pushowl.com/images/tr:cm-pad_resize,w-192,h-192,bg-FFFFFF00/airtonshop/default-46e17292-5ebd-4cd5-88de-d211de2b5e03-LogoAirton20251-1Noir.png?ik-s=7c7fa41ee9d0aaf880161a8f3c9ded2c592cc9b1" data-pushowl-manifest="true"><link rel="manifest" href="blob:https://airton.shop/625b66d9-dfd0-4d4e-9e95-293f4df44256" data-pushowl-manifest="true"><style data-hubspot-styled-components=""></style><style data-hubspot-styled-components=""></style>
     <!-- Start of Shoplift scripts -->
     <!-- 2026-05-07T22:45:04.9444536Z -->
