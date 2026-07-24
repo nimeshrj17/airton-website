@@ -325,9 +325,15 @@ document.addEventListener('DOMContentLoaded', () => {
                     <td>${parseFloat(o.total_amount).toFixed(2)} €</td>
                     <td>${o.order_data && (o.order_data.payment_method === 'bank' || o.order_data.payment_method === 'bank_transfer') ? 'Virement' : (o.order_data && o.order_data.payment_method === 'card' ? 'Carte' : '-')}</td>
                     <td>
-                        <span style="padding: 3px 8px; border-radius: 4px; font-size: 0.85rem; color: white; background-color: ${o.status === 'paid' ? 'green' : (o.status === 'pending' ? 'orange' : 'gray')}">
-                            ${o.status.toUpperCase()}
-                        </span>
+                        <select class="status-dropdown" data-id="${o.id}" style="padding: 4px; border-radius: 4px; border: 1px solid #ccc; font-size: 0.85rem; background-color: ${o.status === 'delivered' ? '#d4edda' : o.status === 'pending' ? '#fff3cd' : o.status === 'cancelled' ? '#f8d7da' : '#e2e3e5'};">
+                            <option value="pending" ${o.status === 'pending' ? 'selected' : ''}>En attente</option>
+                            <option value="paid" ${o.status === 'paid' ? 'selected' : ''}>Payé</option>
+                            <option value="confirmed" ${o.status === 'confirmed' ? 'selected' : ''}>Confirmé</option>
+                            <option value="shipped" ${o.status === 'shipped' ? 'selected' : ''}>Expédié</option>
+                            <option value="transit" ${o.status === 'transit' ? 'selected' : ''}>En transit</option>
+                            <option value="delivered" ${o.status === 'delivered' ? 'selected' : ''}>Livré</option>
+                            <option value="cancelled" ${o.status === 'cancelled' ? 'selected' : ''}>Annulé</option>
+                        </select>
                     </td>
                     <td>
                         ${o.status === 'pending' ? `<div style="display:flex; flex-direction:column; gap:5px;"><button class="btn btn-primary btn-confirm-order" style="padding: 4px 8px; font-size: 0.8rem;" data-id="${o.id}">Confirmer</button><button class="btn-remind-order" style="padding: 4px 8px; font-size: 0.8rem; background-color: #ffc107; color: #000; border: none; border-radius: 4px; cursor: pointer;" data-id="${o.id}">Relancer</button></div>` : '-'}
@@ -410,6 +416,14 @@ document.addEventListener('DOMContentLoaded', () => {
                     }
                 });
             });
+
+            document.querySelectorAll('.status-dropdown').forEach(select => {
+                select.addEventListener('change', (e) => {
+                    const newStatus = e.target.value;
+                    const orderId = e.target.getAttribute('data-id');
+                    updateOrderStatus(orderId, newStatus, e.target);
+                });
+            });
         } catch (error) {
             orderTableBody.innerHTML = `<tr><td colspan="9" style="color:red;text-align:center;">${error.message}</td></tr>`;
         }
@@ -455,6 +469,26 @@ document.addEventListener('DOMContentLoaded', () => {
             fetchOrders();
         } catch (error) {
             showMessage(error.message, 'error');
+        }
+    }
+
+    async function updateOrderStatus(id, status, selectElement) {
+        showMessage('Mise à jour du statut...', 'success');
+        try {
+            const response = await fetch('/api/orders', {
+                method: 'PATCH',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ orderId: id, status: status })
+            });
+            const data = await response.json();
+            if (!response.ok) throw new Error(data.error || 'Erreur lors de la mise à jour');
+            
+            showMessage('Statut mis à jour avec succès !', 'success');
+            // Update color based on new status
+            selectElement.style.backgroundColor = status === 'delivered' ? '#d4edda' : status === 'pending' ? '#fff3cd' : status === 'cancelled' ? '#f8d7da' : '#e2e3e5';
+        } catch (error) {
+            showMessage(error.message, 'error');
+            fetchOrders(); // reload to revert visually
         }
     }
 

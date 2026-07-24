@@ -41,5 +41,18 @@ export default async function handler(req, res) {
     return res.status(200).json(data);
   }
 
+  if (req.method === 'PATCH') {
+    let body = req.body;
+    if (typeof body === 'string') {
+        try { body = JSON.parse(body); } catch (e) { body = {}; }
+    }
+    const { orderId, status } = body;
+    if (!orderId || !status) return res.status(400).json({ error: 'orderId and status required' });
+
+    const { error } = await supabase.from('orders').update({ status }).eq('id', orderId);
+    if (error) return res.status(500).json({ error: error.message });
+    return res.status(200).json({ success: true, message: 'Status updated' });
+  }
+
   return res.status(405).json({ error: 'Method not allowed' });
 }
