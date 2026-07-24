@@ -114,6 +114,7 @@ document.addEventListener('DOMContentLoaded', () => {
             discount_price: document.getElementById('discount_price').value ? parseFloat(document.getElementById('discount_price').value) : null,
             stock: parseInt(document.getElementById('stock').value),
             categories: document.getElementById('categories').value,
+            image_url: document.getElementById('image_url').value,
             features: document.getElementById('features').value
         };
         const id = document.getElementById('product-id').value;
@@ -228,6 +229,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 const tr = document.createElement('tr');
                 tr.innerHTML = `
                     <td><strong>${p.name}</strong></td>
+                    <td>${p.image_url ? `<img src="${p.image_url}" alt="Product Image" style="width: 40px; height: 40px; object-fit: cover; border-radius: 4px;">` : '-'}</td>
                     <td>${p.slug}</td>
                     <td>${p.price} €</td>
                     <td>${p.discount_price ? p.discount_price + ' €' : '-'}</td>
@@ -466,6 +468,7 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('discount_price').value = product.discount_price || '';
         document.getElementById('stock').value = product.stock;
         document.getElementById('categories').value = product.categories || '';
+        document.getElementById('image_url').value = product.image_url || '';
         document.getElementById('features').value = product.features || '';
         showView('product-form');
     }

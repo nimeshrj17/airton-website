@@ -94,6 +94,7 @@ if (sessionStorage.getItem('admin_unlocked') !== 'true') {
                     <thead>
                         <tr>
                             <th>Nom</th>
+                            <th>Image</th>
                             <th>Slug</th>
                             <th>Prix</th>
                             <th>Prix Remisé</th>
@@ -143,6 +144,11 @@ if (sessionStorage.getItem('admin_unlocked') !== 'true') {
                     <div class="form-group">
                         <label for="categories">Catégories (séparées par une virgule)</label>
                         <input type="text" id="categories" placeholder="Climatiseurs, Accessoires">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="image_url">URL de l'image du produit</label>
+                        <input type="url" id="image_url" placeholder="https://exemple.com/image.png">
                     </div>
 
                     <div class="form-group">
